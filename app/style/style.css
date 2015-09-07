@@ -1,0 +1,74 @@
+.spotify-iheart-ext {
+	margin: 300px;
+	position: relative;
+	font-family: 'sans-serif';
+}
+
+.spotify-iheart-ext button {
+	background-color: #ccc;
+    border: 0px;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+.spotify-iheart-ext button:hover {
+	background-color: #c3c;
+}
+
+.spotify-iheart-ext .dropdown-ext {
+	width: 140px;
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	bottom: 25px;
+	background: #ccc;
+	list-style: none;
+	display: block;
+}
+
+.spotify-iheart-ext .dropdown-ext.dropdown-open {
+	display: block;
+}
+
+.spotify-iheart-ext .dropdown-ext.dropdown-close {
+	display: none;
+}
+
+.spotify-iheart-ext .dropdown-ext li {
+	width: 140px;
+	float: left;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.spotify-iheart-ext .dropdown-ext li:hover .dropdown-intern-ext {
+	display: block;
+}
+
+.spotify-iheart-ext .dropdown-ext li a {
+	width: 140px;
+	float: left;
+	padding: 10px;
+	color: #000;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.spotify-iheart-ext .dropdown-ext li a:hover {
+	background: #000;
+	color: #fff;
+}
+
+.spotify-iheart-ext .dropdown-intern-ext {
+	width: 200px;
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	background: red;
+	left: 140px;
+    bottom: 0px;
+    display: none;
+}

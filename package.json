@@ -1,0 +1,37 @@
+{
+  "name": "Spotify",
+  "version": "0.0.1",
+  "description": "spotitfy",
+  "devDependencies": {
+    "babelify": "latest",
+    "browser-sync": "latest",
+    "browserify": "latest",
+    "gulp": "latest",
+    "gulp-if": "latest",
+    "gulp-jshint": "latest",
+    "gulp-rename": "latest",
+    "gulp-streamify": "latest",
+    "gulp-uglify": "latest",
+    "jest-cli": "latest",
+    "jshint-stylish": "latest",
+    "lodash": "latest",
+    "react-tools": "latest",
+    "rimraf": "latest",
+    "vinyl-source-stream": "latest",
+    "watchify": "latest",
+    "yargs": "latest",
+    "babel-jest": "latest"
+  },
+  "dependencies": {
+    "react": "latest"
+  },
+  "scripts": {
+    "dev": "gulp watch",
+    "build": "gulp build",
+    "deploy": "NODE_ENV=production gulp build --production",
+    "test": "jest",
+    "vagrant": "npm install && gulp build"
+  },
+  "author": "loverajoel",
+  "license": "MIT"
+}
