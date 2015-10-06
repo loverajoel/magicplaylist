@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title>Spotify</title>
+</head>
+<body>
+<script type="text/javascript">
+function session() {
+    localStorage.token = window.location.hash.split('&')[0].split('=')[1];
+    window.close();
+}
+session();
+</script>
+</body>
+</html>

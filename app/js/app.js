@@ -1,80 +1,162 @@
 import React from 'react';
-import {TabbedArea, TabPane} from 'react-bootstrap';
-import SearchSection from './sections/searchSection';
-import PlaylistSection from './sections/playlistSection';
-import {Client, TrackHandler, UserHandler} from 'spotify-js';
+import SearchBox from './components/SearchBox';
+import Tracks from './components/Tracks';
+import Top from './components/Top';
+import Title from './components/Title';
+import PlaylistModal from './components/PlaylistModal';
+import Loading from './components/Loading';
+import {Client, TrackHandler, PlaylistHandler, ArtistHandler, UserHandler} from 'spotify-sdk';
 
 let client = Client.instance;
 
 client.settings = {
-	clientId: '27b1f3cdbe3a47108eb2b8c969e27e4e', 
-	secretId: '206fc8944cdb42bf9b84af7341e3c996',
-	scopes: 'user-read-private playlist-read-collaborative playlist-modify-public',
-	redirect_uri: 'http://localhost:3000/app/'
+    clientId: '87e58d70ae454ae7b815b4c8a1556a98', 
+    secretId: '52bf6c6b92a04e489e8899fc0d291d5f',
+    scopes: 'playlist-modify-public user-read-private',
+    redirect_uri: 'http://localhost:3000/app/login.html'
 };
+
+let settings = {
+    tracks: 20,
+    artists: 5
+}
 
 let track = new TrackHandler();
-let user = new UserHandler();
 
-let myUser;
-let myPlaylists = [];
+let total = 0;
 
-/*
- * Login user
- * This is a way, you can do it how you want
- */
-function session() {
-    if (sessionStorage.token) {
-        client.token = sessionStorage.token;
-    } else if (window.location.hash.split('&')[0].split('=')[1]) {
-        sessionStorage.token = window.location.hash.split('&')[0].split('=')[1];
-        client.token = sessionStorage.token;
+let spotify = {
+    trackList: [],
+
+    search: (text, callback) => {
+        spotify.trackList = [];
+        track.search(text, {limit: 1}).then((trackCollection) => {
+            trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
+                relatedArtists = relatedArtists.slice(0, settings.artists);
+                relatedArtists.push(trackCollection.first().artists.first());
+                for (var i = relatedArtists.length - 1; i >= 0; i--) {
+                    total = relatedArtists.length - 1;
+                    relatedArtists[i].topTracks({country: 'AR'}).then((tracks) => {
+                        for (var e = tracks.length - 1; e >= 0; e--) {
+                            spotify.trackList.push(tracks[e]);
+                            if (e === 0) {
+                                total -= 1;
+                                if (total === 0) {
+                                    callback(spotify.trackList)
+                                }
+                            }
+                        };
+                    });
+                };
+            });
+        });
+    },
+
+    order: (list) => {
+        return list.sort((a, b) => {
+            return a.popularity - b.popularity;
+        }).reverse();
     }
 }
-session();
-var login = function() {
-    client.login().then((url) => {
-        window.location.href = url;
-	});
-}
-// 
 
-let search = (data) => {
-	return track.search(data);
-};
-
-// 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            playlists: [],
-            user: {}
+            text: '',
+            tracks: [],
+            searching: false,
+            loading: false,
+            user: localStorage.user,
+            token: localStorage.token,
+            modalOpen: false
         }
     }
 
-    componentDidMount() {
-    	user.me().then((myUser) => {
-			this.setState({user: myUser});
-			myUser.playlists().then((playlists) => {
-			 	this.setState({playlists: playlists});
-			});
-		});
+    search(text) {
+        this.setState({
+            text: text,
+            searching: true,
+            loading: true
+        });
+        spotify.search(text ,(tracks) => {
+            this.setState({
+                tracks: spotify.order(tracks).splice(0,settings.tracks),
+                loading: false
+            });
+        });
+    }
+
+    cancel() {
+        this.setState({
+            text: '',
+            searching: false,
+            tracks: []
+        });
+    }
+
+    save() {
+        if (this.state.token) {
+            if (this.state.user) {
+                this.setState({
+                    modalOpen: true
+                });
+            } else {
+                var user = new UserHandler();
+                user.me().then((userEntity) => {
+                    this.setState({
+                        user: userEntity.id
+                    });
+                    localStorage.user = userEntity.id;
+                    this.save();
+                }.bind(this));
+            }
+        } else {
+            let loginWindow;
+            client.login().then((url) => {
+                loginWindow = window.open(
+                    url,
+                    'Spotify',
+                    'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
+                );
+                loginWindow.onbeforeunload = () => {
+                    this.setState({
+                        token: localStorage.token
+                    });
+                    client.token = localStorage.token;
+                    this.save();
+                }.bind(this);
+            }.bind(this));
+        }
+    }
+
+    savePlaylist(data) {
+        console.log(data)
+        // let playlist = new PlaylistHandler();
+        // playlist.create(this.state.user, 'Magic', true).then((myPlaylist) => {
+        //     myPlaylist.addTrack(this.state.tracks).then(() => {
+
+        //     });
+        // }.bind(this));
+    }
+
+    close() {
+        this.setState({
+            modalOpen: false
+        });
     }
    
     render() {
-    	return <div>
-				<div className="headerBar">
-					<button onClick={login}>Login</button>
-				</div>
-			    <TabbedArea defaultActiveKey={1}>
-					<TabPane eventKey={1} tab='Search'><SearchSection user={this.state.user} playlists={this.state.playlists} search={search}/></TabPane>
-				    <TabPane eventKey={2} tab='My Playlists'><PlaylistSection user={this.state.user} playlists={this.state.playlists}/></TabPane>
-				    <TabPane eventKey={3} tab='Profile'>TabPane 3 content</TabPane>
-				</TabbedArea>
-			</div>
-      }
+    	return  <div>
+                    { this.state.searching ? <Top text={this.state.text} cancel={this.cancel.bind(this)} save={this.save.bind(this)}/> : null }
+                    { !this.state.searching ? <Title/> : null }
+                    { !this.state.searching ? <SearchBox search={this.search.bind(this)}/> : null }
+                    { this.state.searching ? <Tracks tracksList={this.state.tracks} /> : null }
+                    { this.state.loading ? <Loading/> : null }
+                    { this.state.modalOpen ? <PlaylistModal close={this.close.bind(this)} save={this.savePlaylist.bind(this)}/> : null }
+                </div>
+    }
 }
 
 React.render(

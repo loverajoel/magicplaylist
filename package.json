@@ -23,7 +23,8 @@
     "babel-jest": "latest"
   },
   "dependencies": {
-    "react": "latest"
+    "react": "latest",
+    "spotify-sdk": "latest"
   },
   "scripts": {
     "dev": "gulp watch",

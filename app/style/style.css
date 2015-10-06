@@ -1,74 +1,190 @@
-.spotify-iheart-ext {
-	margin: 300px;
-	position: relative;
-	font-family: 'sans-serif';
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
-.spotify-iheart-ext button {
-	background-color: #ccc;
-    border: 0px;
-    border-radius: 20px;
-    padding: 5px;
-    font-size: 15px;
-    outline: none;
-    cursor: pointer;
+div {
+  box-sizing: border-box;
 }
 
-.spotify-iheart-ext button:hover {
-	background-color: #c3c;
+*:focus {
+  outline: 0;
 }
 
-.spotify-iheart-ext .dropdown-ext {
-	width: 140px;
-	padding: 0px;
-	margin: 0px;
-	position: absolute;
-	bottom: 25px;
-	background: #ccc;
-	list-style: none;
-	display: block;
+.container {
+  height: 100%;
+  width: 100%;
+  float: left;
+  background: #01001e; /* Old browsers */
+  background: -moz-linear-gradient(top,  #01001e 0%, #4b515d 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#01001e), color-stop(100%,#4b515d)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #01001e 0%,#4b515d 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #01001e 0%,#4b515d 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #01001e 0%,#4b515d 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #01001e 0%,#4b515d 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01001e', endColorstr='#4b515d',GradientType=0 ); /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#621d56', endColorstr='#c42f48', GradientType=0 );
+  position: fixed;
+  overflow: scroll;
 }
 
-.spotify-iheart-ext .dropdown-ext.dropdown-open {
-	display: block;
+.container h1 {
+  font-size: 60px;
+  margin: 50px 0 0 0;
+  color: #fff;
+  font-weight: lighter;
+  text-align: center;
 }
 
-.spotify-iheart-ext .dropdown-ext.dropdown-close {
-	display: none;
+.search-box {
+  width: 600px;
+  margin: 0 0 0 -300px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
 }
 
-.spotify-iheart-ext .dropdown-ext li {
-	width: 140px;
-	float: left;
-	position: relative;
-	box-sizing: border-box;
+.search-group {
+  width: 100%;
+  position: relative;
 }
 
-.spotify-iheart-ext .dropdown-ext li:hover .dropdown-intern-ext {
-	display: block;
+.search-group .input-group-btn {
+  position: absolute;
+  right: 0px
 }
 
-.spotify-iheart-ext .dropdown-ext li a {
-	width: 140px;
-	float: left;
-	padding: 10px;
-	color: #000;
-	text-decoration: none;
-	box-sizing: border-box;
+.search-group .input-group-btn .btn-search {
+  background-color: #28786D;
+  border: 0px;
+  width: 47px;
+  height: 47px;
+  color: #8BC483;
+  font-size: 20px;
+  cursor: pointer
 }
 
-.spotify-iheart-ext .dropdown-ext li a:hover {
-	background: #000;
-	color: #fff;
+.search-group .input-search {
+  width: 100%;
+  font-size: 25px;
+  padding: 9px;
+  border: 0px;
+  background: #28786D;
+  color: #fff
+} 
+
+.top {
+  width: 100%;
+  float: left;
+  background: #009B65;
+  position: fixed;
+  top: 0px;
+  left: 0px
 }
 
-.spotify-iheart-ext .dropdown-intern-ext {
-	width: 200px;
-	padding: 0px;
-	margin: 0px;
-	position: absolute;
-	background: red;
-	left: 140px;
-    bottom: 0px;
-    display: none;
+.top .logo {
+  width: 10%;
+  float: left;
+  background: red;
+}
+
+.top .search {
+  width: 80%;
+  height: 70px;
+  float: left;
+}
+
+.top .search span {
+  font-size: 40px;
+  color: #fff;
+  float: left;
+  margin: 11px;
+}
+
+.top .save {
+  width: 10%;
+  height: 70px;
+  float: left;
+  color: #fff;
+  text-align: center;
+  padding: 23px 0 0 0;
+}
+
+.top .close {
+  width: 10%;
+  height: 70px;
+  float: left;
+  color: #fff;
+  font-size: 60px;
+  font-weight: lighter;
+  padding: 0 0 0 14px;
+  cursor: pointer;
+}
+
+.trackList {
+  width: 50%;
+  margin: 100px auto 0;
+  list-style: none;
+  padding: 0px;
+}
+
+.trackList li {
+  font-size: 20px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.21);
+  margin: 10px 0;
+  padding: 0 0 5px 5px;
+}
+
+.trackList li .remove {
+  float: right;
+  margin: 6px 10px 0 0;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.21);
+}
+
+.trackList li .remove:hover {
+  color: #fff;
+}
+
+.hidden {
+  display: none
+}
+
+.playlist-modal {
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  float: left;
+  background: #008E5A;
+  position: fixed;
+  overflow: scroll;
+}
+
+.playlist-modal .modal-container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.modal-container h2 {
+
+}
+
+.modal-container .playlist-name {
+  width: 100%;
+  font-size: 25px;
+  padding: 9px;
+  border: 0px;
+  background: #28786D;
+  color: #fff;
+}
+
+.loading {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin: -40px 0 0 -27px;
 }
