@@ -1,32 +1,27 @@
-import React from 'react/addons';
+'use strict';
 
-class Tracks extends React.Component {
+import React, {Component} from 'react';
+import Track from './track';
+import TrackActions from '../actions/TrackActions';
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            tracksList: this.props.tracksList
-        }
-    }
+class Tracks extends Component {
 
-    componentWillReceiveProps(props) {
-        this.setState({tracksList: props.tracksList});
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    remove(index) {
-        this.setState({
-            tracksList: React.addons.update(this.state.tracksList, {$splice: [[index, 1]]})
-        });
-    }
+  componentDidMount() {
+    TrackActions.search(this.props.search);
+  }
 
-    render() {
-            var tracks = this.state.tracksList.map((track, i)=>{
-                return <li key={track.id}>{track.name}, {track.artists.first().name} <span className="remove" onClick={this.remove.bind(this, i)}>x</span></li>
-            });
-            return <ul className='trackList'>
-                        {tracks}
-                    </ul>
-        }
+  render() {
+    var tracks = this.props.tracks.map((track, i)=>{
+        return <Track track={track} index={i}/>
+    });
+    return  <ul className='trackList'>
+                {tracks}
+            </ul>
+  }
 }
 
 export default Tracks;

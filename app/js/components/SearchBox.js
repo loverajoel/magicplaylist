@@ -1,27 +1,29 @@
-import React from 'react';
+'use strict';
 
-class SearchBox extends React.Component {
+import React, {Component} from 'react';
+import {newSearch} from '../actions/SearchActions';
 
-    constructor(props) {
-        super(props);
-    }
+class SearchBox extends Component {
 
-    search() {
-        if (document.querySelector('.input-search') && document.querySelector('.input-search').value.length > 3) {
-            this.props.search(document.querySelector('.input-search').value);
-        }
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-            return <div className='search-box'>
-                        <div className='search-group'>
-                            <span className='input-group-btn'>
-                                <button className='btn-search' type='button' onClick={this.search.bind(this)}>Go!</button>
-                            </span>
-                            <input type='text' className='input-search' placeholder='ej: The pretender, Foo Fighters'/>
-                        </div>
-                    </div>
-        }
+  _handleSearch() {
+    const text = React.findDOMNode(this.refs.searchInput).value;
+    newSearch(text);
+  }
+
+  render() {
+    return  <div className='search-box'>
+              <div className='search-group'>
+                  <span className='input-group-btn'>
+                      <button className='btn-search' type='button' onClick={this._handleSearch.bind(this)}>Go!</button>
+                  </span>
+                  <input type='text' ref='searchInput' className='input-search' placeholder='ej: The pretender, Foo Fighters'/>
+              </div>
+            </div>
+  }
 }
 
 export default SearchBox;
