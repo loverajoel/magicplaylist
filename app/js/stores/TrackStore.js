@@ -2,11 +2,12 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {TRACKS_ADD, TRACK_REMOVE} from '../constants/constants';
+import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
 let _tracks = [];
+let _loading = false;
 
 class TrackStore extends EventEmitter {
 	constructor() {
@@ -17,6 +18,10 @@ class TrackStore extends EventEmitter {
 	getTracks() {
 		return _tracks;
 	}
+
+  getLoading() {
+    return _loading;
+  }
 
 	emitChange() {
 		this.emit(CHANGE_EVENT);
@@ -38,12 +43,19 @@ class TrackStore extends EventEmitter {
 
 				case TRACKS_ADD: {
 					_tracks = tracks;
+          _loading = false;
 					this.emitChange();
 					break;
 				}
 
         case TRACK_REMOVE: {
           _tracks.splice(action.index, 1);
+          this.emitChange();
+          break;
+        }
+
+        case TRACKS_LOADING: {
+          _loading = true;
           this.emitChange();
           break;
         }

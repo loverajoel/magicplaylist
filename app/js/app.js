@@ -7,16 +7,17 @@ import PlaylistModal from './components/PlaylistModal';
 import Loading from './components/Loading';
 import SearchStore from './stores/SearchStore';
 import TrackStore from './stores/TrackStore';
+import ModalStore from './stores/ModalStore';
 
 let getAppState = () => {
   return {
     text: SearchStore.getSearch(),
     tracks: TrackStore.getTracks(),
     searching: SearchStore.getSearch() !== '',
-    loading: false,
+    loading: TrackStore.getLoading(),
     user: localStorage.user,
     token: localStorage.token,
-    modalOpen: false
+    modalOpen: ModalStore.isOpen()
   }
 };
 
@@ -30,11 +31,13 @@ class App extends Component {
   componentDidMount() {
     SearchStore.addChangeListener(this._onChange.bind(this));
     TrackStore.addChangeListener(this._onChange.bind(this));
+    ModalStore.addChangeListener(this._onChange.bind(this));
   }
 
   componentWillUnmount() {
     SearchStore.removeChangeListener(this._onChange.bind(this));
-    TrackStore.addChangeListener(this._onChange.bind(this));
+    TrackStore.removeChangeListener(this._onChange.bind(this));
+    ModalStore.removeChangeListener(this._onChange.bind(this));
   }
 
   _onChange() {
@@ -48,7 +51,7 @@ class App extends Component {
               { !this.state.searching ? <SearchBox/> : null }
               { this.state.searching ? <Tracks search={this.state.text} tracks={this.state.tracks}/> : null }
               { this.state.loading ? <Loading/> : null }
-              { this.state.modalOpen ? <PlaylistModal close={this.close.bind(this)} save={this.savePlaylist.bind(this)}/> : null }
+              { this.state.modalOpen ? <PlaylistModal/> : null }
              </div>
   }
 }

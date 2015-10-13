@@ -2,11 +2,11 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {SEARCH_ADD, SEARCH_REMOVE} from '../constants/constants';
+import {MODAL_OPEN, MODAL_CLOSE} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
-let _currentSearch = '';
+let _isOpen = false;
 
 class SearchStore extends EventEmitter {
 	constructor() {
@@ -14,8 +14,8 @@ class SearchStore extends EventEmitter {
 		this.registerAtDispatcher();
 	}
 
-	getSearch() {
-		return _currentSearch;
+	isOpen() {
+		return _isOpen;
 	}
 
 	emitChange() {
@@ -32,18 +32,17 @@ class SearchStore extends EventEmitter {
 
 	registerAtDispatcher() {
 		Dispatcher.register((action) => {
-			const {type, text} = action;
-			switch(type) {
 
-        case SEARCH_ADD: {
-					const newSearch = text;
-					_currentSearch = newSearch;
+			switch(action.type) {
+
+        case MODAL_OPEN: {
+					_isOpen = true;
 					this.emitChange();
 					break;
 				}
 
-        case SEARCH_REMOVE: {
-          _currentSearch = '';
+        case MODAL_CLOSE: {
+          _isOpen = false;
           this.emitChange();
           break;
         }

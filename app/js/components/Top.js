@@ -1,18 +1,30 @@
-import React from 'react';
+'use strict';
 
-class Top extends React.Component {
+import React, {Component} from 'react';
+import {removeSearch} from '../actions/SearchActions';
+import {open} from '../actions/ModalActions';
 
-    constructor(props) {
-        super(props);
-    }
+class Top extends Component {
 
-    render() {
-            return <div className='top'>
-                        <div className='close' onClick=''>X</div>
-                        <div className='search'><span>{this.props.text}</span></div>
-                        <div className='save' onClick=''>Save Playlist</div>
-                    </div>
-        }
+  constructor(props) {
+      super(props);
+  }
+
+  _handleClose() {
+    removeSearch();
+  }
+
+  _handleSave() {
+    open();
+  }
+
+  render() {
+    return <div className='top'>
+                <div className='close' onClick={this._handleClose}>X</div>
+                <div className='search'><span>{this.props.text}</span></div>
+                <div className='save' onClick={this._handleSave}>Save Playlist</div>
+            </div>
+  }
 }
 
 export default Top;

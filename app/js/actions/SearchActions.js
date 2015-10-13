@@ -1,12 +1,23 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {SEARCH_ADD} from '../constants/constants';
+import {SEARCH_ADD, SEARCH_REMOVE} from '../constants/constants';
 
-export function newSearch(text) {
-  const action = {
-    type: SEARCH_ADD,
-    text: text
+let SearchActions = {
+
+  newSearch: (text) => {
+    Dispatcher.dispatch({
+      type: SEARCH_ADD,
+      text: text
+    });
+  },
+
+  removeSearch: () => {
+    Dispatcher.dispatch({
+      type: SEARCH_REMOVE
+    });
   }
-  Dispatcher.dispatch(action);
-}
+
+};
+
+export default SearchActions;

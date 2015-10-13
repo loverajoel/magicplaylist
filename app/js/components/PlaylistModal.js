@@ -1,40 +1,55 @@
-import React from 'react';
+'use strict';
 
-class PlaylistModal extends React.Component {
+import React, {Component} from 'react';
+import {close} from '../actions/ModalActions';
 
-    constructor(props) {
-        super(props);
+class PlaylistModal extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      playlistName: '',
+      public: true
     }
+  }
 
-    close() {
-        this.props.close();
+  _handleClose() {
+    close();
+  }
+
+  _handleSave() {
+    const playlistName = React.findDOMNode(this.refs.playlistName).value;
+    if (playlistName.length > 3) {
+      console.log(text)
+      // save(text);
     }
+  }
 
-    save() {
-        if (document.querySelector('.playlist-name') && document.querySelector('.playlist-name').value.length > 3) {
-            this.props.save(document.querySelector('.playlist-name').value);
-        }
-    }
+  _handlePublic(status) {
+    this.setState({
+      public: status
+    })
+  }
 
-    render() {
-            return <div className='playlist-modal'>
-                        <div className="modal-container">
-                            <h2>Create Playlist</h2>
-                            <div>
-                                <input type='text' placeholder='Name' className='playlist-name'/>
-                            </div>
-                            <div>
-                                <input type="radio" name="public" value="true"/>Public
-                                <input type="radio" name="public" value="false"/>Private
-                            </div>
+  render() {
+    return <div className='playlist-modal'>
+              <div className="modal-container">
+                  <h2>Create Playlist</h2>
+                  <div>
+                      <input type='text' placeholder='Name' className='playlist-name' ref='playlistName'/>
+                  </div>
+                  <div>
+                      <input type='radio' name='public' value='true' onChange={this._handlePublic.bind(this, true)} checked='true'/>Public
+                      <input type='radio' name='public' value='false' onChange={this._handlePublic.bind(this, false)}/>Private
+                  </div>
 
-                            <div>
-                                <button className='btn-search' type='button' onClick={this.save.bind(this)}>Save</button>
-                                <button className='btn-search' type='button' onClick={this.close.bind(this)}>Cancel</button>
-                            </div>
-                        </div>
-                   </div>
-        }
+                  <div>
+                      <button className='btn-search' type='button' onClick={this._handleSave.bind(this)}>Save</button>
+                      <button className='btn-search' type='button' onClick={this._handleClose}>Cancel</button>
+                  </div>
+              </div>
+         </div>
+  }
 }
 
 export default PlaylistModal;
