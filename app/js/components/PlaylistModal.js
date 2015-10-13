@@ -20,15 +20,14 @@ class PlaylistModal extends Component {
 
   _handleSave() {
     if (this.props.token && this.props.user) {
-      console.log(this.props.user)
+      // const playlistName = React.findDOMNode(this.refs.playlistName).value;
+      // if (playlistName.length > 3) {
+      // console.log(text)
+      // save(text);
+      // }
     } else {
       login();
     }
-    // const playlistName = React.findDOMNode(this.refs.playlistName).value;
-    // if (playlistName.length > 3) {
-      // console.log(text)
-      // save(text);
-    // }
   }
 
   _handlePublic(status) {

@@ -2,12 +2,12 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {USER_LOGIN, USER_LOGOUT} from '../constants/constants';
+import {USER_LOGED, USER_TOKEN, USER_LOGOUT} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
-let _user = JSON.parse(localStorage.magic_user) || null;
-let _token = JSON.parse(localStorage.magic_token) || null;
+let _user = JSON.parse(localStorage.getItem('magic_user')) || null;
+let _token = localStorage.getItem('magic_token') || null;
 
 class SearchStore extends EventEmitter {
 	constructor() {

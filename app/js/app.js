@@ -33,12 +33,14 @@ class App extends Component {
     SearchStore.addChangeListener(this._onChange.bind(this));
     TrackStore.addChangeListener(this._onChange.bind(this));
     ModalStore.addChangeListener(this._onChange.bind(this));
+    UserStore.addChangeListener(this._onChange.bind(this));
   }
 
   componentWillUnmount() {
     SearchStore.removeChangeListener(this._onChange.bind(this));
     TrackStore.removeChangeListener(this._onChange.bind(this));
     ModalStore.removeChangeListener(this._onChange.bind(this));
+    UserStore.removeChangeListener(this._onChange.bind(this));
   }
 
   _onChange() {

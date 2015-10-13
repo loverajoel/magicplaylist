@@ -63,11 +63,30 @@ let Spotify = {
               'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
           );
           loginWindow.onbeforeunload = () => {
-              client.token = localStorage.token;
-              resolve(localStorage.token);
+              client.token = JSON.stringify(localStorage.magic_token);
+              resolve(localStorage.magic_token);
           }
       });
     });
+  },
+
+  getUser: () => {
+    return new Promise((resolve, reject) => {
+      var user = new UserHandler();
+      user.me().then((userEntity) => {
+          localStorage.magic_user = JSON.stringify(userEntity);
+          resolve(userEntity);
+      });
+    });
+  },
+
+  savePlaylist: (name, isPublic, user, tracks) => {
+    let playlist = new PlaylistHandler();
+    playlist.create(user.id, 'Magic', true).then((myPlaylist) => {
+        myPlaylist.addTrack(tracks).then(() => {
+
+        });
+    }
   }
 }
 

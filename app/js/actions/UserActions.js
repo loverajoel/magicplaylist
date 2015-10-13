@@ -1,7 +1,8 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {USER_LOGIN, USER_TOKEN} from '../constants/constants';
+import {USER_LOGED, USER_TOKEN, USER_LOGOUT} from '../constants/constants';
+import Spotify from '../utils/Spotify';
 
 let UserActions = {
 
