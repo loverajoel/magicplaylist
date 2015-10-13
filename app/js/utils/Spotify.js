@@ -51,6 +51,23 @@ let Spotify = {
       return list.sort((a, b) => {
           return a.popularity - b.popularity;
       }).reverse();
+  },
+
+  login: () => {
+    return new Promise((resolve, reject) => {
+      let loginWindow;
+      client.login().then((url) => {
+          loginWindow = window.open(
+              url,
+              'Spotify',
+              'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
+          );
+          loginWindow.onbeforeunload = () => {
+              client.token = localStorage.token;
+              resolve(localStorage.token);
+          }
+      });
+    });
   }
 }
 

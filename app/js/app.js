@@ -8,6 +8,7 @@ import Loading from './components/Loading';
 import SearchStore from './stores/SearchStore';
 import TrackStore from './stores/TrackStore';
 import ModalStore from './stores/ModalStore';
+import UserStore from './stores/UserStore';
 
 let getAppState = () => {
   return {
@@ -15,8 +16,8 @@ let getAppState = () => {
     tracks: TrackStore.getTracks(),
     searching: SearchStore.getSearch() !== '',
     loading: TrackStore.getLoading(),
-    user: localStorage.user,
-    token: localStorage.token,
+    user: UserStore.getUser(),
+    token: UserStore.getToken(),
     modalOpen: ModalStore.isOpen()
   }
 };
@@ -51,7 +52,7 @@ class App extends Component {
               { !this.state.searching ? <SearchBox/> : null }
               { this.state.searching ? <Tracks search={this.state.text} tracks={this.state.tracks}/> : null }
               { this.state.loading ? <Loading/> : null }
-              { this.state.modalOpen ? <PlaylistModal/> : null }
+              { this.state.modalOpen ? <PlaylistModal user={this.state.user} token={this.state.token}/> : null }
              </div>
   }
 }

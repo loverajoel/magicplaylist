@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import {close} from '../actions/ModalActions';
+import {login} from '../actions/UserActions';
 
 class PlaylistModal extends Component {
 
@@ -18,11 +19,16 @@ class PlaylistModal extends Component {
   }
 
   _handleSave() {
-    const playlistName = React.findDOMNode(this.refs.playlistName).value;
-    if (playlistName.length > 3) {
-      console.log(text)
-      // save(text);
+    if (this.props.token && this.props.user) {
+      console.log(this.props.user)
+    } else {
+      login();
     }
+    // const playlistName = React.findDOMNode(this.refs.playlistName).value;
+    // if (playlistName.length > 3) {
+      // console.log(text)
+      // save(text);
+    // }
   }
 
   _handlePublic(status) {
