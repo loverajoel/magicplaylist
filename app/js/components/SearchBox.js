@@ -14,13 +14,19 @@ class SearchBox extends Component {
     newSearch(text);
   }
 
+  _handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this._handleSearch();
+    }
+  }
+
   render() {
     return  <div className='search-box'>
               <div className='search-group'>
                   <span className='input-group-btn'>
-                      <button className='btn-search' type='button' onClick={this._handleSearch.bind(this)}>Go!</button>
+                      <div className='btn-search' onClick={this._handleSearch.bind(this)}></div>
                   </span>
-                  <input type='text' ref='searchInput' className='input-search' placeholder='ej: The pretender, Foo Fighters'/>
+                  <input type='text' ref='searchInput' className='input-search' placeholder='Type an artist or a song to start' onKeyPress={this._handleKeyPress.bind(this)}/>
               </div>
             </div>
   }

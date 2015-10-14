@@ -50,10 +50,9 @@ class App extends Component {
   }
 
   render() {
-  	return  <div>
+  	return  <div className="container">
               { this.state.searching ? <Top text={this.state.text}/> : null }
-              { !this.state.searching ? <Title/> : null }
-              { !this.state.searching ? <SearchBox/> : null }
+              { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
               { this.state.searching ? <Tracks search={this.state.text} tracks={this.state.tracks}/> : null }
               { this.state.loading ? <Loading/> : null }
               { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }

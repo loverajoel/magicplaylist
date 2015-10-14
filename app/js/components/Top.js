@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {removeSearch} from '../actions/SearchActions';
-import {open} from '../actions/ModalActions';
+import SearchBox from './SearchBox';
 
 class Top extends Component {
 
@@ -14,17 +14,14 @@ class Top extends Component {
     removeSearch();
   }
 
-  _handleSave() {
-    open();
-  }
-
   render() {
     return <div className='top'>
-                <div className='close' onClick={this._handleClose}>X</div>
-                <div className='search'><span>{this.props.text}</span></div>
-                <div className='save' onClick={this._handleSave}>Save Playlist</div>
+                <div className='title'><span><b>Magic</b>Playlist/</span></div>
+                <div className='search'><SearchBox/></div>
             </div>
   }
 }
 
 export default Top;
+
+// <div className='close' onClick={this._handleClose}>X</div>

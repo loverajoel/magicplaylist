@@ -40,7 +40,6 @@ class SaveModal extends Component {
   render() {
     return <div className='playlist-modal'>
               <div className="modal-container">
-                  <h2>Create Playlist</h2>
                   <div>
                       <input type='text' placeholder='Name' className='playlist-name' ref='playlistName'/>
                   </div>
@@ -50,8 +49,7 @@ class SaveModal extends Component {
                   </div>
 
                   <div>
-                      <button className='btn-search' type='button' onClick={this._handleSave.bind(this)}>Save</button>
-                      <button className='btn-search' type='button' onClick={this._handleClose}>Cancel</button>
+                      <button className='save' type='button' onClick={this._handleSave.bind(this)}>Save</button>
                   </div>
               </div>
          </div>
