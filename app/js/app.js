@@ -19,6 +19,7 @@ let getAppState = () => {
   return {
     text: SearchStore.getSearch(),
     tracks: TrackStore.getTracks(),
+    mainTrack: TrackStore.getMainTrack(),
     searching: SearchStore.getSearch() !== '',
     loading: TrackStore.getLoading(),
     user: UserStore.getUser(),
@@ -61,7 +62,7 @@ class App extends Component {
                 { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>
-                { this.state.searching && !this.state.loading ? <Playlist search={this.state.text} tracks={this.state.tracks}/> : null }
+                { this.state.searching && !this.state.loading ? <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>
                 { this.state.loading ? <Loading/> : null }

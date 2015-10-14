@@ -38,7 +38,7 @@ let Spotify = {
                         if (e === 0) {
                             total -= 1;
                             if (total === 0) {
-                                callback(Spotify.trackList)
+                                callback(Spotify.trackList, trackCollection.first());
                             }
                         }
                     };

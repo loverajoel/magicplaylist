@@ -7,6 +7,7 @@ import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING, TRACKS_REMOVE} from '../consta
 let CHANGE_EVENT = 'change';
 
 let _tracks = [];
+let _mainTrack;
 let _loading = false;
 
 class TrackStore extends EventEmitter {
@@ -18,6 +19,10 @@ class TrackStore extends EventEmitter {
 	getTracks() {
 		return _tracks;
 	}
+
+  getMainTrack() {
+    return _mainTrack;
+  }
 
   getLoading() {
     return _loading;
@@ -43,6 +48,7 @@ class TrackStore extends EventEmitter {
 
 				case TRACKS_ADD: {
 					_tracks = tracks;
+          _mainTrack = action.mainTrack;
           _loading = false;
 					this.emitChange();
 					break;

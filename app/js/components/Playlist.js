@@ -21,7 +21,7 @@ class Playlist extends Component {
     });
     return  <div>
               <div className='info'>
-                <div className='track-name'>{this.props.search}</div>
+                <div className='track-name'>{this.props.mainTrack.name}, {this.props.mainTrack.artists.first().name}</div>
                 <div className='save-playlist' onClick={this._handleSave}>Save Playlist on Spotify</div>
               </div>
               <ul className='trackList'>

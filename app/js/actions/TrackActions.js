@@ -10,10 +10,11 @@ let TrackActions = {
     Dispatcher.dispatch({
       type: TRACKS_LOADING
     });
-    Spotify.search(text, (tracks) => {
+    Spotify.search(text, (tracks, mainTrack) => {
       Dispatcher.dispatch({
         type: TRACKS_ADD,
-        tracks: tracks
+        tracks: tracks,
+        mainTrack: mainTrack
       });
     });
   },
