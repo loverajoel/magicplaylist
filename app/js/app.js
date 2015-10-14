@@ -1,6 +1,6 @@
 'use strict';
 
-import React, {Component} from 'react';
+import React, {Component} from 'react/addons';
 import SearchBox from './components/SearchBox';
 import Playlist from './components/Playlist';
 import Top from './components/Top';
@@ -12,8 +12,9 @@ import TrackStore from './stores/TrackStore';
 import ModalStore from './stores/ModalStore';
 import UserStore from './stores/UserStore';
 
+let ReactTransitionGroup = React.addons.CSSTransitionGroup;
+
 let getAppState = () => {
-  console.log(TrackStore.getTracks())
   return {
     text: SearchStore.getSearch(),
     tracks: TrackStore.getTracks(),
@@ -51,12 +52,22 @@ class App extends Component {
   }
 
   render() {
-  	return  <div className="container">
-              { this.state.searching ? <Top search={this.state.text}/> : null }
-              { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
-              { this.state.searching && !this.state.loading ? <Playlist search={this.state.text} tracks={this.state.tracks}/> : null }
-              { this.state.loading ? <Loading/> : null }
-              { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
+  	return  <div className='container'>
+              <ReactTransitionGroup transitionName='fade'>
+                { this.state.searching ? <Top search={this.state.text}/> : null }
+              </ReactTransitionGroup>
+              <ReactTransitionGroup transitionName='fade'>
+                { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
+              </ReactTransitionGroup>
+              <ReactTransitionGroup transitionName='fade'>
+                { this.state.searching && !this.state.loading ? <Playlist search={this.state.text} tracks={this.state.tracks}/> : null }
+              </ReactTransitionGroup>
+              <ReactTransitionGroup transitionName='fade'>
+                { this.state.loading ? <Loading/> : null }
+              </ReactTransitionGroup>
+              <ReactTransitionGroup transitionName='fade'>
+                { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
+              </ReactTransitionGroup>
             </div>
   }
 }
