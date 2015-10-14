@@ -265,6 +265,9 @@ div {
   width: 100%;
   float: left;
   padding: 20px;
+}
+
+.footer.fixed {
   position: fixed;
   bottom: 0px
 }
