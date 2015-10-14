@@ -1,9 +1,11 @@
+'use strict';
+
 import React, {Component} from 'react';
 import SearchBox from './components/SearchBox';
 import Tracks from './components/Tracks';
 import Top from './components/Top';
 import Title from './components/Title';
-import PlaylistModal from './components/PlaylistModal';
+import SaveModal from './components/SaveModal';
 import Loading from './components/Loading';
 import SearchStore from './stores/SearchStore';
 import TrackStore from './stores/TrackStore';
@@ -54,8 +56,8 @@ class App extends Component {
               { !this.state.searching ? <SearchBox/> : null }
               { this.state.searching ? <Tracks search={this.state.text} tracks={this.state.tracks}/> : null }
               { this.state.loading ? <Loading/> : null }
-              { this.state.modalOpen ? <PlaylistModal user={this.state.user} token={this.state.token}/> : null }
-             </div>
+              { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
+            </div>
   }
 }
 

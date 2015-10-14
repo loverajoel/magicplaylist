@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {close} from '../actions/ModalActions';
 import {login} from '../actions/UserActions';
 
-class PlaylistModal extends Component {
+class SaveModal extends Component {
 
   constructor(props) {
     super(props);
@@ -20,6 +20,7 @@ class PlaylistModal extends Component {
 
   _handleSave() {
     if (this.props.token && this.props.user) {
+      console.log('guardar')
       // const playlistName = React.findDOMNode(this.refs.playlistName).value;
       // if (playlistName.length > 3) {
       // console.log(text)
@@ -57,4 +58,4 @@ class PlaylistModal extends Component {
   }
 }
 
-export default PlaylistModal;
+export default SaveModal;

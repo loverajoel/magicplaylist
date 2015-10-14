@@ -36,12 +36,6 @@ let TrackActions = {
       type: TRACK_REMOVE,
       index: index
     });
-  },
-
-  save() {
-    Spotify.search(text, (tracks) => {
-
-    })
   }
 
 };
