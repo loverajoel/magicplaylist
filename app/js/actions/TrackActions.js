@@ -1,7 +1,7 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING} from '../constants/constants';
+import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING, TRACKS_REMOVE} from '../constants/constants';
 import Spotify from '../utils/Spotify';
 
 let TrackActions = {
@@ -27,7 +27,7 @@ let TrackActions = {
 
   removeTracks: () => {
     Dispatcher.dispatch({
-      type: REMOVE_TRACKS
+      type: TRACKS_REMOVE
     });
   },
 

@@ -11,10 +11,6 @@ class Playlist extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    TrackActions.search(this.props.search);
-  }
-
   _handleSave() {
     open();
   }

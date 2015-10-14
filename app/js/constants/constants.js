@@ -7,6 +7,7 @@ export default {
   TRACKS_ADD: 'tracks-add',
   TRACK_REMOVE: 'track-remove',
   TRACK_LOADING: 'track-loading',
+  TRACKS_REMOVE: 'tracks-remove',
   MODAL_OPEN: 'modal-open',
   MODAL_CLOSE: 'modal-close',
   USER_LOGED: 'user-loged',

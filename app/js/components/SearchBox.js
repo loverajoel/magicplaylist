@@ -2,16 +2,21 @@
 
 import React, {Component} from 'react';
 import {newSearch} from '../actions/SearchActions';
+import TrackActions from '../actions/TrackActions';
 
 class SearchBox extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      initialValue: this.props.value
+    }
   }
 
   _handleSearch() {
     const text = React.findDOMNode(this.refs.searchInput).value;
     newSearch(text);
+    TrackActions.search(text);
   }
 
   _handleKeyPress(e) {
@@ -26,7 +31,7 @@ class SearchBox extends Component {
                   <span className='input-group-btn'>
                       <div className='btn-search' onClick={this._handleSearch.bind(this)}></div>
                   </span>
-                  <input type='text' ref='searchInput' className='input-search' placeholder='Type an artist or a song to start' onKeyPress={this._handleKeyPress.bind(this)} value={this.props.value}/>
+                  <input type='text' ref='searchInput' className='input-search' placeholder='Type an artist or a song to start' onKeyPress={this._handleKeyPress.bind(this)} defaultValue={this.state.initialValue}/>
               </div>
             </div>
   }
