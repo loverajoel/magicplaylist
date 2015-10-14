@@ -5,6 +5,7 @@ body {
   padding: 0px;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
+  background: #5e04c2;
 }
 
 div {
@@ -20,10 +21,8 @@ div {
 }
 
 .container {
-  min-height: 100%;
   width: 100%;
   float: left;
-  background: #5e04c2;
 }
 
 .search-container {
@@ -155,7 +154,7 @@ div {
 
 .info {
   width: 70%;
-  margin: 100px auto 0;
+  margin: 133px auto 0;
 }
 
 .info .track-name {
@@ -260,4 +259,30 @@ div {
   left: 50%;
   position: absolute;
   margin: -40px 0 0 -27px;
+}
+
+.footer {
+  width: 100%;
+  float: left;
+  padding: 20px;
+  position: fixed;
+  bottom: 0px
+}
+
+.footer .copy {
+  font-family: 'Menlo', sans-serif;
+  font-size: 12px;
+  color: #fff;
+  float: left;
+}
+
+.footer .copy a {
+  color: #fff;
+}
+
+.footer .spotify-api {
+  font-family: 'Menlo', sans-serif;
+  font-size: 12px;
+  color: #fff;
+  float: right;
 }

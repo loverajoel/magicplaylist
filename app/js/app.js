@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import SearchBox from './components/SearchBox';
-import Tracks from './components/Tracks';
+import Playlist from './components/Playlist';
 import Top from './components/Top';
 import Title from './components/Title';
 import SaveModal from './components/SaveModal';
@@ -51,9 +51,9 @@ class App extends Component {
 
   render() {
   	return  <div className="container">
-              { this.state.searching ? <Top text={this.state.text}/> : null }
+              { this.state.searching ? <Top search={this.state.text}/> : null }
               { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
-              { this.state.searching ? <Tracks search={this.state.text} tracks={this.state.tracks}/> : null }
+              { this.state.searching ? <Playlist search={this.state.text} tracks={this.state.tracks}/> : null }
               { this.state.loading ? <Loading/> : null }
               { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
             </div>

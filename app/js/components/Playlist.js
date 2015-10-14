@@ -5,7 +5,7 @@ import Track from './track';
 import TrackActions from '../actions/TrackActions';
 import {open} from '../actions/ModalActions';
 
-class Tracks extends Component {
+class Playlist extends Component {
 
   constructor(props) {
     super(props);
@@ -25,7 +25,7 @@ class Tracks extends Component {
     });
     return  <div>
               <div className='info'>
-                <div className='track-name'>We are all we need, Above & Beyond</div>
+                <div className='track-name'>{this.props.search}</div>
                 <div className='save-playlist' onClick={this._handleSave}>Save Playlist on Spotify</div>
               </div>
               <ul className='trackList'>
@@ -35,4 +35,4 @@ class Tracks extends Component {
   }
 }
 
-export default Tracks;
+export default Playlist;
