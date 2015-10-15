@@ -12,7 +12,7 @@ import Loading from './components/Loading';
 import Alert from './components/Alert';
 
 import SearchStore from './stores/SearchStore';
-import TrackStore from './stores/TrackStore';
+import PlaylistStore from './stores/PlaylistStore';
 import ModalStore from './stores/ModalStore';
 import UserStore from './stores/UserStore';
 import AlertStore from './stores/AlertStore';
@@ -22,10 +22,10 @@ let ReactTransitionGroup = React.addons.CSSTransitionGroup;
 let getAppState = () => {
   return {
     text: SearchStore.getSearch(),
-    tracks: TrackStore.getTracks(),
-    mainTrack: TrackStore.getMainTrack(),
+    tracks: PlaylistStore.getTracks(),
+    mainTrack: PlaylistStore.getMainTrack(),
     searching: SearchStore.getSearch() !== '',
-    loading: TrackStore.getLoading(),
+    loading: PlaylistStore.getLoading(),
     user: UserStore.getUser(),
     token: UserStore.getToken(),
     modalOpen: ModalStore.isOpen(),
@@ -43,7 +43,7 @@ class App extends Component {
 
   componentDidMount() {
     SearchStore.addChangeListener(this._onChange.bind(this));
-    TrackStore.addChangeListener(this._onChange.bind(this));
+    PlaylistStore.addChangeListener(this._onChange.bind(this));
     ModalStore.addChangeListener(this._onChange.bind(this));
     UserStore.addChangeListener(this._onChange.bind(this));
     AlertStore.addChangeListener(this._onChange.bind(this));

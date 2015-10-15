@@ -1,47 +1,40 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING, TRACKS_REMOVE, PLAYLIST_CREATED, PLAYLIST_CREATING} from '../constants/constants';
+import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING} from '../constants/constants';
 import Spotify from '../utils/Spotify';
 
-let TrackActions = {
+let PlaylistActions = {
 
   search: (text) => {
     Dispatcher.dispatch({
-      type: TRACKS_LOADING
+      type: PLAYLIST_LOADING
     });
     Spotify.search(text, (tracks, mainTrack) => {
       Dispatcher.dispatch({
-        type: TRACKS_ADD,
+        type: PLAYLIST_ADD_TRACKS,
         tracks: tracks,
         mainTrack: mainTrack
       });
     });
   },
 
-  addTracks: (tracks) => {
-    Dispatcher.dispatch({
-      type: TRACKS_ADD,
-      tracks: tracks
-    });
-  },
-
   removeTracks: () => {
     Dispatcher.dispatch({
-      type: TRACKS_REMOVE
+      type: PLAYLIST_REMOVE_TRACKS
     });
   },
 
   removeTrack: (index) => {
     Dispatcher.dispatch({
-      type: TRACK_REMOVE,
+      type: PLAYLIST_REMOVE_TRACK,
       index: index
     });
   },
 
   save: (userId, name, isPublic, tracks) => {
     Dispatcher.dispatch({
-      type: PLAYLIST_CREATING
+      type: PLAYLIST_SAVING
     });
     // Spotify.savePlaylist(userId, name, isPublic, tracks).then((response) => {
     //   Dispatcher.dispatch({
@@ -53,4 +46,4 @@ let TrackActions = {
 
 };
 
-export default TrackActions;
+export default PlaylistActions;

@@ -2,7 +2,7 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING, TRACKS_REMOVE} from '../constants/constants';
+import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
@@ -10,7 +10,7 @@ let _tracks = [];
 let _mainTrack;
 let _loading = false;
 
-class TrackStore extends EventEmitter {
+class PlaylistStore extends EventEmitter {
 	constructor() {
 		super();
 		this.registerAtDispatcher();
@@ -46,7 +46,7 @@ class TrackStore extends EventEmitter {
 
       switch(type) {
 
-				case TRACKS_ADD: {
+				case PLAYLIST_ADD_TRACKS: {
 					_tracks = tracks;
           _mainTrack = action.mainTrack;
           _loading = false;
@@ -54,19 +54,19 @@ class TrackStore extends EventEmitter {
 					break;
 				}
 
-        case TRACK_REMOVE: {
+        case PLAYLIST_REMOVE_TRACK: {
           _tracks.splice(action.index, 1);
           this.emitChange();
           break;
         }
 
-        case TRACKS_LOADING: {
+        case PLAYLIST_LOADING: {
           _loading = true;
           this.emitChange();
           break;
         }
 
-        case TRACKS_REMOVE: {
+        case PLAYLIST_REMOVE_TRACKS: {
           _tracks = [];
           this.emitChange();
           break;
@@ -77,10 +77,8 @@ class TrackStore extends EventEmitter {
 				}
 
 			}
-
 		});
 	}
-
 }
 
-export default new TrackStore();
+export default new PlaylistStore();
