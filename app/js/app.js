@@ -29,7 +29,8 @@ let getAppState = () => {
     user: UserStore.getUser(),
     token: UserStore.getToken(),
     modalOpen: ModalStore.isOpen(),
-    alertOpen: AlertStore.isOpen()
+    alertOpen: AlertStore.isOpen(),
+    alert: AlertStore.status()
   }
 };
 
@@ -78,7 +79,7 @@ class App extends Component {
                 { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>
-                { this.state.alertOpen ? <Alert/> : null }
+                { this.state.alertOpen ? <Alert loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
               </ReactTransitionGroup>
               <Footer tracks={this.state.tracks}/>
             </div>

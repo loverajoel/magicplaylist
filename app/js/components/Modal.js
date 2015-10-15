@@ -3,7 +3,10 @@
 import React, {Component} from 'react';
 import {close} from '../actions/ModalActions';
 import {login} from '../actions/UserActions';
-import TrackStore from './stores/TrackStore';
+import {save} from '../actions/TrackActions';
+
+import TrackStore from '../stores/TrackStore';
+import UserStore from '../stores/UserStore';
 
 class Modal extends Component {
 
@@ -23,7 +26,8 @@ class Modal extends Component {
     if (this.props.token && this.props.user) {
       const playlistName = React.findDOMNode(this.refs.playlistName).value;
       if (playlistName.length > 3) {
-        save(playlistName, this.state.playlistPublic, TrackStore.getTracks());
+        close();
+        save(UserStore.getUser().id, playlistName, this.state.playlistPublic, TrackStore.getTracks());
       }
     } else {
       login();

@@ -18,6 +18,7 @@ let settings = {
 
 let track = new TrackHandler();
 let user = new UserHandler();
+let playlist = new PlaylistHandler();
 
 let total = 0;
 
@@ -76,6 +77,16 @@ let Spotify = {
       user.me().then((userEntity) => {
           localStorage.magic_user = JSON.stringify(userEntity);
           resolve(userEntity);
+      });
+    });
+  },
+
+  savePlaylist: (userId, name, isPublic, tracks) => {
+    new Promise((resolve, reject) => {
+      playlist.create(userId, name, isPublic).then((myPlaylist) => {
+        myPlaylist.addTrack(tracks).then((snapshot) => {
+          resolve(snapshot);
+        });
       });
     });
   }

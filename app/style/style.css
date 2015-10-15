@@ -391,14 +391,12 @@ div {
   width: 100%;
   height: 100%;
   background: green;
-  display: none;
 }
 
 .alert-fail {
   width: 100%;
   height: 100%;
   background: red;
-  display: none;
 }
 
 .alert-share {

@@ -1,7 +1,7 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING, TRACKS_REMOVE} from '../constants/constants';
+import {TRACKS_ADD, TRACK_REMOVE, TRACKS_LOADING, TRACKS_REMOVE, PLAYLIST_CREATED, PLAYLIST_CREATING} from '../constants/constants';
 import Spotify from '../utils/Spotify';
 
 let TrackActions = {
@@ -39,10 +39,16 @@ let TrackActions = {
     });
   },
 
-  save: (name, isPublic, tracks) => {
-    Spotify.createPlaylist().then(() => {
-
+  save: (userId, name, isPublic, tracks) => {
+    Dispatcher.dispatch({
+      type: PLAYLIST_CREATING
     });
+    // Spotify.savePlaylist(userId, name, isPublic, tracks).then((response) => {
+    //   Dispatcher.dispatch({
+    //     type: PLAYLIST_CREATED,
+    //     response: response
+    //   });
+    // });
   }
 
 };

@@ -2,11 +2,16 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {ALERT_OPEN, ALERT_CLOSE} from '../constants/constants';
+import {ALERT_OPEN, ALERT_CLOSE, PLAYLIST_CREATING} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
 let _isOpen = false;
+let _status = {
+  loading: false,
+  fail: false,
+  share: false
+}
 
 class AlertStore extends EventEmitter {
 	constructor() {
@@ -17,6 +22,10 @@ class AlertStore extends EventEmitter {
 	isOpen() {
 		return _isOpen;
 	}
+
+  status() {
+    return _status;
+  }
 
 	emitChange() {
 		this.emit(CHANGE_EVENT);
@@ -43,6 +52,13 @@ class AlertStore extends EventEmitter {
 
         case ALERT_CLOSE: {
           _isOpen = false;
+          this.emitChange();
+          break;
+        }
+
+        case PLAYLIST_CREATING: {
+          _isOpen = true;
+          _status.loading = true;
           this.emitChange();
           break;
         }

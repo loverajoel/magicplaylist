@@ -13,11 +13,7 @@ class Alert extends Component {
   }
 
   render() {
-    return  <div className='alert-shadow'>
-              <div className='alert-modal'>
-                <div className='alert-loading'>loading</div>
-                <div className='alert-fail'>fail</div>
-                <div className='alert-share'>
+    var share = <div className='alert-share'>
                   <span className='share-title'>High Five Joel!</span>
                   <span className='share-subtitle'>Your playlist is now on Spotify</span>
                   <span className='share-message'>Now share it with your friends</span>
@@ -30,7 +26,12 @@ class Alert extends Component {
                     </div>
                   </div>
                   <div className='btn-done' onClick={this._handleDone}>Im done, Thanks!</div>
-                </div>
+                </div>;
+    return  <div className='alert-shadow'>
+              <div className='alert-modal'>
+                {this.props.loading ? <div className='alert-loading'>loading</div> : null}
+                {this.props.fail ? <div className='alert-fail'>fail</div> : null}
+                {this.props.share ? share : null}
               </div>
             </div>
   }
