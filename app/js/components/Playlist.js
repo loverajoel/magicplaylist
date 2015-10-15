@@ -2,7 +2,6 @@
 
 import React, {Component} from 'react';
 import Track from './track';
-import TrackActions from '../actions/TrackActions';
 import {open} from '../actions/ModalActions';
 
 class Playlist extends Component {

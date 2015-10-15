@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {newSearch} from '../actions/SearchActions';
-import TrackActions from '../actions/TrackActions';
+import PlaylistActions from '../actions/PlaylistActions';
 
 class SearchBox extends Component {
 
@@ -15,8 +15,10 @@ class SearchBox extends Component {
 
   _handleSearch() {
     const text = React.findDOMNode(this.refs.searchInput).value;
-    newSearch(text);
-    TrackActions.search(text);
+    if (text.length > 3) {
+      newSearch(text);
+      PlaylistActions.search(text);
+    }
   }
 
   _handleKeyPress(e) {
@@ -30,7 +32,7 @@ class SearchBox extends Component {
               <div className='search-group'>
                   <span className='input-group-btn'>
                       <div className='btn-search' onClick={this._handleSearch.bind(this)}>
-                        <img src='style/search.svg'/>
+                        <img src='img/search.svg'/>
                       </div>
                   </span>
                   <input type='text' ref='searchInput' className='input-search' placeholder='What is your favorite song?' onKeyPress={this._handleKeyPress.bind(this)} defaultValue={this.state.initialValue}/>

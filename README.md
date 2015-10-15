@@ -1,2 +1,1 @@
-Spotify React
-============
+#Magic Playlist

@@ -19,10 +19,10 @@ class Alert extends Component {
                   <span className='share-message'>Now share it with your friends</span>
                   <div className='share'>
                     <div className='facebook source'>
-                      <img src='style/facebook.svg'/>
+                      <img src='img/facebook.svg'/>
                     </div>
                     <div className='twitter source'>
-                      <img src='style/twitter.svg'/>
+                      <img src='img/twitter.svg'/>
                     </div>
                   </div>
                   <div className='btn-done' onClick={this._handleDone}>Im done, Thanks!</div>

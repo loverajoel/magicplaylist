@@ -52,16 +52,6 @@ gulp.task('css', function() {
         .pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('lint', function() {
-  return gulp.src('./app/*/*.js')
-    .pipe(jshint({
-        esnext: true,
-        node: true
-    }))
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
-});
-
 gulp.task('build-persistent', ['clean', 'css'], function() {
   return bundle();
 });

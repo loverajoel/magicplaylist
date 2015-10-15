@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import TrackActions from '../actions/TrackActions';
+import PlaylistActions from '../actions/PlaylistActions';
 
 class Track extends Component {
 
@@ -10,7 +10,7 @@ class Track extends Component {
   }
 
   _remove() {
-    TrackActions.removeTrack(this.props.index);
+    PlaylistActions.removeTrack(this.props.index);
   }
 
   render() {
@@ -18,10 +18,10 @@ class Track extends Component {
     return  <li key={track.id}>
               {track.name}, {track.artists.first().name}
               <div className='remove' onClick={this._remove.bind(this)}>
-                <img src='style/remove.svg'/>
+                <img src='img/remove.svg'/>
               </div>
               <div className='play' onClick=''>
-                <img src='style/volume.svg'/>
+                <img src='img/volume.svg'/>
               </div>
             </li>
   }

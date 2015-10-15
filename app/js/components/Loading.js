@@ -7,7 +7,7 @@ class Loading extends React.Component {
   }
 
   render() {
-    return <img className='loading' src='style/audio.svg'/>
+    return <img className='loading' src='img/audio.svg'/>
   }
 }
 

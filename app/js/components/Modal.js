@@ -3,9 +3,9 @@
 import React, {Component} from 'react';
 import {close} from '../actions/ModalActions';
 import {login} from '../actions/UserActions';
-import {save} from '../actions/TrackActions';
+import {save} from '../actions/PlaylistActions';
 
-import TrackStore from '../stores/TrackStore';
+import PlaylistStore from '../stores/PlaylistStore';
 import UserStore from '../stores/UserStore';
 
 class Modal extends Component {
@@ -27,7 +27,7 @@ class Modal extends Component {
       const playlistName = React.findDOMNode(this.refs.playlistName).value;
       if (playlistName.length > 3) {
         close();
-        save(UserStore.getUser().id, playlistName, this.state.playlistPublic, TrackStore.getTracks());
+        save(UserStore.getUser().id, playlistName, this.state.playlistPublic, PlaylistStore.getTracks());
       }
     } else {
       login();
@@ -43,7 +43,7 @@ class Modal extends Component {
   render() {
     return <div className='modal'>
               <div className='modal-container'>
-                  <div className='close-modal'><img src='style/close.svg' onClick={this._handleClose}/></div>
+                  <div className='close-modal'><img src='img/close.svg' onClick={this._handleClose}/></div>
                   <div>
                       <input type='text' placeholder='Name' className='playlist-name' ref='playlistName'/>
                   </div>
