@@ -7,7 +7,7 @@ let client = Client.instance;
 client.settings = {
   clientId: '87e58d70ae454ae7b815b4c8a1556a98',
   secretId: '52bf6c6b92a04e489e8899fc0d291d5f',
-  scopes: 'playlist-modify-public user-read-private',
+  scopes: 'playlist-modify-public user-read-private playlist-modify-private',
   redirect_uri: 'http://localhost:3000/app/login.html'
 };
 
@@ -82,8 +82,9 @@ let Spotify = {
   },
 
   savePlaylist: (userId, name, isPublic, tracks) => {
-    new Promise((resolve, reject) => {
-      playlist.create(userId, name, isPublic).then((myPlaylist) => {
+    client.token = localStorage.magic_token;
+    return new Promise((resolve, reject) => {
+      playlist.create(userId, name+' by magicplaylist.co', isPublic).then((myPlaylist) => {
         myPlaylist.addTrack(tracks).then((snapshot) => {
           resolve(snapshot);
         });

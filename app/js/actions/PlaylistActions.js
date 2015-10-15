@@ -33,15 +33,15 @@ let PlaylistActions = {
   },
 
   save: (userId, name, isPublic, tracks) => {
-    // Dispatcher.dispatch({
-    //   type: PLAYLIST_SAVING
-    // });
-    // Spotify.savePlaylist(userId, name, isPublic, tracks).then((response) => {
+    Dispatcher.dispatch({
+      type: PLAYLIST_SAVING
+    });
+    Spotify.savePlaylist(userId, name, isPublic, tracks).then((response) => {
       Dispatcher.dispatch({
         type: PLAYLIST_CREATED,
         response: {}
       });
-    // });
+    });
   }
 
 };

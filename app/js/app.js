@@ -79,7 +79,7 @@ class App extends Component {
                 { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>
-                { this.state.alertOpen ? <Alert loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
+                { this.state.alertOpen ? <Alert username={this.state.user._display_name} loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
               </ReactTransitionGroup>
               <Footer tracks={this.state.tracks.length}/>
             </div>

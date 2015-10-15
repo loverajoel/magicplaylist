@@ -15,7 +15,7 @@ class Alert extends Component {
 
   render() {
     var share = <div className='alert-share'>
-                  <span className='share-title'>High Five Joel!</span>
+                  <span className='share-title'>High Five {this.props.username}!</span>
                   <span className='share-subtitle'>Your playlist is now on Spotify</span>
                   <span className='share-message'>Now share it with your friends</span>
                   <div className='share'>
