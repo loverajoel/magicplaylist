@@ -1,13 +1,16 @@
 'use strict';
 
 import React, {Component} from 'react/addons';
+
 import SearchBox from './components/SearchBox';
 import Playlist from './components/Playlist';
 import Top from './components/Top';
 import Footer from './components/Footer';
 import Title from './components/Title';
-import SaveModal from './components/SaveModal';
+import Modal from './components/Modal';
 import Loading from './components/Loading';
+import Alert from './components/Alert';
+
 import SearchStore from './stores/SearchStore';
 import TrackStore from './stores/TrackStore';
 import ModalStore from './stores/ModalStore';
@@ -70,6 +73,7 @@ class App extends Component {
               <ReactTransitionGroup transitionName='fade'>
                 { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
               </ReactTransitionGroup>
+              <Alert/>
               <Footer tracks={this.state.tracks}/>
             </div>
   }

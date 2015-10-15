@@ -20,6 +20,10 @@ div {
   overflow: hidden;
 }
 
+.hidden {
+  display: none
+}
+
 .container {
   width: 100%;
   float: left;
@@ -52,6 +56,8 @@ div {
   float: left;
   margin: 10px 0 0 0;
 }
+
+/* Search Box Component */
 
 .search-box {
   margin: 40px 0 0 0;
@@ -152,7 +158,9 @@ div {
   cursor: pointer;
 }
 
-.info {
+/* Playlist Component */
+
+.playlist .info {
   width: 70%;
   margin: 133px auto 0;
 }
@@ -206,11 +214,9 @@ div {
   color: #fff;
 }
 
-.hidden {
-  display: none
-}
+/* Modal */
 
-.playlist-modal {
+.modal {
   height: 100%;
   width: 100%;
   top: 0px;
@@ -220,7 +226,7 @@ div {
   overflow: scroll;
 }
 
-.playlist-modal .modal-container {
+.modal .modal-container {
   width: 90%;
   margin: 0 auto;
 }
@@ -254,12 +260,16 @@ div {
   cursor: pointer;
 }
 
+/* Loading Component */
+
 .loading {
   top: 50%;
   left: 50%;
   position: absolute;
   margin: -40px 0 0 -27px;
 }
+
+/* Footer Component */
 
 .footer {
   width: 100%;
@@ -290,6 +300,28 @@ div {
   float: right;
 }
 
+/* Alert Component */
+
+.alert-shadow {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9000;
+  top: 0px;
+  background: rgba(65, 2, 135, 0.65)
+}
+
+.alert-modal {
+  width: 325px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 -172px;
+  background: #fff;
+  border-radius: 5px
+}
+
 
 
 /**/
@@ -311,3 +343,5 @@ div {
 .fade-leave.fade-leave-active {
   opacity: 0.01;
 }
+
+/**/

@@ -4,13 +4,13 @@ import React, {Component} from 'react';
 import {close} from '../actions/ModalActions';
 import {login} from '../actions/UserActions';
 
-class SaveModal extends Component {
+class Modal extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       playlistName: '',
-      public: true
+      playlistPublic: true
     }
   }
 
@@ -33,12 +33,12 @@ class SaveModal extends Component {
 
   _handlePublic(status) {
     this.setState({
-      public: status
+      playlistPublic: status
     })
   }
 
   render() {
-    return <div className='playlist-modal'>
+    return <div className='modal'>
               <div className="modal-container">
                   <div>
                       <input type='text' placeholder='Name' className='playlist-name' ref='playlistName'/>
@@ -56,4 +56,4 @@ class SaveModal extends Component {
   }
 }
 
-export default SaveModal;
+export default Modal;

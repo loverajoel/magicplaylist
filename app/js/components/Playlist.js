@@ -19,7 +19,7 @@ class Playlist extends Component {
     var tracks = this.props.tracks.map((track, i)=>{
         return <Track track={track} index={i}/>
     });
-    return  <div>
+    return  <div className='playlist'>
               <div className='info'>
                 <div className='track-name'>{this.props.mainTrack.name}, {this.props.mainTrack.artists.first().name}</div>
                 <div className='save-playlist' onClick={this._handleSave}>Save Playlist on Spotify</div>
