@@ -12,5 +12,7 @@ export default {
   MODAL_CLOSE: 'modal-close',
   USER_LOGED: 'user-loged',
   USER_TOKEN: 'user-token',
-  USER_LOGOUT: 'user-logout'
+  USER_LOGOUT: 'user-logout',
+  ALERT_OPEN: 'alert-open',
+  ALERT_CLOSE: 'alert-close'
 };

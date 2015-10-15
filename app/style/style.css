@@ -312,16 +312,96 @@ div {
 }
 
 .alert-modal {
-  width: 325px;
+  width: 400px;
   height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -200px 0 0 -172px;
+  margin: -200px 0 0 -200px;
   background: #fff;
-  border-radius: 5px
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
+.alert-loading {
+  width: 100%;
+  height: 100%;
+  background: green;
+  display: none;
+}
+
+.alert-fail {
+  width: 100%;
+  height: 100%;
+  background: red;
+  display: none;
+}
+
+.alert-share {
+  width: 100%;
+  height: 100%;
+}
+
+.alert-share .share-title {
+  font-size: 32px;
+  color: #4C2EE6;
+  text-align: center;
+  width: 100%;
+  margin: 25px 0 15px 0;
+  float: left;
+}
+
+.alert-share .share-subtitle {
+  font-size: 18px;
+  color: #370273;
+  text-align: center;
+  width: 100%;
+  float: left;
+}
+
+.alert-share .share-message {
+  font-size: 14px;
+  color: #4C2EE6;
+  text-align: center;
+  width: 100%;
+  float: left;
+  margin: 60px 0 0 0;
+}
+
+.alert-share .share {
+  width: 160px;
+  margin: 0 auto;
+  padding: 10px 0 0 0;
+  overflow: hidden;
+}
+
+.alert-share .share .source {
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+  float: left;
+  cursor: pointer;
+}
+
+.alert-share .share .source img {
+  width: 100%;
+  float: left;
+}
+
+.alert-share .btn-done {
+  width: 250px;
+  height: 54px;
+  background: #12FFCC;
+  font-family: 'Menlo', sans-serif;
+  font-size: 18px;
+  color: #125E4D;
+  text-align: center;
+  border-radius: 40px;
+  padding: 16px;
+  margin: 40px auto 0 auto;
+  cursor: pointer;
+}
 
 
 /**/

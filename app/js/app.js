@@ -15,6 +15,7 @@ import SearchStore from './stores/SearchStore';
 import TrackStore from './stores/TrackStore';
 import ModalStore from './stores/ModalStore';
 import UserStore from './stores/UserStore';
+import AlertStore from './stores/AlertStore';
 
 let ReactTransitionGroup = React.addons.CSSTransitionGroup;
 
@@ -27,7 +28,8 @@ let getAppState = () => {
     loading: TrackStore.getLoading(),
     user: UserStore.getUser(),
     token: UserStore.getToken(),
-    modalOpen: ModalStore.isOpen()
+    modalOpen: ModalStore.isOpen(),
+    alertOpen: AlertStore.isOpen()
   }
 };
 
@@ -43,6 +45,7 @@ class App extends Component {
     TrackStore.addChangeListener(this._onChange.bind(this));
     ModalStore.addChangeListener(this._onChange.bind(this));
     UserStore.addChangeListener(this._onChange.bind(this));
+    AlertStore.addChangeListener(this._onChange.bind(this));
   }
 
   componentWillUnmount() {
@@ -50,6 +53,7 @@ class App extends Component {
     TrackStore.removeChangeListener(this._onChange.bind(this));
     ModalStore.removeChangeListener(this._onChange.bind(this));
     UserStore.removeChangeListener(this._onChange.bind(this));
+    AlertStore.removeChangeListener(this._onChange.bind(this));
   }
 
   _onChange() {
@@ -73,7 +77,9 @@ class App extends Component {
               <ReactTransitionGroup transitionName='fade'>
                 { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
               </ReactTransitionGroup>
-              <Alert/>
+              <ReactTransitionGroup transitionName='fade'>
+                { this.state.alertOpen ? <Alert/> : null }
+              </ReactTransitionGroup>
               <Footer tracks={this.state.tracks}/>
             </div>
   }
