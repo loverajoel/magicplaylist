@@ -64,6 +64,7 @@ class AlertStore extends EventEmitter {
         }
 
         case PLAYLIST_CREATED: {
+          _isOpen = true;
           _status.loading = false;
           _status.share = true;
           this.emitChange();
@@ -71,6 +72,7 @@ class AlertStore extends EventEmitter {
         }
 
         case PLAYLIST_FAILED: {
+          _isOpen = true;
           _status.loading = false;
           _status.share = false;
           _status.fail = true;

@@ -66,7 +66,7 @@ class App extends Component {
               <ReactTransitionGroup transitionName='fade'>
                 { this.state.searching ? <Top search={this.state.text}/> : null }
               </ReactTransitionGroup>
-              <ReactTransitionGroup transitionName='fade'>
+              <ReactTransitionGroup transitionName='fade-up'>
                 { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>

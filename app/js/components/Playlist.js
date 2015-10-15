@@ -23,7 +23,7 @@ class Playlist extends Component {
                 <div className='track-name'>{this.props.mainTrack.name}, {this.props.mainTrack.artists.first().name}</div>
                 <div className='save-playlist' onClick={this._handleSave}>Save Playlist on Spotify</div>
               </div>
-              {tracks.length ? <span>No tracks</span> : null}
+              {!this.props.tracks.length ? <span>No tracks</span> : null}
               <ul className='trackList'>
                   {tracks}
               </ul>
