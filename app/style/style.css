@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 body {
   margin: 0px;
@@ -74,14 +75,21 @@ div {
 }
 
 .search-group .input-group-btn .btn-search {
+  width: 52px;
+  height: 63px;
+  cursor: pointer;
+}
 
+.search-group .input-group-btn .btn-search img {
+  width: 24px;
+  margin: 20px 0 0 11px;
 }
 
 .search-group .input-search {
   width: 100%;
-  font-family: 'Menlo', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
-  padding: 20px;
+  padding: 20px 20px 20px 46px;
   border: 0px;
   border-radius: 5px;
   background: #410287;
@@ -140,10 +148,21 @@ div {
   width: 600px;
 }
 
+.top .search .search-group .input-group-btn .btn-search {
+  width: 38px;
+  height: 49px;
+  cursor: pointer;
+}
+
+.top .search .search-group .input-group-btn .btn-search img {
+  width: 20px;
+  margin: 15px 0 0 11px;
+}
+
 .top .search .search-group .input-search {
   width: 100%;
   font-size: 18px;
-  padding: 13px;
+  padding: 13px 13px 13px 39px;
   border: 0px;
 }
 
@@ -177,7 +196,7 @@ div {
   width: 318px;
   height: 54px;
   background: #12FFCC;
-  font-family: 'Menlo', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   color: #125E4D;
   text-align: center;
@@ -189,29 +208,33 @@ div {
 
 .trackList {
   width: 70%;
-  margin: 100px auto 0;
+  margin: 80px auto 100px;
   list-style: none;
   padding: 0px;
 }
 
 .trackList li {
-  font-family: 'Menlo', sans-serif;
-  font-size: 18px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
   color: #fff;
   border-bottom: 1px solid #410287;
   padding: 13px 10px
 }
 
 .trackList li .remove {
+  width: 24px;
+  height: 24px;
   float: right;
-  margin: 6px 10px 0 0;
+  margin: 0 0 0 15px;
   cursor: pointer;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.21);
 }
 
-.trackList li .remove:hover {
-  color: #fff;
+.trackList li .play {
+  width: 24px;
+  height: 24px;
+  float: right;
+  margin: 0 0 0 15px;
+  cursor: pointer;
 }
 
 /* Modal */
@@ -228,7 +251,7 @@ div {
 
 .modal .modal-container {
   width: 90%;
-  margin: 0 auto;
+  margin: 30px auto 0;
 }
 
 .modal-container h2 {
@@ -237,27 +260,57 @@ div {
 
 .modal-container .playlist-name {
   width: 100%;
-  font-family: 'Menlo', sans-serif;
-  font-size: 25px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 30px;
   padding: 9px;
   border: 0px;
   background: #fff;
-  color: #fff;
+  color: #000;
   border-bottom: 2px solid #ccc;
 }
 
 .modal-container .save {
-  width: 318px;
+  width: 184px;
   height: 54px;
   background: #12FFCC;
-  font-family: 'Menlo', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   color: #125E4D;
   text-align: center;
   border-radius: 40px;
   padding: 16px;
-  margin: 45px auto 0 auto;
+  margin: 40px auto 0 auto;
   cursor: pointer;
+  border: 0px;
+  clear: both;
+  float: left;
+}
+
+.modal-container .close-modal {
+  width: 100%;
+  height: 32px;
+  float: left;
+  cursor: pointer;
+}
+
+.modal-container .close-modal img {
+  width: 32px;
+  height: 32px;
+  float: right;
+}
+
+.modal-container .status {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  color: #4C2EE6;
+  margin: 30px 0 0 0;
+  float: left;
+}
+
+.modal-container .radio-container {
+  float: left;
+  margin: 20px 0 0 0;
+  clear: both;
 }
 
 /* Loading Component */
@@ -283,10 +336,11 @@ div {
 }
 
 .footer .copy {
-  font-family: 'Menlo', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 12px;
   color: #fff;
   float: left;
+  padding: 11px 0 0 0;
 }
 
 .footer .copy a {
@@ -294,10 +348,19 @@ div {
 }
 
 .footer .spotify-api {
-  font-family: 'Menlo', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 12px;
   color: #fff;
   float: right;
+}
+
+.footer .spotify-api span {
+  float: left;
+  margin: 11px 10px 0 0;
+}
+
+.footer .spotify-api img {
+  width: 100px
 }
 
 /* Alert Component */
@@ -393,7 +456,7 @@ div {
   width: 250px;
   height: 54px;
   background: #12FFCC;
-  font-family: 'Menlo', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   color: #125E4D;
   text-align: center;

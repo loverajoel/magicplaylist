@@ -15,7 +15,15 @@ class Track extends Component {
 
   render() {
     let track = this.props.track;
-    return <li key={track.id}>{track.name}, {track.artists.first().name} <span className='remove' onClick={this._remove.bind(this)}>x</span></li>
+    return  <li key={track.id}>
+              {track.name}, {track.artists.first().name}
+              <div className='remove' onClick={this._remove.bind(this)}>
+                <img src='style/remove.svg'/>
+              </div>
+              <div className='play' onClick=''>
+                <img src='style/volume.svg'/>
+              </div>
+            </li>
   }
 }
 

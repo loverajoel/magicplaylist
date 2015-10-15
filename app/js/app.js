@@ -75,7 +75,7 @@ class App extends Component {
                 { this.state.loading ? <Loading/> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>
-                { this.state.modalOpen ? <SaveModal user={this.state.user} token={this.state.token}/> : null }
+                { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
               </ReactTransitionGroup>
               <ReactTransitionGroup transitionName='fade'>
                 { this.state.alertOpen ? <Alert/> : null }

@@ -29,9 +29,11 @@ class SearchBox extends Component {
     return  <div className='search-box'>
               <div className='search-group'>
                   <span className='input-group-btn'>
-                      <div className='btn-search' onClick={this._handleSearch.bind(this)}></div>
+                      <div className='btn-search' onClick={this._handleSearch.bind(this)}>
+                        <img src='style/search.svg'/>
+                      </div>
                   </span>
-                  <input type='text' ref='searchInput' className='input-search' placeholder='Type an artist or a song to start' onKeyPress={this._handleKeyPress.bind(this)} defaultValue={this.state.initialValue}/>
+                  <input type='text' ref='searchInput' className='input-search' placeholder='What is your favorite song?' onKeyPress={this._handleKeyPress.bind(this)} defaultValue={this.state.initialValue}/>
               </div>
             </div>
   }

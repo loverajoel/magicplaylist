@@ -37,6 +37,12 @@ let TrackActions = {
       type: TRACK_REMOVE,
       index: index
     });
+  },
+
+  save: (name, isPublic, tracks) => {
+    Spotify.createPlaylist().then(() => {
+
+    });
   }
 
 };
