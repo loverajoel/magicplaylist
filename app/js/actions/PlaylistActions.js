@@ -2,7 +2,7 @@
 
 import Dispatcher from '../dispatcher';
 import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING} from '../constants/constants';
-import Spotify from '../utils/Spotify';
+import Spotify from '../core/Spotify';
 
 let PlaylistActions = {
 

@@ -81,7 +81,7 @@ class App extends Component {
               <ReactTransitionGroup transitionName='fade'>
                 { this.state.alertOpen ? <Alert loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
               </ReactTransitionGroup>
-              <Footer tracks={this.state.tracks}/>
+              <Footer tracks={this.state.tracks.length}/>
             </div>
   }
 }
