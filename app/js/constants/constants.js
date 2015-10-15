@@ -10,6 +10,7 @@ export default {
   PLAYLIST_LOADING: 'playlist-loading',
   PLAYLIST_CREATED: 'paylist-created',
   PLAYLIST_SAVING: 'paylist-saving',
+  PLAYLIST_FAILED: 'paylist-failded',
   MODAL_OPEN: 'modal-open',
   MODAL_CLOSE: 'modal-close',
   USER_LOGED: 'user-loged',

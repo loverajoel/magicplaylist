@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
+import {close} from '../actions/AlertActions';
 
 class Alert extends Component {
 
@@ -9,7 +10,7 @@ class Alert extends Component {
   }
 
   _handleDone() {
-
+    close();
   }
 
   render() {
