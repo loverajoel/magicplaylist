@@ -22,15 +22,21 @@ class Modal extends Component {
     close();
   }
 
+  _savePlaylist() {
+    const playlistName = React.findDOMNode(this.refs.playlistName).value;
+    if (playlistName.length > 3) {
+      close();
+      save(UserStore.getUser()._id, playlistName, this.state.playlistPublic, PlaylistStore.getTracks());
+    }
+  }
+
   _handleSave() {
     if (this.props.token && this.props.user) {
-      const playlistName = React.findDOMNode(this.refs.playlistName).value;
-      if (playlistName.length > 3) {
-        close();
-        save(UserStore.getUser()._id, playlistName, this.state.playlistPublic, PlaylistStore.getTracks());
-      }
+      this._savePlaylist();
     } else {
-      login();
+      login().then(() => {
+        this._savePlaylist();
+      });
     }
   }
 
