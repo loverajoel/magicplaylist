@@ -15,7 +15,6 @@
     "jest-cli": "latest",
     "jshint-stylish": "latest",
     "lodash": "latest",
-    "react-tools": "latest",
     "rimraf": "latest",
     "vinyl-source-stream": "latest",
     "watchify": "latest",
@@ -23,15 +22,17 @@
     "babel-jest": "latest"
   },
   "dependencies": {
+    "flux": "latest",
     "react": "latest",
+    "react-addons-css-transition-group": "^0.14.0",
+    "react-dom": "^0.14.0",
     "spotify-sdk": "latest"
   },
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp build",
     "deploy": "NODE_ENV=production gulp build --production",
-    "test": "jest",
-    "vagrant": "npm install && gulp build"
+    "test": "jest"
   },
   "author": "loverajoel",
   "license": "MIT"

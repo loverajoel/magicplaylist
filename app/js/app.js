@@ -1,6 +1,9 @@
 'use strict';
 
-import React, {Component} from 'react/addons';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
 
 import SearchBox from './components/SearchBox';
 import Playlist from './components/Playlist';
@@ -16,8 +19,6 @@ import PlaylistStore from './stores/PlaylistStore';
 import ModalStore from './stores/ModalStore';
 import UserStore from './stores/UserStore';
 import AlertStore from './stores/AlertStore';
-
-let ReactTransitionGroup = React.addons.CSSTransitionGroup;
 
 let getAppState = () => {
   return {
@@ -63,30 +64,18 @@ class App extends Component {
 
   render() {
   	return  <div className='container'>
-              <ReactTransitionGroup transitionName='fade'>
-                { this.state.searching ? <Top search={this.state.text}/> : null }
-              </ReactTransitionGroup>
-              <ReactTransitionGroup transitionName='fade-up'>
-                { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
-              </ReactTransitionGroup>
-              <ReactTransitionGroup transitionName='fade'>
-                { this.state.searching && !this.state.loading ? <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null }
-              </ReactTransitionGroup>
-              <ReactTransitionGroup transitionName='fade'>
-                { this.state.loading ? <Loading/> : null }
-              </ReactTransitionGroup>
-              <ReactTransitionGroup transitionName='fade'>
-                { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
-              </ReactTransitionGroup>
-              <ReactTransitionGroup transitionName='fade'>
-                { this.state.alertOpen ? <Alert username={this.state.user._display_name} loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
-              </ReactTransitionGroup>
+              { this.state.searching ? <Top search={this.state.text}/> : null }
+              { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
+              { this.state.searching && !this.state.loading ? <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null }
+              { this.state.loading ? <Loading/> : null }
+              { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
+              { this.state.alertOpen ? <Alert username={this.state.user._display_name} loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
               <Footer tracks={this.state.tracks.length}/>
             </div>
   }
 }
 
-React.render(
+ReactDOM.render(
 	<App/>,
   document.getElementById('container')
 );
