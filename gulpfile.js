@@ -70,8 +70,16 @@ gulp.task('html', function() {
       .pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('build-persistent', ['clean', 'css', 'img', 'html'], function() {
+gulp.task('build-persistent-deploy', ['clean', 'css', 'img', 'html'], function() {
   return bundle();
+});
+
+gulp.task('build-persistent-deploy', ['clean'], function() {
+  return bundle();
+});
+
+gulp.task('deploy', ['build-persistent-deploy'], function() {
+  process.exit(0);
 });
 
 gulp.task('build', ['build-persistent'], function() {
