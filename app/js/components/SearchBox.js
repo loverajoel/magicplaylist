@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {newSearch} from '../actions/SearchActions';
 import PlaylistActions from '../actions/PlaylistActions';
 
@@ -14,7 +15,7 @@ class SearchBox extends Component {
   }
 
   _handleSearch() {
-    const text = React.findDOMNode(this.refs.searchInput).value;
+    const text = ReactDOM.findDOMNode(this.refs.searchInput).value;
     if (text.length > 3) {
       newSearch(text);
       PlaylistActions.search(text);

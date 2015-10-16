@@ -32,7 +32,11 @@ gulp.task('clean', function(cb){
 var bundler;
 function getBundler() {
   if (!bundler) {
-    bundler = watchify(browserify(config.entryFile, _.extend({ debug: !isProduction }, watchify.args)));
+    if (isProduction) {
+      bundler = watchify(browserify([require.resolve("whatwg-fetch/fetch"), require.resolve("core-js/fn/symbol"),require.resolve("core-js/fn/promise"), config.entryFile], _.extend({ debug: true }, watchify.args)));
+    } else {
+      bundler = watchify(browserify(config.entryFile, _.extend({ debug: !isProduction }, watchify.args)));
+    }
   }
   return bundler;
 };

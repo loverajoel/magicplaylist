@@ -20,7 +20,9 @@
     "rimraf": "latest",
     "vinyl-source-stream": "latest",
     "watchify": "latest",
-    "yargs": "latest"
+    "yargs": "latest",
+    "core-js": "^1.2.0",
+    "whatwg-fetch": "^0.9.0"
   },
   "dependencies": {
     "flux": "latest",
@@ -32,7 +34,7 @@
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp build",
-    "deploy": "NODE_ENV=production gulp build --production",
+    "deploy": "NODE_ENV=production gulp deploy --production",
     "test": "jest"
   },
   "author": "loverajoel",
