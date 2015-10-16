@@ -18,9 +18,6 @@ class Track extends Component {
     let tag = ReactDOM.findDOMNode(this.refs.audio);
     // tag.prototype.myStop = this._stop();
     this.props.ptag(tag);
-    this.setState({
-      elem: tag
-    });
 
     tag.onended = () => {
       this.setState({
@@ -34,6 +31,9 @@ class Track extends Component {
       });
     };
 
+    this.setState({
+      elem: tag
+    });
   }
 
   _play() {
