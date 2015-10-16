@@ -74,7 +74,7 @@ gulp.task('build-persistent-deploy', ['clean', 'css', 'img', 'html'], function()
   return bundle();
 });
 
-gulp.task('build-persistent-deploy', ['clean'], function() {
+gulp.task('build-persistent', ['clean'], function() {
   return bundle();
 });
 

@@ -16,7 +16,7 @@ class Playlist extends Component {
 
   render() {
     var tracks = this.props.tracks.map((track, i)=>{
-        return <Track track={track} index={i}/>
+        return <Track track={track} index={i} key={track.id+i}/>
     });
     return  <div className='playlist'>
               <div className='info'>
