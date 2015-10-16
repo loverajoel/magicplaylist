@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import PlaylistActions from '../actions/PlaylistActions';
+import Player from './Player';
 
 class Track extends Component {
 
@@ -20,8 +21,8 @@ class Track extends Component {
               <div className='remove' onClick={this._remove.bind(this)}>
                 <img src='img/remove.svg'/>
               </div>
-              <div className='play' onClick=''>
-                <img src='img/volume.svg'/>
+              <div className='play'>
+                <Player source={track.preview_url} ptag={this.props.ptag.bind(this)} stopAll={this.props.stopAll.bind(this)}/>
               </div>
             </li>
   }

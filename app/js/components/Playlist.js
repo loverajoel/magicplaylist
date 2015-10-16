@@ -8,15 +8,28 @@ class Playlist extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      audios: []
+    }
   }
 
   _handleSave() {
     open();
   }
 
+  _add(elem) {
+    this.state.audios.push(elem)
+  }
+
+  _stopAll() {
+    this.state.audios.map((item) => {
+      item.pause();
+    });
+  }
+
   render() {
     var tracks = this.props.tracks.map((track, i)=>{
-        return <Track track={track} index={i} key={track.id+i}/>
+        return <Track track={track} index={i} key={track.id+i} ptag={this._add.bind(this)} stopAll={this._stopAll.bind(this)}/>
     });
     return  <div className='playlist'>
               <div className='info'>
