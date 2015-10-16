@@ -1,6 +1,8 @@
 'use strict';
 
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
 import {close} from '../actions/ModalActions';
 import {login} from '../actions/UserActions';
 import {save} from '../actions/PlaylistActions';
@@ -23,7 +25,7 @@ class Modal extends Component {
   }
 
   _savePlaylist() {
-    const playlistName = React.findDOMNode(this.refs.playlistName).value;
+    const playlistName = ReactDOM.findDOMNode(this.refs.playlistName).value;
     if (playlistName.length > 3) {
       close();
       save(UserStore.getUser()._id, playlistName, this.state.playlistPublic, PlaylistStore.getTracks());
