@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "spotitfy",
   "devDependencies": {
+    "babel-jest": "latest",
     "babelify": "latest",
     "browser-sync": "latest",
     "browserify": "latest",
     "gulp": "latest",
     "gulp-if": "latest",
     "gulp-jshint": "latest",
+    "gulp-minify-css": "^1.2.1",
     "gulp-rename": "latest",
     "gulp-streamify": "latest",
     "gulp-uglify": "latest",
@@ -18,8 +20,7 @@
     "rimraf": "latest",
     "vinyl-source-stream": "latest",
     "watchify": "latest",
-    "yargs": "latest",
-    "babel-jest": "latest"
+    "yargs": "latest"
   },
   "dependencies": {
     "flux": "latest",

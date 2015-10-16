@@ -14,6 +14,7 @@ var args   = require('yargs').argv;
 var gulpif = require('gulp-if');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
+var minifyCss = require('gulp-minify-css');
 
 var isProduction = args.production === true;
 
@@ -49,10 +50,23 @@ function bundle() {
 
 gulp.task('css', function() {
     gulp.src('./app/styles/style.css')
-        .pipe(gulp.dest('./dist/'))
+      .pipe(minifyCss())
+      .pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('build-persistent', ['clean', 'css'], function() {
+gulp.task('img', function() {
+    gulp.src('./app/img/*')
+      .pipe(gulp.dest('./dist/img'))
+});
+
+gulp.task('html', function() {
+    gulp.src('./app/index.html')
+      .pipe(gulp.dest('./dist/'))
+    gulp.src('./app/login.html')
+      .pipe(gulp.dest('./dist/'))
+});
+
+gulp.task('build-persistent', ['clean', 'css', 'img', 'html'], function() {
   return bundle();
 });
 
