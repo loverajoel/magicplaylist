@@ -38,16 +38,15 @@ class Track extends Component {
       });
     };
 
-    this.audioTag.addEventListener('onended', this.playerEvent.isPlaying);
-    this.audioTag.addEventListener('onpause', this.playerEvent.isPlaying);
+    this.audioTag.addEventListener('ended', this.playerEvent.isPlaying);
+    this.audioTag.addEventListener('pause', this.playerEvent.isPlaying);
     this.audioTag.addEventListener('loadeddata', this.playerEvent.loadEnd);
     this.audioTag.addEventListener('loadstart',this.playerEvent.loadStart);
-
   }
 
   componentWillUnmount() {
-    this.audioTag.removeEventListener('onended', this.playerEvent.isPlaying);
-    this.audioTag.removeEventListener('onpause', this.playerEvent.isPlaying);
+    this.audioTag.removeEventListener('ended', this.playerEvent.isPlaying);
+    this.audioTag.removeEventListener('pause', this.playerEvent.isPlaying);
     this.audioTag.removeEventListener('loadeddata', this.playerEvent.loadEnd);
     this.audioTag.removeEventListener('loadstart',this.playerEvent.loadStart);
   }
