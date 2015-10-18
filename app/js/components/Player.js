@@ -10,42 +10,58 @@ class Track extends Component {
     this.state = {
       src: this.props.source,
       elem: null,
-      isPlaying: false
+      isPlaying: false,
+      isLoading: false
     }
+    this.playerEvent = {};
   }
 
   componentDidMount() {
-    let tag = ReactDOM.findDOMNode(this.refs.audio);
-    // tag.prototype.myStop = this._stop();
-    this.props.ptag(tag);
+    this.audioTag = ReactDOM.findDOMNode(this.refs.audio);
+    this.props.ptag(this.audioTag);
 
-    tag.onended = () => {
+    this.playerEvent.loadStart = () => {
+      this.setState({
+        isLoading: true
+      });
+    };
+
+    this.playerEvent.loadEnd = () => {
+      this.setState({
+        isLoading: false
+      });
+    };
+
+    this.playerEvent.isPlaying = () => {
       this.setState({
         isPlaying: false
       });
     };
 
-    tag.onpause = () => {
-      this.setState({
-        isPlaying: false
-      });
-    };
+    this.audioTag.addEventListener('onended', this.playerEvent.isPlaying);
+    this.audioTag.addEventListener('onpause', this.playerEvent.isPlaying);
+    this.audioTag.addEventListener('loadeddata', this.playerEvent.loadEnd);
+    this.audioTag.addEventListener('loadstart',this.playerEvent.loadStart);
 
-    this.setState({
-      elem: tag
-    });
+  }
+
+  componentWillUnmount() {
+    this.audioTag.removeEventListener('onended', this.playerEvent.isPlaying);
+    this.audioTag.removeEventListener('onpause', this.playerEvent.isPlaying);
+    this.audioTag.removeEventListener('loadeddata', this.playerEvent.loadEnd);
+    this.audioTag.removeEventListener('loadstart',this.playerEvent.loadStart);
   }
 
   _play() {
     this.props.stopAll.apply();
-    this.state.elem.play();
+    this.audioTag.play();
     this.setState({
       isPlaying: true
     });
   }
 
   _stop() {
-    this.state.elem.pause();
+    this.audioTag.pause();
     this.setState({
       isPlaying: false
     });
@@ -53,8 +69,9 @@ class Track extends Component {
 
   render() {
     return  <div>
-              {!this.state.isPlaying ? <img src='img/volume.svg' onClick={this._play.bind(this)}/> : null}
-              {this.state.isPlaying ? <img src='img/pause.svg' onClick={this._stop.bind(this)}/> : null}
+              {!this.state.isPlaying && !this.state.isLoading ? <img src='img/volume.svg' onClick={this._play.bind(this)}/> : null}
+              {this.state.isPlaying && !this.state.isLoading ? <img src='img/pause.svg' onClick={this._stop.bind(this)}/> : null}
+              {this.state.isLoading ? <img src='img/tail-spin.svg' className='player-loading'/> : null}
               <audio ref='audio' src={this.props.source}/>
             </div>
   }

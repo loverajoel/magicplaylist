@@ -239,6 +239,10 @@ div {
   cursor: pointer;
 }
 
+.player-loading {
+  width: 100%;
+}
+
 /* Modal */
 
 .modal {
