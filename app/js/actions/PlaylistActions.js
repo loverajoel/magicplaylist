@@ -3,6 +3,7 @@
 import Dispatcher from '../dispatcher';
 import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING, USER_TOKEN_ERROR, PLAYLIST_TRACK_NOT_FOUND} from '../constants/constants';
 import Spotify from '../core/Spotify';
+import {login} from './UserActions';
 
 let PlaylistActions = {
 
@@ -52,6 +53,9 @@ let PlaylistActions = {
       if (error.response.status === 401) {
         Dispatcher.dispatch({
           type: USER_TOKEN_ERROR
+        });
+        login().then(() => {
+          PlaylistActions.save(userId, name, isPublic, tracks);
         });
       } else {
         Dispatcher.dispatch({

@@ -22,13 +22,6 @@ let playlist = new PlaylistHandler();
 
 let total = 0;
 
-function session() {
-    if (localStorage.magic_token) {
-        client.token = localStorage.magic_token;
-    }
-}
-session();
-
 let Spotify = {
   trackList: [],
 
@@ -85,6 +78,7 @@ let Spotify = {
   },
 
   getUser: () => {
+    client.token = localStorage.magic_token;
     return new Promise((resolve, reject) => {
       user.me().then((userEntity) => {
           localStorage.magic_user = JSON.stringify(userEntity);
