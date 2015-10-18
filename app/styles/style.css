@@ -319,6 +319,30 @@ div {
   clear: both;
 }
 
+.radio-container input[type="radio"] {
+    display:none;
+}
+
+.radio-container label {
+  display: inline-block;
+  background-color: #5e04c2;
+  padding: 7px 0;
+  font-family: Arial;
+  font-size: 16px;
+  width: 30px;
+  margin: 10px 0;
+  height: 17px;
+  text-indent: 40px;
+  color: #5e04c2;
+  border-radius: 5px;
+  float: left;
+  clear: both;
+}
+
+.radio-container input[type="radio"]:checked + label {
+  background-color:#000;
+}
+
 /* Loading Component */
 
 .loading {
