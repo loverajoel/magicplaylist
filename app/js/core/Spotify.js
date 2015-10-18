@@ -28,6 +28,7 @@ let Spotify = {
   search: (text, callback) => {
     Spotify.trackList = [];
     track.search(text, {limit: 1}).then((trackCollection) => {
+      if (trackCollection.length) {
         trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
             relatedArtists = relatedArtists.slice(0, settings.artists);
             relatedArtists.push(trackCollection.first().artists.first());
@@ -43,9 +44,14 @@ let Spotify = {
                             }
                         }
                     };
+                }).catch((error) => {
+
                 });
             };
         });
+      } else {
+        callback([]);
+      }
     });
   },
 
@@ -77,6 +83,8 @@ let Spotify = {
       user.me().then((userEntity) => {
           localStorage.magic_user = JSON.stringify(userEntity);
           resolve(userEntity);
+      }).catch((error) => {
+        reject(error);
       });
     });
   },
@@ -88,6 +96,8 @@ let Spotify = {
         myPlaylist.addTrack(tracks).then((snapshot) => {
           resolve(snapshot);
         });
+      }).catch((error) => {
+        reject(error);
       });
     });
   }

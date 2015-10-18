@@ -1,7 +1,7 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING} from '../constants/constants';
+import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING, USER_TOKEN_ERROR, PLAYLIST_TRACK_NOT_FOUND} from '../constants/constants';
 import Spotify from '../core/Spotify';
 
 let PlaylistActions = {
@@ -11,11 +11,18 @@ let PlaylistActions = {
       type: PLAYLIST_LOADING
     });
     Spotify.search(text, (tracks, mainTrack) => {
-      Dispatcher.dispatch({
-        type: PLAYLIST_ADD_TRACKS,
-        tracks: tracks,
-        mainTrack: mainTrack
-      });
+      if (tracks.length) {
+        Dispatcher.dispatch({
+          type: PLAYLIST_ADD_TRACKS,
+          tracks: tracks,
+          mainTrack: mainTrack
+        });
+      } else {
+        Dispatcher.dispatch({
+          type: PLAYLIST_TRACK_NOT_FOUND,
+          tracks: []
+        });
+      }
     });
   },
 
@@ -41,6 +48,16 @@ let PlaylistActions = {
         type: PLAYLIST_CREATED,
         response: {}
       });
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        Dispatcher.dispatch({
+          type: USER_TOKEN_ERROR
+        });
+      } else {
+        Dispatcher.dispatch({
+          type: PLAYLIST_SAVE_FAIL
+        });
+      }
     });
   }
 

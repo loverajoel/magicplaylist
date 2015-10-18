@@ -2,7 +2,7 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {ALERT_OPEN, ALERT_CLOSE, PLAYLIST_SAVING, PLAYLIST_CREATED, PLAYLIST_FAILED} from '../constants/constants';
+import {ALERT_OPEN, ALERT_CLOSE, PLAYLIST_SAVING, PLAYLIST_CREATED, PLAYLIST_FAILED, USER_TOKEN_ERROR} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
@@ -72,6 +72,15 @@ class AlertStore extends EventEmitter {
         }
 
         case PLAYLIST_FAILED: {
+          _isOpen = true;
+          _status.loading = false;
+          _status.share = false;
+          _status.fail = true;
+          this.emitChange();
+          break;
+        }
+
+        case USER_TOKEN_ERROR: {
           _isOpen = true;
           _status.loading = false;
           _status.share = false;

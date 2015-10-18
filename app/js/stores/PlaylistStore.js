@@ -2,7 +2,7 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING} from '../constants/constants';
+import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING, PLAYLIST_TRACK_NOT_FOUND} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
@@ -68,6 +68,13 @@ class PlaylistStore extends EventEmitter {
 
         case PLAYLIST_REMOVE_TRACKS: {
           _tracks = [];
+          this.emitChange();
+          break;
+        }
+
+        case PLAYLIST_TRACK_NOT_FOUND: {
+          _tracks = [];
+          _loading = false;
           this.emitChange();
           break;
         }
