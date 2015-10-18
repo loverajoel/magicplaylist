@@ -19,11 +19,22 @@ class Alert extends Component {
   }
 
   _hanbleShareFB() {
-    open('http://facebook.com/sharer.php?s=100&p[url]=' + this.share.url + '&p[images][0]=' + this.share.image + '&p[title]=' + this.share.text, 'fbshare', 'height=380,width=660,resizable=0,toolbar=0,menubar=0,status=0,location=0,scrollbars=0');
+    let url = `http://facebook.com/sharer.php?s=100&p[url]=${this.share.url}&p[images][0]=
+    ${this.share.image}&p[title]=${this.share.text}`;
+    open(
+      url,
+      'fbshare',
+      'height=380,width=660,resizable=0,toolbar=0,menubar=0,status=0,location=0,scrollbars=0'
+      );
   }
 
   _hanbleShareTW() {
-    open('http://twitter.com/share?url=' + this.share.url + '&text=' + this.share.text, 'tshare', 'height=400,width=550,resizable=1,toolbar=0,menubar=0,status=0,location=0');
+    let url = `http://twitter.com/share?url=${this.share.url}&text=${this.share.text}`;
+    open(
+      url,
+      'tshare',
+      'height=400,width=550,resizable=1,toolbar=0,menubar=0,status=0,location=0'
+      );
   }
 
   render() {

@@ -28,7 +28,11 @@ class Modal extends Component {
     const playlistName = ReactDOM.findDOMNode(this.refs.playlistName).value;
     if (playlistName.length > 3) {
       close();
-      save(UserStore.getUser()._id, playlistName, this.state.playlistPublic, PlaylistStore.getTracks());
+      save(
+        UserStore.getUser()._id,
+        playlistName,
+        this.state.playlistPublic, PlaylistStore.getTracks()
+      );
     }
   }
 

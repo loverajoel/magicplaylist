@@ -1,7 +1,16 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {PLAYLIST_ADD_TRACKS, PLAYLIST_REMOVE_TRACK, PLAYLIST_LOADING, PLAYLIST_REMOVE_TRACKS, PLAYLIST_CREATED, PLAYLIST_SAVING, USER_TOKEN_ERROR, PLAYLIST_TRACK_NOT_FOUND} from '../constants/constants';
+import {
+  PLAYLIST_ADD_TRACKS,
+  PLAYLIST_REMOVE_TRACK,
+  PLAYLIST_LOADING,
+  PLAYLIST_REMOVE_TRACKS,
+  PLAYLIST_CREATED,
+  PLAYLIST_SAVING,
+  USER_TOKEN_ERROR,
+  PLAYLIST_TRACK_NOT_FOUND
+} from '../constants/constants';
 import Spotify from '../core/Spotify';
 import {login} from './UserActions';
 
