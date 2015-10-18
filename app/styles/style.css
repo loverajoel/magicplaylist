@@ -524,24 +524,47 @@ div {
 }
 
 /* Fade Up */
-
-.fade-up-enter {
-  opacity: 0.01;
-  transition: opacity .2s ease-in;
+.fadeUp-enter {
+  opacity: 0.00;
+  transform: translateY(280px);
+  transition: all .5s ease-in;
 }
 
-.fade-up-enter.fade-up-enter-active {
+.fadeUp-enter.fadeUp-enter-active {
   opacity: 1;
+  transform: translateY(0px);
 }
 
-.fade-up-leave {
+.fadeUp-leave {
   opacity: 1;
-  transition: opacity .2s ease-in;
+  transform: translateY(-280px);
+  transition: all .3s ease-out;
 }
 
-.fade-up-leave.fade-up-leave-active {
+.fadeUp-leave.example-leave-active {
   opacity: 0.01;
 }
+/**/
 
+/* Fade Down */
+.fadeDown-enter {
+  opacity: 0.00;
+  transform: translateY(-100px);
+  transition: all .5s ease-in;
+}
 
+.fadeDown-enter.fadeDown-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.fadeDown-leave {
+  opacity: 1;
+  transform: translateY(-280px);
+  transition: all .3s ease-out;
+}
+
+.fadeDown-leave.example-leave-active {
+  opacity: 0.01;
+}
 /**/

@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import {ReactCSSTransitionGroup} from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup, {TimeoutTransitionGroup} from 'react-addons-css-transition-group';
 
 import SearchBox from './components/SearchBox';
 import Playlist from './components/Playlist';
@@ -64,12 +64,24 @@ class App extends Component {
 
   render() {
   	return  <div className='container'>
+              <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
               { this.state.searching ? <Top search={this.state.text}/> : null }
-              { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
-              { this.state.searching && !this.state.loading ? <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null }
-              { this.state.loading ? <Loading/> : null }
-              { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
-              { this.state.alertOpen ? <Alert username={this.state.user._display_name} loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
+              </ReactCSSTransitionGroup>
+              <ReactCSSTransitionGroup transitionName="fadeUp" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+                { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
+              </ReactCSSTransitionGroup>
+              <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+                { this.state.searching && !this.state.loading ? <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null }
+              </ReactCSSTransitionGroup>
+              <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+                { this.state.loading ? <Loading/> : null }
+              </ReactCSSTransitionGroup>
+              <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+                { this.state.modalOpen ? <Modal user={this.state.user} token={this.state.token}/> : null }
+              </ReactCSSTransitionGroup>
+              <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+                { this.state.alertOpen ? <Alert username={this.state.user._display_name} loading={this.state.alert.loading} fail={this.state.alert.fail} share={this.state.alert.share}/> : null }
+              </ReactCSSTransitionGroup>
               <Footer tracks={this.state.tracks.length}/>
             </div>
   }
