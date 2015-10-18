@@ -60,6 +60,16 @@ div {
   margin: 10px 0 0 0;
 }
 
+@media screen and (max-width: 700px) {
+  .search-container {
+    width: 90%;
+    margin: -100px 0 0 -45%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+  }
+}
+
 /* Search Box Component */
 
 .search-box {
@@ -177,6 +187,26 @@ div {
   font-weight: lighter;
   padding: 0 0 0 14px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .top {
+    height: 135px;
+  }
+
+  .top .title {
+    width: 100%;
+  }
+
+  .top .search {
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+  }
+
+  .top .search .search-box {
+    width: 90%;
+  }
 }
 
 /* Playlist Component */
