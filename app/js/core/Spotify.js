@@ -22,6 +22,13 @@ let playlist = new PlaylistHandler();
 
 let total = 0;
 
+function session() {
+    if (localStorage.magic_token) {
+        client.token = localStorage.magic_token;
+    }
+}
+session();
+
 let Spotify = {
   trackList: [],
 
@@ -71,7 +78,6 @@ let Spotify = {
               'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
           );
           loginWindow.onbeforeunload = () => {
-              client.token = localStorage.magic_token;
               resolve(localStorage.magic_token);
           }
       });
