@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import Track from './track';
 import {open} from '../actions/ModalActions';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Playlist extends Component {
 
@@ -29,7 +30,7 @@ class Playlist extends Component {
 
   render() {
     var tracks = this.props.tracks.map((track, i)=>{
-        return <Track track={track} index={i} key={'track_'+track._id} ptag={this._add.bind(this)} stopAll={this._stopAll.bind(this)}/>
+        return  <Track track={track} key={'track_'+track._id} index={i} ptag={this._add.bind(this)} stopAll={this._stopAll.bind(this)}/>
     });
     return  <div className='playlist'>
               <div className='info'>
@@ -38,7 +39,9 @@ class Playlist extends Component {
               </div>
               {!this.props.tracks.length ? <span>No tracks</span> : null}
               <ul className='trackList'>
-                  {tracks}
+              <ReactCSSTransitionGroup transitionName="fadeList" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+                {tracks}
+              </ReactCSSTransitionGroup>
               </ul>
             </div>
   }

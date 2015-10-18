@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import ReactCSSTransitionGroup, {TimeoutTransitionGroup} from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import SearchBox from './components/SearchBox';
 import Playlist from './components/Playlist';

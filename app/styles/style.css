@@ -568,3 +568,24 @@ div {
   opacity: 0.01;
 }
 /**/
+
+/* fade list*/
+
+.fadeList-enter {
+  opacity: 0.01;
+  transition: opacity .2s ease-in;
+}
+
+.fadeList-enter.fadeList-enter-active {
+  opacity: 1;
+}
+
+.fadeList-leave {
+  opacity: 1;
+  transition: opacity .2s ease-in;
+}
+
+.fadeList-leave.fadeList-leave-active {
+  opacity: 0.01;
+}
+
