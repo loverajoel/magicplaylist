@@ -191,11 +191,12 @@ div {
 
 @media screen and (max-width: 700px) {
   .top {
-    height: 135px;
+    height: 120px;
   }
 
   .top .title {
     width: 100%;
+    margin: 10px 0 0 0;
   }
 
   .top .search {
@@ -250,6 +251,7 @@ div {
   font-size: 20px;
   color: #fff;
   border-bottom: 1px solid #410287;
+  overflow: hidden;
   padding: 13px 10px
 }
 
@@ -271,6 +273,33 @@ div {
 
 .player-loading {
   width: 100%;
+}
+
+.trackList li .track-name {
+  float: left;
+}
+
+@media screen and (max-width: 700px) {
+  .info .save-playlist {
+    width: 100%;
+  }
+
+  .trackList {
+    width: 90%;
+  }
+
+  .trackList li {
+    overflow: hidden;
+  }
+
+  .trackList li .track-name {
+    width: 85%;
+    float: left;
+  }
+
+  .trackList li .play {
+    margin: 10px 0 0 15px;
+  }
 }
 
 /* Modal */
@@ -423,6 +452,12 @@ div {
   width: 100px
 }
 
+@media screen and (max-width: 700px) {
+  .footer .copy {
+    text-align: center;
+  }
+}
+
 /* Alert Component */
 
 .alert-shadow {
@@ -557,17 +592,23 @@ div {
 .fadeUp-enter {
   opacity: 0.00;
   transform: translateY(280px);
+  -webkit-transform: translateY(280px);
+  -ms-transform: translateY(280px);
   transition: all .5s ease-in;
 }
 
 .fadeUp-enter.fadeUp-enter-active {
   opacity: 1;
   transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
 }
 
 .fadeUp-leave {
   opacity: 1;
   transform: translateY(-280px);
+  -webkit-transform: translateY(-280px);
+  -ms-transform: translateY(-280px);
   transition: all .3s ease-out;
 }
 
@@ -580,17 +621,23 @@ div {
 .fadeDown-enter {
   opacity: 0.00;
   transform: translateY(-100px);
+  -webkit-transform: translateY(-100px);
+  -ms-transform: translateY(-100px);
   transition: all .5s ease-in;
 }
 
 .fadeDown-enter.fadeDown-enter-active {
   opacity: 1;
   transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
 }
 
 .fadeDown-leave {
   opacity: 1;
   transform: translateY(-280px);
+  -webkit-transform: translateY(-280px);
+  -ms-transform: translateY(-280px);
   transition: all .3s ease-out;
 }
 
