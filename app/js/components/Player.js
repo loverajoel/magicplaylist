@@ -41,14 +41,16 @@ class Track extends Component {
     this.audioTag.addEventListener('ended', this.playerEvent.isPlaying);
     this.audioTag.addEventListener('pause', this.playerEvent.isPlaying);
     this.audioTag.addEventListener('loadeddata', this.playerEvent.loadEnd);
-    this.audioTag.addEventListener('loadstart',this.playerEvent.loadStart);
+    this.audioTag.addEventListener('loadstart', this.playerEvent.loadStart);
+    this.audioTag.addEventListener('suspend', this.playerEvent.loadEnd);
   }
 
   componentWillUnmount() {
     this.audioTag.removeEventListener('ended', this.playerEvent.isPlaying);
     this.audioTag.removeEventListener('pause', this.playerEvent.isPlaying);
     this.audioTag.removeEventListener('loadeddata', this.playerEvent.loadEnd);
-    this.audioTag.removeEventListener('loadstart',this.playerEvent.loadStart);
+    this.audioTag.removeEventListener('loadstart', this.playerEvent.loadStart);
+    this.audioTag.removeEventListener('suspend', this.playerEvent.loadStart);
   }
 
   _play() {
