@@ -1,6 +1,7 @@
 'use strict';
 
 import {Client, TrackHandler, PlaylistHandler, ArtistHandler, UserHandler} from 'spotify-sdk';
+import {magic} from './Magic';
 
 let client = Client.instance;
 
@@ -13,7 +14,7 @@ client.settings = {
 
 let settings = {
   tracks: 20,
-  artists: 5
+  artists: 20
 }
 
 let track = new TrackHandler();
@@ -30,7 +31,7 @@ let Spotify = {
     track.search(text, {limit: 1}).then((trackCollection) => {
       if (trackCollection.length) {
         trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
-            relatedArtists = relatedArtists.slice(0, settings.artists);
+            relatedArtists = relatedArtists.slice(0, settings.artists-1);
             relatedArtists.push(trackCollection.first().artists.first());
             for (var i = relatedArtists.length - 1; i >= 0; i--) {
                 total = relatedArtists.length - 1;
@@ -40,12 +41,12 @@ let Spotify = {
                         if (e === 0) {
                             total -= 1;
                             if (total === 0) {
-                                callback(Spotify.order(Spotify.trackList), trackCollection.first());
+                                callback(magic(Spotify.trackList, trackCollection.first().popularity), trackCollection.first());
                             }
                         }
                     };
                 }).catch((error) => {
-
+                  console.log('error', error)
                 });
             };
         });
@@ -53,12 +54,6 @@ let Spotify = {
         callback([]);
       }
     });
-  },
-
-  order: (list) => {
-      return list.sort((a, b) => {
-          return a.popularity - b.popularity;
-      }).reverse();
   },
 
   login: () => {

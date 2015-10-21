@@ -14,14 +14,15 @@ Type the name of your favourite song and see how the algoritm return you a playl
 - Share playlist
 
 #Algorithm Overview
-- Get track, and extract his `popularity`
-- From track artist, get related artists
-- Get top tracks(max:20) from each related artist
-- Sort all tracks from popularity(ASC)
+- Given a Track extract his `popularity`
+- Get related Artists form a Track
+- Get top tracks(max:20) from each related Artist
+- Sort all Tracks from popularity(ASC)
 - Alternate 1:1
-- Select the batch(30) based in the first track popularity
-- Sort by poularity
+- Select the batch(30) based in the first Track popularity
+- Sort by popularity
 - Alternate
+- Enjoy the playlist
 
 #Stack
 - ES6
