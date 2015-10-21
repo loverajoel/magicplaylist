@@ -9,11 +9,9 @@ class Alert extends Component {
     super(props);
     this.share = {
       text: 'Demo Share',
-      url: 'demo.com',
-      image: 'none'
+      url: 'http://www.magicplaylist.co/demo'
     }
     if (this.props.fail) {
-      console.log('adsfsdf')
       setTimeout(() => {
         close();
       }, 3000);
@@ -25,8 +23,7 @@ class Alert extends Component {
   }
 
   _hanbleShareFB() {
-    let url = `http://facebook.com/sharer.php?s=100&p[url]=${this.share.url}&p[images][0]=
-    ${this.share.image}&p[title]=${this.share.text}`;
+    let url = `http://facebook.com/sharer.php?s=100&p[url]=${this.share.url}&p[title]=${this.share.text}`;
     open(
       url,
       'fbshare',
@@ -35,7 +32,7 @@ class Alert extends Component {
   }
 
   _hanbleShareTW() {
-    let url = `http://twitter.com/share?url=${this.share.url}&text=${this.share.text}`;
+    let url = `https://twitter.com/intent/tweet?url=${this.share.url}&text=${this.share.text}&hashtags=magicPlaylist`
     open(
       url,
       'tshare',
@@ -49,10 +46,10 @@ class Alert extends Component {
                   <span className='share-subtitle'>Your playlist is now on Spotify</span>
                   <span className='share-message'>Now share it with your friends</span>
                   <div className='share'>
-                    <div className='facebook source' onClick={this._hanbleShareFB}>
+                    <div className='facebook source' onClick={this._hanbleShareFB.bind(this)}>
                       <img src='img/facebook.svg'/>
                     </div>
-                    <div className='twitter source' onClick={this._hanbleShareTW}>
+                    <div className='twitter source' onClick={this._hanbleShareTW.bind(this)}>
                       <img src='img/twitter.svg'/>
                     </div>
                   </div>

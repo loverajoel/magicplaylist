@@ -32,7 +32,5 @@ Type the name of your favourite song and see how the algoritm return you a playl
 
 #Spotify API
 
-If you're curious what data you can use inside player just take a look into official SoundCloud Developers docs for tracks.
-
 
 Made with :heart: from Córdoba, Argentina.
