@@ -36,7 +36,13 @@ class SearchBox extends Component {
                         <img src='img/search.svg'/>
                       </div>
                   </span>
-                  <input type='text' ref='searchInput' className='input-search' placeholder='What is your favorite song?' onKeyPress={this._handleKeyPress.bind(this)} defaultValue={this.state.initialValue}/>
+                  <input
+                    type='text'
+                    ref='searchInput'
+                    className='input-search'
+                    placeholder='What is your favorite song?'
+                    onKeyPress={this._handleKeyPress.bind(this)}
+                    defaultValue={this.state.initialValue}/>
               </div>
             </div>
   }

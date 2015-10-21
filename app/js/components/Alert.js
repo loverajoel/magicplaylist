@@ -12,6 +12,12 @@ class Alert extends Component {
       url: 'demo.com',
       image: 'none'
     }
+    if (this.props.fail) {
+      console.log('adsfsdf')
+      setTimeout(() => {
+        close();
+      }, 3000);
+    }
   }
 
   _handleDone() {
@@ -55,7 +61,7 @@ class Alert extends Component {
     return  <div className='alert-shadow'>
               <div className='alert-modal'>
                 {this.props.loading ? <div className='alert-loading'><img src='img/tail-spin.svg'/></div> : null}
-                {this.props.fail ? <div className='alert-fail'>fail</div> : null}
+                {this.props.fail ? <div className='alert-fail'><span>opss! error!</span><img src='img/fail.svg'/></div> : null}
                 {this.props.share ? share : null}
               </div>
             </div>

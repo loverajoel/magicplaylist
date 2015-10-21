@@ -22,7 +22,10 @@ class Track extends Component {
                 <img src='img/remove.svg'/>
               </div>
               <div className='play'>
-                <Player source={track.preview_url} ptag={this.props.ptag.bind(this)} stopAll={this.props.stopAll.bind(this)}/>
+                <Player
+                  source={track.preview_url}
+                  ptag={this.props.ptag.bind(this)}
+                  stopAll={this.props.stopAll.bind(this)}/>
               </div>
             </li>
   }

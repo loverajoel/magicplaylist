@@ -506,6 +506,24 @@ div {
   background: red;
 }
 
+.alert-fail img {
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  margin: -40px -40px 0 0;
+}
+
+.alert-fail span {
+  font-size: 20px;
+  width: 100%;
+  float: left;
+  margin: 30% 0 0 0;
+  text-align: center;
+  color: #fff;
+
+}
+
 .alert-share {
   width: 100%;
   height: 100%;

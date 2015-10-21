@@ -23,5 +23,3 @@ class Top extends Component {
 }
 
 export default Top;
-
-// <div className='close' onClick={this._handleClose}>X</div>
