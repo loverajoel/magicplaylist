@@ -7,8 +7,6 @@ Only using the Spotify API.
 
 Type the name of your favourite song and see how the algoritm return you a playlist.
 
-#Why
-
 #Features
 - Create an Awesome playlist based on a song
 - Play audio preview (30 seconds)
@@ -16,6 +14,14 @@ Type the name of your favourite song and see how the algoritm return you a playl
 - Share playlist
 
 #Algorithm Overview
+- Get track, and extract his `popularity`
+- From track artist, get related artists
+- Get top tracks(max:20) from each related artist
+- Sort all tracks from popularity(ASC)
+- Alternate 1:1
+- Select the batch(30) based in the first track popularity
+- Sort by poularity
+- Alternate
 
 #Stack
 - ES6
@@ -28,4 +34,4 @@ Type the name of your favourite song and see how the algoritm return you a playl
 If you're curious what data you can use inside player just take a look into official SoundCloud Developers docs for tracks.
 
 
-Made with :heart: from Argentina
+Made with :heart: from Córdoba, Argentina.
