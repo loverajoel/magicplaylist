@@ -17,7 +17,7 @@ class Track extends Component {
   render() {
     let track = this.props.track;
     return  <li>
-              <div className='track-name'>{track.name}, {track.artists.first().name}</div>
+              <div className='track-name'>{track.name}, <b>{track.artists.first().name}</b></div>
               <div className='remove' onClick={this._remove.bind(this)}>
                 <img src='img/remove.svg'/>
               </div>
