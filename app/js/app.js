@@ -69,9 +69,9 @@ class App extends Component {
   render() {
   	return  <div className='container'>
               <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
-              { this.state.searching ? <Top search={this.state.text}/> : null }
+              { this.state.searching ? <Top search={this.state.text} country={this.state.country}/> : null }
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup transitionName="fadeUp" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+              <ReactCSSTransitionGroup transitionName="fadeOut" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
                 { !this.state.searching ? <div className='search-container'><Title/><SearchBox country={this.state.country}/></div> : null }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
