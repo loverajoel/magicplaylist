@@ -396,10 +396,14 @@ div {
   border-radius: 5px;
   float: left;
   clear: both;
+  cursor: pointer;
 }
 
 .radio-container input[type="radio"]:checked + label {
-  background-color:#000;
+  background-image: url('../img/check.svg');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 5px;
 }
 
 /* Loading Component */

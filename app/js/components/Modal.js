@@ -61,7 +61,7 @@ class Modal extends Component {
                   </div>
                   <span className='status'>Playlist Status</span>
                   <div className='radio-container'>
-                      <input id='true' type='radio' name='public' value='true' onChange={this._handlePublic.bind(this, true)}/>
+                      <input id='true' type='radio' name='public' value='true' onChange={this._handlePublic.bind(this, true)} defaultChecked={true}/>
                       <label htmlFor='true'>Public</label>
                       <input id='false' type='radio' name='public' value='false' onChange={this._handlePublic.bind(this, true)}/>
                       <label htmlFor='false'>Private</label>
