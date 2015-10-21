@@ -32,6 +32,7 @@ let PlaylistActions = {
           type: PLAYLIST_TRACK_NOT_FOUND,
           tracks: []
         });
+        ga('send', 'event', 'event', 'playlist-search', 'no-result');
       }
     });
   },
@@ -58,11 +59,13 @@ let PlaylistActions = {
         type: PLAYLIST_CREATED,
         response: {}
       });
+      ga('send', 'event', 'event', 'playlist-save', 'saved');
     }).catch((error) => {
       if (error.response.status === 401) {
         Dispatcher.dispatch({
           type: USER_TOKEN_ERROR
         });
+        ga('send', 'event', 'event', 'playlist-save', 'token error');
         login().then(() => {
           PlaylistActions.save(userId, name, isPublic, tracks);
         });
@@ -70,6 +73,7 @@ let PlaylistActions = {
         Dispatcher.dispatch({
           type: PLAYLIST_SAVE_FAIL
         });
+        ga('send', 'event', 'event', 'playlist-save', 'error');
       }
     });
   }

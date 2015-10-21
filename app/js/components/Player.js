@@ -59,6 +59,7 @@ class Track extends Component {
     this.setState({
       isPlaying: true
     });
+    ga('send', 'event', 'button', 'click', 'playlist-play');
   }
 
   _stop() {
@@ -66,6 +67,7 @@ class Track extends Component {
     this.setState({
       isPlaying: false
     });
+    ga('send', 'event', 'button', 'click', 'playlist-stop');
   }
 
   render() {

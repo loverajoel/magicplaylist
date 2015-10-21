@@ -14,17 +14,27 @@ class SearchBox extends Component {
     }
   }
 
+  _search(text) {
+    newSearch(text);
+    PlaylistActions.search(text, this.props.country);
+    ga('send', 'event', 'event', 'new-search', text);
+  }
+
   _handleSearch() {
     const text = ReactDOM.findDOMNode(this.refs.searchInput).value;
     if (text.length > 3) {
-      newSearch(text);
-      PlaylistActions.search(text, this.props.country);
+      this._search(text);
+      ga('send', 'event', 'button', 'click', 'search-box-input');
     }
   }
 
   _handleKeyPress(e) {
     if (e.key === 'Enter') {
-      this._handleSearch();
+      const text = ReactDOM.findDOMNode(this.refs.searchInput).value;
+      if (text.length > 3) {
+        this._search(text);
+        ga('send', 'event', 'key', 'press', 'search-box-enter');
+      }
     }
   }
 

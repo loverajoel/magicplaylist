@@ -20,6 +20,7 @@ class Alert extends Component {
 
   _handleDone() {
     close();
+    ga('send', 'event', 'button', 'click', 'alert-close');
   }
 
   _hanbleShareFB() {
@@ -29,6 +30,7 @@ class Alert extends Component {
       'fbshare',
       'height=380,width=660,resizable=0,toolbar=0,menubar=0,status=0,location=0,scrollbars=0'
       );
+    ga('send', 'event', 'button', 'click', 'share-fb');
   }
 
   _hanbleShareTW() {
@@ -38,6 +40,7 @@ class Alert extends Component {
       'tshare',
       'height=400,width=550,resizable=1,toolbar=0,menubar=0,status=0,location=0'
       );
+    ga('send', 'event', 'button', 'click', 'share-tw');
   }
 
   render() {

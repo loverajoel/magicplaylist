@@ -7,12 +7,14 @@ import Spotify from '../core/Spotify';
 let UserActions = {
 
   login: () => {
+    ga('send', 'event', 'event', 'login', 'init');
     return new Promise((resolve, reject) => {
       Spotify.login().then((data) => {
         Dispatcher.dispatch({
           type: USER_TOKEN,
           data: data
         });
+        ga('send', 'event', 'event', 'login', 'fin');
         Spotify.getUser().then((data) => {
           Dispatcher.dispatch({
             type: USER_LOGED,

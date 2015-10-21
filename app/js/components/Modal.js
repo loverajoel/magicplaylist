@@ -22,6 +22,7 @@ class Modal extends Component {
 
   _handleClose() {
     close();
+    ga('send', 'event', 'button', 'click', 'close-modal');
   }
 
   _savePlaylist() {
@@ -44,6 +45,7 @@ class Modal extends Component {
         this._savePlaylist();
       });
     }
+    ga('send', 'event', 'button', 'click', 'playlist-save');
   }
 
   _handlePublic(status) {

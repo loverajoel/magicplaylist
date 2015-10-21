@@ -16,6 +16,7 @@ class Playlist extends Component {
 
   _handleSave() {
     open();
+    ga('send', 'event', 'button', 'click', 'open-modal-save-playlist');
   }
 
   _add(elem) {

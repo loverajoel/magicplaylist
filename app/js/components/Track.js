@@ -12,6 +12,7 @@ class Track extends Component {
 
   _remove() {
     PlaylistActions.removeTrack(this.props.index);
+    ga('send', 'event', 'button', 'click', 'playlist-remove-track');
   }
 
   render() {
