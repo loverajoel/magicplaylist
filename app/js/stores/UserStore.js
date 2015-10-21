@@ -2,12 +2,13 @@
 
 import {EventEmitter} from 'events';
 import Dispatcher from '../dispatcher';
-import {USER_LOGED, USER_TOKEN, USER_LOGOUT} from '../constants/constants';
+import {USER_LOGED, USER_TOKEN, USER_LOGOUT, USER_COUNTRY} from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
 
 let _user = JSON.parse(localStorage.getItem('magic_user')) || null;
 let _token = localStorage.getItem('magic_token') || null;
+let _country = 'US';
 
 class SearchStore extends EventEmitter {
 	constructor() {
@@ -21,6 +22,10 @@ class SearchStore extends EventEmitter {
 
   getToken() {
     return _token;
+  }
+
+  getCountry() {
+    return _country;
   }
 
 	emitChange() {
@@ -54,6 +59,12 @@ class SearchStore extends EventEmitter {
 
         case USER_LOGOUT: {
           _user = null;
+          this.emitChange();
+          break;
+        }
+
+        case USER_COUNTRY: {
+          _country = action.data;
           this.emitChange();
           break;
         }

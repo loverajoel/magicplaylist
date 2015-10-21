@@ -20,6 +20,8 @@ import ModalStore from './stores/ModalStore';
 import UserStore from './stores/UserStore';
 import AlertStore from './stores/AlertStore';
 
+import {getCountry} from './actions/UserActions';
+
 let getAppState = () => {
   return {
     text: SearchStore.getSearch(),
@@ -31,7 +33,8 @@ let getAppState = () => {
     token: UserStore.getToken(),
     modalOpen: ModalStore.isOpen(),
     alertOpen: AlertStore.isOpen(),
-    alert: AlertStore.status()
+    alert: AlertStore.status(),
+    country: UserStore.getCountry()
   }
 };
 
@@ -43,6 +46,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    getCountry();
     SearchStore.addChangeListener(this._onChange.bind(this));
     PlaylistStore.addChangeListener(this._onChange.bind(this));
     ModalStore.addChangeListener(this._onChange.bind(this));
@@ -68,7 +72,7 @@ class App extends Component {
               { this.state.searching ? <Top search={this.state.text}/> : null }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName="fadeUp" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
-                { !this.state.searching ? <div className='search-container'><Title/><SearchBox/></div> : null }
+                { !this.state.searching ? <div className='search-container'><Title/><SearchBox country={this.state.country}/></div> : null }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
                 { this.state.searching && !this.state.loading ? <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null }

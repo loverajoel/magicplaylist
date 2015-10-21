@@ -26,7 +26,7 @@ let total = 0;
 let Spotify = {
   trackList: [],
 
-  search: (text, callback) => {
+  search: (text, country, callback) => {
     Spotify.trackList = [];
     track.search(text, {limit: 1}).then((trackCollection) => {
       if (trackCollection.length) {
@@ -35,7 +35,7 @@ let Spotify = {
             relatedArtists.push(trackCollection.first().artists.first());
             for (var i = relatedArtists.length - 1; i >= 0; i--) {
                 total = relatedArtists.length - 1;
-                relatedArtists[i].topTracks({country: 'AR'}).then((tracks) => {
+                relatedArtists[i].topTracks({country: country}).then((tracks) => {
                     for (var e = tracks.length - 1; e >= 0; e--) {
                         Spotify.trackList.push(tracks[e]);
                         if (e === 0) {

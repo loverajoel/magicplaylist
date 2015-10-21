@@ -17,6 +17,7 @@ export default {
   USER_LOGED: 'user-loged',
   USER_TOKEN: 'user-token',
   USER_LOGOUT: 'user-logout',
+  USER_COUNTRY: 'user-country',
   ALERT_OPEN: 'alert-open',
   ALERT_CLOSE: 'alert-close'
 };

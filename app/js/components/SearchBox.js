@@ -18,7 +18,7 @@ class SearchBox extends Component {
     const text = ReactDOM.findDOMNode(this.refs.searchInput).value;
     if (text.length > 3) {
       newSearch(text);
-      PlaylistActions.search(text);
+      PlaylistActions.search(text, this.props.country);
     }
   }
 
