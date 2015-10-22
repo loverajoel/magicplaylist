@@ -12,6 +12,7 @@ export default {
   PLAYLIST_SAVING: 'paylist-saving',
   PLAYLIST_FAILED: 'paylist-failded',
   PLAYLIST_TRACK_NOT_FOUND: 'paylist-track-not-found',
+  PLAYLIST_SAVE_FAIL: 'paylist-save-fail',
   MODAL_OPEN: 'modal-open',
   MODAL_CLOSE: 'modal-close',
   USER_LOGED: 'user-loged',

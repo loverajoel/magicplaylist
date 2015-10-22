@@ -9,7 +9,8 @@ import {
   PLAYLIST_CREATED,
   PLAYLIST_SAVING,
   USER_TOKEN_ERROR,
-  PLAYLIST_TRACK_NOT_FOUND
+  PLAYLIST_TRACK_NOT_FOUND,
+  PLAYLIST_SAVE_FAIL
 } from '../constants/constants';
 import Spotify from '../core/Spotify';
 import {login} from './UserActions';
@@ -62,9 +63,6 @@ let PlaylistActions = {
       ga('send', 'event', 'event', 'playlist-save', 'saved');
     }).catch((error) => {
       if (error.response.status === 401) {
-        Dispatcher.dispatch({
-          type: USER_TOKEN_ERROR
-        });
         ga('send', 'event', 'event', 'playlist-save', 'token error');
         login().then(() => {
           PlaylistActions.save(userId, name, isPublic, tracks);
