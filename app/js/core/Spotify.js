@@ -65,8 +65,14 @@ let Spotify = {
               'Spotify',
               'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
           );
-          loginWindow.onbeforeunload = () => {
-              resolve(localStorage.magic_token);
+          if (loginWindow.onpagehide || loginWindow.onpagehide === null) {
+            loginWindow.onpagehide = ()=> {
+                resolve(localStorage.magic_token);
+            }
+          } else {
+            loginWindow.onbeforeunload = ()=> {
+                resolve(localStorage.magic_token);
+            }
           }
       });
     });
