@@ -107,6 +107,10 @@ div {
   background: #410287;
   color: #fff;
   text-align: center;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .search-group .input-search:focus {
