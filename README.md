@@ -1,11 +1,9 @@
 #Magic Playlist
 // Get the playlist of your dreams based on a song
 
-Start with a seed song, the algoritm will search top relational tracks and make a playlist.
-Magic Playlist let you play 30 second of preview for each song. Edit the playlist and save in you profile.
-Only using the Spotify API.
+Magic Playlist is an inteligent algorythm developed under Spotify's API that enables users to create a playlist based on a song.
 
-Type the name of your favourite song and see how the algoritm return you a playlist.
+The architecture detects the main artists and creates a playlist based on their high rated tracks. You can preview each song, remove it and add security attributions such as public or private. Give it a name, save it into your Spotify's account and enjoy!
 
 #Features
 - Create an Awesome playlist based on a song
@@ -32,5 +30,16 @@ Type the name of your favourite song and see how the algoritm return you a playl
 
 #Spotify API
 
+#/Stay In Touch
+
+#Contributing
+To get started with a development installation of the Query Server and learn more about contributing, please follow the instructions at our Developers Guide.
+
+```
+npm install
+npm run dev
+```
+
+#License
 
 Made with :heart: from Córdoba, Argentina.

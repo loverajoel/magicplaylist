@@ -504,7 +504,7 @@ div {
 .alert-loading {
   width: 100%;
   height: 100%;
-  background: #773CB5;
+  background: #fff;
 }
 
 .alert-loading img {
