@@ -58,7 +58,7 @@ let PlaylistActions = {
     Spotify.savePlaylist(userId, name, isPublic, tracks).then((response) => {
       Dispatcher.dispatch({
         type: PLAYLIST_CREATED,
-        response: {}
+        response: response
       });
       ga('send', 'event', 'event', 'playlist-save', 'saved');
     }).catch((error) => {

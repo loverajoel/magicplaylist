@@ -17,6 +17,7 @@ let CHANGE_EVENT = 'change';
 let _tracks = [];
 let _mainTrack;
 let _loading = false;
+let _lastPlaylist;
 
 class PlaylistStore extends EventEmitter {
 	constructor() {
@@ -34,6 +35,10 @@ class PlaylistStore extends EventEmitter {
 
   getLoading() {
     return _loading;
+  }
+
+  getLastPlaylist() {
+    return _lastPlaylist;
   }
 
 	emitChange() {
@@ -76,6 +81,12 @@ class PlaylistStore extends EventEmitter {
 
         case PLAYLIST_REMOVE_TRACKS: {
           _tracks = [];
+          this.emitChange();
+          break;
+        }
+
+        case PLAYLIST_CREATED: {
+          _lastPlaylist = action.response.uri;
           this.emitChange();
           break;
         }

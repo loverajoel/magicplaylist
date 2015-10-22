@@ -95,7 +95,7 @@ let Spotify = {
     return new Promise((resolve, reject) => {
       playlist.create(userId, name+' by magicplaylist.co', isPublic).then((myPlaylist) => {
         myPlaylist.addTrack(tracks).then((snapshot) => {
-          resolve(snapshot);
+          resolve(myPlaylist);
         });
       }).catch((error) => {
         reject(error);

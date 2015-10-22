@@ -20,6 +20,10 @@ class Modal extends Component {
     }
   }
 
+  componentDidMount(){
+    ReactDOM.findDOMNode(this.refs.playlistName).focus();
+  }
+
   _handleClose() {
     close();
     ga('send', 'event', 'button', 'click', 'close-modal');

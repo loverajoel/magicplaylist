@@ -117,6 +117,11 @@ div {
   background: #773CB5;
 }
 
+.search-group .input-search:focus::-webkit-input-placeholder {
+  text-align: left;
+  opacity: 0.5
+}
+
 .search-group .input-search::-webkit-input-placeholder {
   color: #fff;
   text-align: center;
@@ -467,8 +472,8 @@ div {
 }
 
 @media screen and (max-width: 700px) {
-  .footer .copy {
-    text-align: center;
+  .footer {
+    display: none;
   }
 }
 
