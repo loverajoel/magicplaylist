@@ -614,6 +614,8 @@ div {
 .fade-enter {
   opacity: 0.01;
   transition: opacity .2s ease-in;
+  -webkit-transform: opacity .2s ease-in;
+  -ms-transform: opacity .2s ease-in;
 }
 
 .fade-enter.fade-enter-active {
@@ -623,6 +625,8 @@ div {
 .fade-leave {
   opacity: 1;
   transition: opacity .2s ease-in;
+  -webkit-transform: opacity .2s ease-in;
+  -ms-transform: opacity .2s ease-in;
 }
 
 .fade-leave.fade-leave-active {
