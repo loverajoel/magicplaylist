@@ -19,14 +19,16 @@ Go to [MagicPlaylist /](http://magicplaylist.co/)
 
 #Algorithm Overview
 1. Given a Track extract his popularity
-2. Get related Artists form a Track
+2. Get related Artists form that Track
 3. Get top tracks from each related Artist
 4. Sort all Tracks from popularity(ASC)
 5. Alternate by Artist
-6. Select the batch(30) based in the first Track popularity
+6. Select a batch of 30 Tracks most closest to the first Track popularity
 7. Sort by popularity
 8. Alternate by Artist
 9. Enjoy the playlist
+
+[The Algorithm](https://github.com/loverajoel/magicplaylist/blob/master/app/js/core/Magic.js) :star2: 
 
 #Stack
 - ES6
