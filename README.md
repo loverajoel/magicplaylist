@@ -1,5 +1,8 @@
 #Magic Playlist
-// Get the playlist of your dreams based on a song
+
+> Get the playlist of your dreams based on a song
+
+![title](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/title-github.jpg)
 
 Magic Playlist is an inteligent algorythm developed under Spotify's API that enables users to create a playlist based on a song.
 
@@ -8,38 +11,50 @@ The architecture detects the main artists and creates a playlist based on their 
 #Features
 - Create an Awesome playlist based on a song
 - Play audio preview (30 seconds)
+- Edit playlist
 - Save playlist in Spotify
 - Share playlist
 
 #Algorithm Overview
-- Given a Track extract his `popularity`
-- Get related Artists form a Track
-- Get top tracks(max:20) from each related Artist
-- Sort all Tracks from popularity(ASC)
-- Alternate 1:1
-- Select the batch(30) based in the first Track popularity
-- Sort by popularity
-- Alternate
-- Enjoy the playlist
+1. Given a Track extract his popularity
+2. Get related Artists form a Track
+3. Get top tracks from each related Artist
+4. Sort all Tracks from popularity(ASC)
+5. Alternate by Artist
+6. Select the batch(30) based in the first Track popularity
+7. Sort by popularity
+8. Alternate by Artist
+9. Enjoy the playlist
 
 #Stack
 - ES6
 - Flux
 - React
-- Spotify-SDK
+- [Spotify-SDK](https://github.com/loverajoel/spotify-sdk)
 
 #Spotify API
 
-#/Stay In Touch
+This entire app is based on [Spotify API](https://developer.spotify.com/web-api/):heart:
+
+#Stay In Touch
+
+Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 
 #Contributing
-To get started with a development installation of the Query Server and learn more about contributing, please follow the instructions at our Developers Guide.
+
 
 ```
 npm install
 npm run dev
 ```
+# Authors
+
+Code by Lovera Joel ([@loverajoel](https://twitter.com/loverajoel))
+
+Desing by Agustín Schelstraete ([@aschelstraete](https://twitter.com/aschelstraete))
 
 #License
+
+MIT
 
 Made with :heart: from Córdoba, Argentina.
