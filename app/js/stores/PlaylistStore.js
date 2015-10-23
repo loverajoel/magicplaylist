@@ -86,7 +86,7 @@ class PlaylistStore extends EventEmitter {
         }
 
         case PLAYLIST_CREATED: {
-          _lastPlaylist = action.response.uri;
+          _lastPlaylist = action.response.external_urls.spotify;
           this.emitChange();
           break;
         }

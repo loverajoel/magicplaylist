@@ -560,13 +560,18 @@ div {
   float: left;
 }
 
+.alert-share .share-subtitle span {
+  display: block;
+  color: #370273;
+}
+
 .alert-share .share-message {
   font-size: 14px;
   color: #4C2EE6;
   text-align: center;
   width: 100%;
   float: left;
-  margin: 60px 0 0 0;
+  margin: 40px 0 0 0;
 }
 
 .alert-share .share {
@@ -590,7 +595,7 @@ div {
 }
 
 .alert-share .btn-done {
-  width: 250px;
+  width: 190px;
   height: 54px;
   background: #12FFCC;
   font-family: 'Source Sans Pro', sans-serif;
