@@ -576,9 +576,10 @@ div {
 
 .alert-share .share {
   width: 160px;
-  margin: 0 auto;
-  padding: 10px 0 0 0;
+  margin: 0px 120px;
+  padding: 10px 0px 0px;
   overflow: hidden;
+  float: left;
 }
 
 .alert-share .share .source {
@@ -604,8 +605,9 @@ div {
   text-align: center;
   border-radius: 40px;
   padding: 16px;
-  margin: 40px auto 0 auto;
+  margin: 40px 0 0 105px;
   cursor: pointer;
+  float: left;
 }
 
 
