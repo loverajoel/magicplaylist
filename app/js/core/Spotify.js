@@ -6,8 +6,8 @@ import {magic} from './Magic';
 let client = Client.instance;
 
 client.settings = {
-  clientId: '',
-  secretId: '',
+  clientId: '87e58d70ae454ae7b815b4c8a1556a98',
+  secretId: '52bf6c6b92a04e489e8899fc0d291d5f',
   scopes: 'playlist-modify-public user-read-private playlist-modify-private',
   redirect_uri: 'http://localhost:3000/app/login.html'
 };
@@ -46,7 +46,7 @@ let Spotify = {
                         }
                     };
                 }).catch((error) => {
-                  console.log('error', error)
+
                 });
             };
         });
@@ -58,22 +58,18 @@ let Spotify = {
 
   login: () => {
     return new Promise((resolve, reject) => {
-      let loginWindow;
       client.login().then((url) => {
-          loginWindow = window.open(
+          window.open(
               url,
               'Spotify',
               'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
           );
-          if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
-            loginWindow.onpagehide = ()=> {
-                resolve(localStorage.magic_token);
+          // :D
+          window.addEventListener("storage", (data) => {
+            if (data.key === 'magic_token') {
+              resolve(data.newValue);
             }
-          } else {
-            loginWindow.onbeforeunload = ()=> {
-                resolve(localStorage.magic_token);
-            }
-          }
+          });
       });
     });
   },
