@@ -152,7 +152,7 @@ div {
 }
 
 .top .title {
-  width: 15%;
+  width: 20%;
   float: left;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
@@ -163,7 +163,7 @@ div {
 }
 
 .top .search {
-  width: 70%;
+  width: 60%;
   height: 70px;
   float: left;
 }
