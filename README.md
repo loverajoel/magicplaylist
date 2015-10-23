@@ -1,4 +1,4 @@
-#Magic Playlist
+#Magic Playlist /
 
 > Get the playlist of your dreams based on a song
 
@@ -6,7 +6,9 @@
 
 Magic Playlist is an inteligent algorythm developed under Spotify's API that enables users to create a playlist based on a song.
 
-The architecture detects the main artists and creates a playlist based on their high rated tracks. You can preview each song, remove it and add security attributions such as public or private. Give it a name, save it into your Spotify's account and enjoy!
+The algorithm detects the main artists and creates a playlist based on their high rated tracks. You can preview each song, remove it and add security attributions such as public or private. Give it a name, save it into your Spotify's account and enjoy!
+
+Go to [MagicPlaylist /](http://magicplaylist.co/)
 
 #Features
 - Create an Awesome playlist based on a song
