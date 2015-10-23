@@ -36,7 +36,7 @@ class Playlist extends Component {
     return  <div className='playlist'>
               <div className='info'>
               {!this.props.tracks.length ? <div className='track-name'>Hey! The track doesn't exist! :(</div> : null}
-                {this.props.mainTrack ? <div className='track-name'>{this.props.mainTrack.name}, <strong>{this.props.mainTrack.artists.first().name}</strong></div> :  null}
+                {this.props.mainTrack ? <div className='track-name'><strong>{this.props.mainTrack.name}</strong>, {this.props.mainTrack.artists.first().name}</div> :  null}
                 {this.props.tracks.length ? <div className='save-playlist' onClick={this._handleSave}>Save playlist on Spotify</div>: null}
               </div>
               <ul className='trackList'>
