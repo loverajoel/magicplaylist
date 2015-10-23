@@ -16,10 +16,11 @@ class Top extends Component {
 
   render() {
     return <div className='top'>
-                <div className='title'><span><b>Magic</b>Playlist /</span></div>
+                <a className='title' href='index.html'><span><strong>Magic</strong>Playlist /</span></a>
                 <div className='search'><SearchBox value={this.props.search} country={this.props.country}/></div>
             </div>
   }
 }
 
 export default Top;
+
