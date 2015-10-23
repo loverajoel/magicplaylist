@@ -35,10 +35,10 @@ class Playlist extends Component {
     });
     return  <div className='playlist'>
               <div className='info'>
+              {!this.props.tracks.length ? <div className='track-name'>Hey!! This track doesn't exist!</div> : null}
                 {this.props.mainTrack ? <div className='track-name'>{this.props.mainTrack.name}, {this.props.mainTrack.artists.first().name}</div> :  null}
                 {this.props.tracks.length ? <div className='save-playlist' onClick={this._handleSave}>Save Playlist on Spotify</div>: null}
               </div>
-              {!this.props.tracks.length ? <span>No tracks</span> : null}
               <ul className='trackList'>
               <ReactCSSTransitionGroup transitionName="fadeList" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
                 {tracks}

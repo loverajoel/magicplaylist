@@ -93,6 +93,7 @@ class PlaylistStore extends EventEmitter {
 
         case PLAYLIST_TRACK_NOT_FOUND: {
           _tracks = [];
+          _mainTrack = null;
           _loading = false;
           this.emitChange();
           break;
