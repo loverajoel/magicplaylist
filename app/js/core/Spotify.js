@@ -65,7 +65,7 @@ let Spotify = {
               'Spotify',
               'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
           );
-          if (loginWindow.onpagehide || loginWindow.onpagehide === null) {
+          if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
             loginWindow.onpagehide = ()=> {
                 resolve(localStorage.magic_token);
             }
