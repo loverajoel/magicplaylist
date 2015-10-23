@@ -7,10 +7,6 @@ class Alert extends Component {
 
   constructor(props) {
     super(props);
-    this.share = {
-      text: 'Demo Share',
-      url: 'http://www.magicplaylist.co/demo'
-    }
     if (this.props.fail) {
       setTimeout(() => {
         close();
@@ -24,7 +20,7 @@ class Alert extends Component {
   }
 
   _hanbleShareFB() {
-    let url = `http://facebook.com/sharer.php?s=100&p[url]=${this.share.url}&p[title]=${this.share.text}`;
+    let url = `http://facebook.com/sharer.php?s=100&p[url]=http://www.magicplaylist.co`;
     open(
       url,
       'fbshare',
@@ -34,7 +30,8 @@ class Alert extends Component {
   }
 
   _hanbleShareTW() {
-    let url = `https://twitter.com/intent/tweet?url=${this.share.url}&text=${this.share.text}&hashtags=magicPlaylist`
+    let url = `https://twitter.com/intent/tweet?text=Listen the playlist that I just created
+    ${this.props.lastPlaylist}. Create yours in http://www.magicplaylist.co&hashtags=magicPlaylist`
     open(
       url,
       'tshare',
