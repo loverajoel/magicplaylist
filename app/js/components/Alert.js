@@ -60,7 +60,7 @@ class Alert extends Component {
                 </div>;
     return  <div className='alert-shadow'>
               <div className='alert-modal'>
-                {this.props.loading ? <div className='alert-loading'><img src='img/tail-spin.svg'/></div> : null}
+                {this.props.loading ? <div className='alert-loading'><img src='img/audio.svg'/></div> : null}
                 {this.props.fail ? <div className='alert-fail'><span>opss! error!</span><img src='img/fail.svg'/></div> : null}
                 {this.props.share ? share : null}
               </div>

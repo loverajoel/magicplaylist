@@ -15,7 +15,7 @@ client.settings = {
 let settings = {
   tracks: 20,
   artists: 20
-}
+};
 
 let track = new TrackHandler();
 let user = new UserHandler();
