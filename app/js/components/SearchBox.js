@@ -11,7 +11,7 @@ class SearchBox extends Component {
     super(props);
     this.state = {
       initialValue: this.props.value
-    }
+    };
   }
 
   _search(text) {
@@ -38,8 +38,13 @@ class SearchBox extends Component {
     }
   }
 
+  _handleFocus() {
+    const input = ReactDOM.findDOMNode(this.refs.searchInput);
+    input.setSelectionRange(0, input.value.length);
+  }
+
   render() {
-    return  <div className='search-box'>
+    return <div className='search-box'>
               <div className='search-group'>
                   <span className='input-group-btn'>
                       <div className='btn-search' onClick={this._handleSearch.bind(this)}>
@@ -52,7 +57,8 @@ class SearchBox extends Component {
                     className='input-search'
                     placeholder='What is your favorite song?'
                     onKeyPress={this._handleKeyPress.bind(this)}
-                    defaultValue={this.state.initialValue}/>
+                    defaultValue={this.state.initialValue}
+                    onFocus={this._handleFocus.bind(this)}/>
               </div>
             </div>
   }
