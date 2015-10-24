@@ -31,24 +31,31 @@ let Spotify = {
     track.search(text, {limit: 1}).then((trackCollection) => {
       if (trackCollection.length) {
         trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
-            relatedArtists = relatedArtists.slice(0, settings.artists-1);
-            relatedArtists.push(trackCollection.first().artists.first());
-            for (var i = relatedArtists.length - 1; i >= 0; i--) {
-                total = relatedArtists.length - 1;
-                relatedArtists[i].topTracks({country: country}).then((tracks) => {
-                    for (var e = tracks.length - 1; e >= 0; e--) {
-                        Spotify.trackList.push(tracks[e]);
-                        if (e === 0) {
-                            total -= 1;
-                            if (total === 0) {
-                                callback(magic(Spotify.trackList, trackCollection.first().popularity), trackCollection.first());
-                            }
-                        }
-                    };
-                }).catch((error) => {
-
-                });
-            };
+          relatedArtists = relatedArtists.slice(0, settings.artists - 1);
+          relatedArtists.push(trackCollection.first().artists.first());
+          for (var i = relatedArtists.length - 1; i >= 0; i--) {
+            total = relatedArtists.length - 1;
+            relatedArtists[i].topTracks({country: country}).then((tracks) => {
+              if (tracks.length) {
+                for (var e = tracks.length - 1; e >= 0; e--) {
+                  Spotify.trackList.push(tracks[e]);
+                  if (e === 0) {
+                    total -= 1;
+                    if (total === 0) {
+                      callback(
+                        magic(
+                          Spotify.trackList,
+                          trackCollection.first().popularity
+                          ), trackCollection.first()
+                        );
+                    }
+                  }
+                };
+              } else {
+                total -= 1;
+              }
+            }).catch((error) => {});
+          };
         });
       } else {
         callback([]);
@@ -59,17 +66,17 @@ let Spotify = {
   login: () => {
     return new Promise((resolve, reject) => {
       client.login().then((url) => {
-          window.open(
-              url,
-              'Spotify',
-              'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
-          );
-          // :D
-          window.addEventListener("storage", (data) => {
-            if (data.key === 'magic_token') {
-              resolve(data.newValue);
-            }
-          });
+        window.open(
+          url,
+          'Spotify',
+          'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
+        );
+        // :D
+        window.addEventListener('storage', (data) => {
+          if (data.key === 'magic_token') {
+            resolve(data.newValue);
+          }
+        });
       });
     });
   },
@@ -78,8 +85,8 @@ let Spotify = {
     client.token = localStorage.magic_token;
     return new Promise((resolve, reject) => {
       user.me().then((userEntity) => {
-          localStorage.magic_user = JSON.stringify(userEntity);
-          resolve(userEntity);
+        localStorage.magic_user = JSON.stringify(userEntity);
+        resolve(userEntity);
       }).catch((error) => {
         reject(error);
       });
@@ -89,7 +96,7 @@ let Spotify = {
   savePlaylist: (userId, name, isPublic, tracks) => {
     client.token = localStorage.magic_token;
     return new Promise((resolve, reject) => {
-      playlist.create(userId, name+' by magicplaylist.co', isPublic).then((myPlaylist) => {
+      playlist.create(userId, name + ' by magicplaylist.co', isPublic).then((myPlaylist) => {
         myPlaylist.addTrack(tracks).then((snapshot) => {
           resolve(myPlaylist);
         });
@@ -98,6 +105,6 @@ let Spotify = {
       });
     });
   }
-}
+};
 
 export default Spotify;
