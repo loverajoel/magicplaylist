@@ -1,9 +1,9 @@
 'use strict';
 
 export default {
-	SEARCH_ADD: 'search-add',
-	SEARCH_UPDATE: 'search-update',
-  SEARCH_REMOVE: 'search-remove',
+  SEARCH_ADD: 'search-add',
+  SEARCH_UPDATE: 'search-update',
+  SEARCH_RESET: 'search-reset',
   PLAYLIST_ADD_TRACKS: 'playlist-add-tracks',
   PLAYLIST_REMOVE_TRACK: 'playlist-remove-track',
   PLAYLIST_REMOVE_TRACKS: 'playlist-remove-tracks',

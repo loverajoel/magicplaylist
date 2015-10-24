@@ -1,23 +1,27 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {removeSearch} from '../actions/SearchActions';
+import {resetSearch} from '../actions/SearchActions';
 import SearchBox from './SearchBox';
 
 class Top extends Component {
 
   constructor(props) {
-      super(props);
+    super(props);
   }
 
-  _handleClose() {
-    removeSearch();
+  _handleTitle() {
+    resetSearch();
   }
 
   render() {
     return <div className='top'>
-                <div className='title'><span><strong>Magic</strong>Playlist /</span></div>
-                <div className='search'><SearchBox value={this.props.search} country={this.props.country}/></div>
+                <div className='title' onClick={this._handleTitle}>
+                  <span><strong>Magic</strong>Playlist /</span>
+                </div>
+                <div className='search'>
+                  <SearchBox value={this.props.search} country={this.props.country}/>
+                  </div>
             </div>
   }
 }

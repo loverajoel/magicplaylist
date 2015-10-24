@@ -12,7 +12,7 @@ class Track extends Component {
       elem: null,
       isPlaying: false,
       isLoading: false
-    }
+    };
     this.playerEvent = {};
   }
 
@@ -71,7 +71,7 @@ class Track extends Component {
   }
 
   render() {
-    return  <div>
+    return <div>
               {!this.state.isPlaying && !this.state.isLoading ? <img src='img/volume.svg' onClick={this._play.bind(this)}/> : null}
               {this.state.isPlaying && !this.state.isLoading ? <img src='img/pause.svg' onClick={this._stop.bind(this)}/> : null}
               {this.state.isLoading ? <img src='img/tail-spin.svg' className='player-loading'/> : null}

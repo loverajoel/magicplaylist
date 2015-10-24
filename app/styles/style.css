@@ -168,6 +168,7 @@ a {
   font-weight: 400;
   text-align: center;
   margin: 33px 0 0 0;
+  cursor: pointer;
 }
 
 .top .search {

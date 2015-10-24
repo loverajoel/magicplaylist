@@ -9,7 +9,8 @@ import {
   PLAYLIST_REMOVE_TRACKS,
   PLAYLIST_CREATED,
   PLAYLIST_SAVING,
-  PLAYLIST_TRACK_NOT_FOUND
+  PLAYLIST_TRACK_NOT_FOUND,
+  SEARCH_RESET
 } from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
@@ -20,14 +21,14 @@ let _loading = false;
 let _lastPlaylist;
 
 class PlaylistStore extends EventEmitter {
-	constructor() {
-		super();
-		this.registerAtDispatcher();
-	}
+  constructor() {
+    super();
+    this.registerAtDispatcher();
+  }
 
-	getTracks() {
-		return _tracks;
-	}
+  getTracks() {
+    return _tracks;
+  }
 
   getMainTrack() {
     return _mainTrack;
@@ -41,31 +42,31 @@ class PlaylistStore extends EventEmitter {
     return _lastPlaylist;
   }
 
-	emitChange() {
-		this.emit(CHANGE_EVENT);
-	}
+  emitChange() {
+    this.emit(CHANGE_EVENT);
+  }
 
-	addChangeListener(callback) {
-		this.on(CHANGE_EVENT, callback);
-	}
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
 
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
 
-	registerAtDispatcher() {
-		Dispatcher.register((action) => {
-			const {type, tracks} = action;
+  registerAtDispatcher() {
+    Dispatcher.register((action) => {
+      const {type, tracks} = action;
 
-      switch(type) {
+      switch (type) {
 
-				case PLAYLIST_ADD_TRACKS: {
-					_tracks = tracks;
+        case PLAYLIST_ADD_TRACKS: {
+          _tracks = tracks;
           _mainTrack = action.mainTrack;
           _loading = false;
-					this.emitChange();
-					break;
-				}
+          this.emitChange();
+          break;
+        }
 
         case PLAYLIST_REMOVE_TRACK: {
           _tracks.splice(action.index, 1);
@@ -99,13 +100,21 @@ class PlaylistStore extends EventEmitter {
           break;
         }
 
-				default: {
-					break;
-				}
+        case SEARCH_RESET: {
+          _tracks = [];
+          _mainTrack = null;
+          _loading = false;
+          this.emitChange();
+          break;
+        }
 
-			}
-		});
-	}
+        default: {
+          break;
+        }
+
+      }
+    });
+  }
 }
 
 export default new PlaylistStore();

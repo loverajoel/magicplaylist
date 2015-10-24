@@ -1,7 +1,7 @@
 'use strict';
 
 import Dispatcher from '../dispatcher';
-import {SEARCH_ADD, SEARCH_REMOVE} from '../constants/constants';
+import {SEARCH_ADD, SEARCH_RESET} from '../constants/constants';
 
 let SearchActions = {
 
@@ -12,9 +12,9 @@ let SearchActions = {
     });
   },
 
-  removeSearch: () => {
+  resetSearch: () => {
     Dispatcher.dispatch({
-      type: SEARCH_REMOVE
+      type: SEARCH_RESET
     });
   }
 
