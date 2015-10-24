@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400+700);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 body {
@@ -28,6 +28,14 @@ div {
 .container {
   width: 100%;
   float: left;
+}
+
+strong {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: underline;
 }
 
 /* Search Containter Component */
@@ -118,7 +126,7 @@ div {
 
 .search-group .input-search:focus::-webkit-input-placeholder {
   text-align: left;
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 .search-group .input-search::-webkit-input-placeholder {
@@ -228,6 +236,7 @@ div {
 .playlist .info {
   width: 70%;
   margin: 133px auto 0;
+  text-align: center;
 }
 
 .info .track-name {
@@ -239,7 +248,7 @@ div {
 }
 
 .info .save-playlist {
-  width: 318px;
+  display: inline-block;
   height: 54px;
   background: #12FFCC;
   font-family: 'Source Sans Pro', sans-serif;
@@ -247,7 +256,7 @@ div {
   color: #125E4D;
   text-align: center;
   border-radius: 40px;
-  padding: 16px;
+  padding: 15px 30px;
   margin: 45px auto 0 auto;
   cursor: pointer;
 }
@@ -489,11 +498,14 @@ div {
 
 .alert-modal {
   width: 400px;
-  height: 400px;
+  min-height: 400px;
   position: absolute;
+  text-align: center;
   top: 50%;
   left: 50%;
   margin: -200px 0 0 -200px;
+  padding: 15px 0 30px;
+  box-sizing: border-box;
   background: #fff;
   border-radius: 5px;
   overflow: hidden;
@@ -512,6 +524,11 @@ div {
   top: 50%;
   right: 50%;
   margin: -40px -40px 0 0;
+}
+
+.alert-modal .alert-loading img {
+  width: 48px;
+  margin: -24px -24px 0 0;
 }
 
 .alert-fail {
@@ -547,17 +564,22 @@ div {
   font-size: 32px;
   color: #4C2EE6;
   text-align: center;
+  padding: 15px 0;
   width: 100%;
-  margin: 25px 0 15px 0;
   float: left;
 }
 
-.alert-share .share-subtitle {
+.alert-share .share-subtitle,
+.alert-share .share-cta {
   font-size: 18px;
   color: #370273;
   text-align: center;
   width: 100%;
   float: left;
+}
+.alert-share .share-cta {
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .alert-share .share-subtitle span {
@@ -596,18 +618,17 @@ div {
 }
 
 .alert-share .btn-done {
-  width: 190px;
   height: 54px;
   background: #12FFCC;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 18px;
   color: #125E4D;
   text-align: center;
+  display: inline-block;
   border-radius: 40px;
-  padding: 16px;
-  margin: 40px 0 0 105px;
+  padding: 15px 30px;
+  margin: 40px 0 0;
   cursor: pointer;
-  float: left;
 }
 
 

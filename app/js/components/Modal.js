@@ -74,7 +74,7 @@ class Modal extends Component {
                   </div>
 
                   <div>
-                      <button className='save' type='button' onClick={this._handleSave.bind(this)}>Save Playlist</button>
+                      <button className='save' type='button' onClick={this._handleSave.bind(this)}>Save playlist</button>
                   </div>
               </div>
          </div>

@@ -16,7 +16,7 @@ class Top extends Component {
 
   render() {
     return <div className='top'>
-                <div className='title'><span><b>Magic</b>Playlist /</span></div>
+                <div className='title'><span><strong>Magic</strong>Playlist /</span></div>
                 <div className='search'><SearchBox value={this.props.search} country={this.props.country}/></div>
             </div>
   }

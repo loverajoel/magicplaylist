@@ -30,8 +30,8 @@ class Alert extends Component {
   }
 
   _hanbleShareTW() {
-    let url = `https://twitter.com/intent/tweet?text=Listen the playlist that I just created
-    ${this.props.lastPlaylist}. Create yours in http://www.magicplaylist.co&hashtags=magicPlaylist`
+    let url = `https://twitter.com/intent/tweet?text=Checkout my new playlist on Spotify!
+    ${this.props.lastPlaylist}. Create yours on http://www.magicplaylist.co&hashtags=MagicPlaylist`
     open(
       url,
       'tshare',
@@ -42,9 +42,10 @@ class Alert extends Component {
 
   render() {
     var share = <div className='alert-share'>
-                  <span className='share-title'>High Five {this.props.username}!</span>
-                  <span className='share-subtitle'>Your playlist is now on Spotify <a href={this.props.lastPlaylist} target="_blank">Go for it</a></span>
-                  <span className='share-message'>Now share it with your friends</span>
+                  <span className='share-title'>High five {this.props.username}!</span>
+                  <span className='share-subtitle'>Your playlist is now on Spotify.</span>
+                  <span className='share-cta'>Go to your public playlists or <a href={this.props.lastPlaylist} target="_blank">play it online</a>.</span>
+                  <span className='share-message'>Share it with your friends</span>
                   <div className='share'>
                     <div className='facebook source' onClick={this._hanbleShareFB.bind(this)}>
                       <img src='img/facebook.svg'/>
@@ -53,12 +54,12 @@ class Alert extends Component {
                       <img src='img/twitter.svg'/>
                     </div>
                   </div>
-                  <div className='btn-done' onClick={this._handleDone}>Im done, Thanks!</div>
+                  <div className='btn-done' onClick={this._handleDone}>Close window</div>
                 </div>;
     return  <div className='alert-shadow'>
               <div className='alert-modal'>
                 {this.props.loading ? <div className='alert-loading'><img src='img/audio.svg'/></div> : null}
-                {this.props.fail ? <div className='alert-fail'><span>opss! error!</span><img src='img/fail.svg'/></div> : null}
+                {this.props.fail ? <div className='alert-fail'><span>Huston, we have a problem here! :(</span><img src='img/fail.svg'/></div> : null}
                 {this.props.share ? share : null}
               </div>
             </div>
