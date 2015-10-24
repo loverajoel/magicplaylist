@@ -31,7 +31,7 @@ class Alert extends Component {
 
   _hanbleShareTW() {
     let url = `https://twitter.com/intent/tweet?text=Checkout my new playlist on Spotify!
-    ${this.props.lastPlaylist}. Create yours on http://www.magicplaylist.co&hashtags=MagicPlaylist`
+    ${this.props.lastPlaylist}. Create yours on http://www.magicplaylist.co&hashtags=MagicPlaylist`;
     open(
       url,
       'tshare',
@@ -44,7 +44,7 @@ class Alert extends Component {
     var share = <div className='alert-share'>
                   <span className='share-title'>High five {this.props.username}!</span>
                   <span className='share-subtitle'>Your playlist is now on Spotify.</span>
-                  <span className='share-cta'>Go to your public playlists or <a href={this.props.lastPlaylist} target="_blank">play it online</a>.</span>
+                  <span className='share-cta'>Go to your playlists lists or <a href={this.props.lastPlaylist} target="_blank">play it online</a>.</span>
                   <span className='share-message'>Share it with your friends</span>
                   <div className='share'>
                     <div className='facebook source' onClick={this._hanbleShareFB.bind(this)}>
