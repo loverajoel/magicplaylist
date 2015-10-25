@@ -6,10 +6,10 @@ import {magic} from './Magic';
 let client = Client.instance;
 
 client.settings = {
-  clientId: '898cb61111804d2c8bf225394482e209',
-  secretId: 'b1efa6e07d83404fae8f7e5178349d64',
+  clientId: '87e58d70ae454ae7b815b4c8a1556a98',
+  secretId: '52bf6c6b92a04e489e8899fc0d291d5f',
   scopes: 'playlist-modify-public user-read-private playlist-modify-private',
-  redirect_uri: 'http://magicplaylist.co/login/index.html'
+  redirect_uri: 'http://localhost:3000/app/login/index.html'
 };
 
 let settings = {

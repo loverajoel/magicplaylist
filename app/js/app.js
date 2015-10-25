@@ -70,72 +70,57 @@ class App extends Component {
 
   render() {
     return <div className='container'>
-              <ReactCSSTransitionGroup
-                transitionName='fade'
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-              >
-              { this.state.searching ?
-                <Top
-                  search={this.state.text}
-                  country={this.state.country}
-                /> : null
-              }
+              <ReactCSSTransitionGroup transitionName='fade'>
+              { this.state.searching ? this.renderTop() : null }
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup
-                transitionName='fadeOut'
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-              >
-              { !this.state.searching ?
-                <div
-                  className='search-container'
-                ><Title/><SearchBox country={this.state.country}/><Tip/></div> : null
-              }
+              <ReactCSSTransitionGroup transitionName='fadeOut'>
+              { !this.state.searching ? this.renderSearch() : null }
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup
-                transitionName='fade'
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-              >
-              { this.state.searching && !this.state.loading ?
-                <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/> : null
-              }
+              <ReactCSSTransitionGroup transitionName='fade'>
+              { this.state.searching && !this.state.loading ? this.renderPlaylist() : null }
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup
-                transitionName='fade'
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-              >
+              <ReactCSSTransitionGroup transitionName='fade'>
               { this.state.loading ? <Loading/> : null }
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup
-                transitionName='fade'
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-              >
-              { this.state.modalOpen ?
-                <Modal user={this.state.user} token={this.state.token}/> : null
-              }
+              <ReactCSSTransitionGroup transitionName='fade'>
+              { this.state.modalOpen ? this.renderModal() : null }
               </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup
-                transitionName='fade'
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-              >
-              { this.state.alertOpen ?
-                <Alert
-                  username={this.state.user ? this.state.user._display_name : null}
-                  loading={this.state.alert.loading}
-                  fail={this.state.alert.fail}
-                  share={this.state.alert.share}
-                  limit={this.state.alert.limit}
-                  lastPlaylist={this.state.lastPlaylist}
-                /> : null
-              }
+              <ReactCSSTransitionGroup transitionName='fade' >
+              { this.state.alertOpen ? this.renderAlert() : null }
               </ReactCSSTransitionGroup>
               <Footer tracks={this.state.tracks.length}/>
             </div>;
+  }
+
+  renderTop() {
+    return <Top search={this.state.text} country={this.state.country}/>;
+  }
+
+  renderSearch() {
+    return <div className='search-container'>
+            <Title/>
+            <SearchBox country={this.state.country}/>
+            <Tip/>
+          </div>;
+  }
+
+  renderPlaylist() {
+    return <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/>;
+  }
+
+  renderModal() {
+    return <Modal user={this.state.user} token={this.state.token}/>;
+  }
+
+  renderAlert() {
+    return <Alert
+              username={this.state.user ? this.state.user._display_name : null}
+              loading={this.state.alert.loading}
+              fail={this.state.alert.fail}
+              share={this.state.alert.share}
+              limit={this.state.alert.limit}
+              lastPlaylist={this.state.lastPlaylist}
+            />;
   }
 }
 
