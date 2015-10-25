@@ -13,6 +13,7 @@ import Title from './components/Title';
 import Modal from './components/Modal';
 import Loading from './components/Loading';
 import Alert from './components/Alert';
+import Tip from './components/Tip';
 
 import SearchStore from './stores/SearchStore';
 import PlaylistStore from './stores/PlaylistStore';
@@ -89,7 +90,7 @@ class App extends Component {
               { !this.state.searching ?
                 <div
                   className='search-container'
-                ><Title/><SearchBox country={this.state.country}/></div> : null
+                ><Title/><SearchBox country={this.state.country}/><Tip/></div> : null
               }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup
