@@ -45,6 +45,12 @@ let PlaylistActions = {
           tracks: []
         });
         ga('send', 'event', 'event', 'playlist-search', '429');
+      } else if (error.response.status === 401) {
+        Dispatcher.dispatch({
+          type: PLAYLIST_LIMIT_429,
+          tracks: []
+        });
+        ga('send', 'event', 'event', 'playlist-search', '401');
       } else {
         Dispatcher.dispatch({
           type: PLAYLIST_FAILED

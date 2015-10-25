@@ -27,7 +27,9 @@ let Spotify = {
   trackList: [],
 
   search: (text, country, callback, fail) => {
-    client.token = localStorage.magic_token;
+    if (Number(localStorage.magic_token_expires) > Date.now()) {
+      client.token = localStorage.magic_token;
+    }
     Spotify.trackList = [];
     track.search(text, {limit: 1, market: country}).then((trackCollection) => {
       if (trackCollection.length) {
