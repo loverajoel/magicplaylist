@@ -1,3 +1,4 @@
+'use strict';
 // Magic algorithm
 
 let closest = function(list, x, cant) {
