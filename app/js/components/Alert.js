@@ -44,7 +44,10 @@ class Alert extends Component {
     var share = <div className='alert-share'>
                   <span className='share-title'>High five {this.props.username}!</span>
                   <span className='share-subtitle'>Your playlist is now on Spotify.</span>
-                  <span className='share-cta'>Go to your playlists lists or <a href={this.props.lastPlaylist} target="_blank">play it online</a>.</span>
+                  <span className='share-cta'>
+                    Go to your playlists lists or
+                    <a href={this.props.lastPlaylist} target='_blank'>play it online</a>.
+                  </span>
                   <span className='share-message'>Share it with your friends</span>
                   <div className='share'>
                     <div className='facebook source' onClick={this._hanbleShareFB.bind(this)}>
@@ -56,13 +59,18 @@ class Alert extends Component {
                   </div>
                   <div className='btn-done' onClick={this._handleDone}>Close window</div>
                 </div>;
-    return  <div className='alert-shadow'>
+    return <div className='alert-shadow'>
               <div className='alert-modal'>
-                {this.props.loading ? <div className='alert-loading'><img src='img/audio.svg'/></div> : null}
-                {this.props.fail ? <div className='alert-fail'><span>Huston, we have a problem here! :(</span><img src='img/fail.svg'/></div> : null}
-                {this.props.share ? share : null}
+                { this.props.loading ?
+                  <div className='alert-loading'><img src='img/audio.svg'/></div> : null
+                }
+                { this.props.fail ?
+                  <div className='alert-fail'><span>Huston, we have a problem here! :(</span>
+                  <img src='img/fail.svg'/></div> : null
+                }
+                { this.props.share ? share : null}
               </div>
-            </div>
+            </div>;
   }
 }
 

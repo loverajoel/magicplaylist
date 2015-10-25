@@ -60,7 +60,7 @@ class SearchBox extends Component {
                     defaultValue={this.state.initialValue}
                     onFocus={this._handleFocus.bind(this)}/>
               </div>
-            </div>
+            </div>;
   }
 }
 

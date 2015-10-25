@@ -17,7 +17,7 @@ class Track extends Component {
 
   render() {
     let track = this.props.track;
-    return  <li>
+    return <li>
               <div className='track-name'>{track.name}, {track.artists.first().name}</div>
               <div className='remove' onClick={this._remove.bind(this)}>
                 <img src='img/remove.svg'/>
@@ -28,7 +28,7 @@ class Track extends Component {
                   ptag={this.props.ptag.bind(this)}
                   stopAll={this.props.stopAll.bind(this)}/>
               </div>
-            </li>
+            </li>;
   }
 }
 

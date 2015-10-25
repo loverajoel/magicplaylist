@@ -36,13 +36,20 @@ let alternate = function(list) {
     // Search the next item different, remove and return this.
     let serchPrevDifferent = function(number, index) {
       for (let i = index - 1; i >= 0; i--) {
-        if (list_process[i] && list_process[i].artists.first().id !== number && list_process[i].artists.first().id !== list_process[index].artists.first().id && number !== list_process[i-1].artists.first().id && i) {
+        if (list_process[i] &&
+            list_process[i].artists.first().id !== number &&
+            list_process[i].artists.first().id !== list_process[index].artists.first().id &&
+            number !== list_process[i - 1].artists.first().id &&
+            i)
+        {
           return list_process.splice(i, 1)[0];
         }
       };
     };
     // Check if the current item and the prev are equals
-    if (list_process[index - 1] && list_process[index - 1].artists.first().id === list_process[index].artists.first().id) {
+    if (list_process[index - 1] &&
+        list_process[index - 1].artists.first().id === list_process[index].artists.first().id)
+    {
       let next = serchNextDifferent(list_process[index].artists.first().id);
       if (next) {
         list_process.splice(index, 0, next);

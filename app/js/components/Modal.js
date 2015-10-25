@@ -42,7 +42,10 @@ class Modal extends Component {
   }
 
   _handleSave() {
-    if (this.props.token && this.props.user && Number(localStorage.magic_token_expires) > Date.now()) {
+    if (this.props.token &&
+        this.props.user &&
+        Number(localStorage.magic_token_expires) > Date.now())
+    {
       this._savePlaylist();
     } else {
       login().then(() => {
@@ -61,23 +64,45 @@ class Modal extends Component {
   render() {
     return <div className='modal'>
               <div className='modal-container'>
-                  <div className='close-modal'><img src='img/close.svg' onClick={this._handleClose}/></div>
+                  <div className='close-modal'>
+                    <img src='img/close.svg' onClick={this._handleClose}/>
+                  </div>
                   <div>
-                      <input type='text' placeholder='Name' className='playlist-name' ref='playlistName'/>
+                    <input
+                      type='text'
+                      placeholder='Name'
+                      className='playlist-name'
+                      ref='playlistName'
+                    />
                   </div>
                   <span className='status'>Playlist Status</span>
                   <div className='radio-container'>
-                      <input id='true' type='radio' name='public' value='true' onChange={this._handlePublic.bind(this, true)} defaultChecked={true}/>
-                      <label htmlFor='true'>Public</label>
-                      <input id='false' type='radio' name='public' value='false' onChange={this._handlePublic.bind(this, true)}/>
-                      <label htmlFor='false'>Private</label>
+                    <input id='true'
+                      type='radio'
+                      name='public'
+                      value='true'
+                      onChange={this._handlePublic.bind(this, true)}
+                      defaultChecked={true}
+                    />
+                    <label htmlFor='true'>Public</label>
+                    <input
+                      id='false'
+                      type='radio'
+                      name='public'
+                      value='false'
+                      onChange={this._handlePublic.bind(this, true)}
+                    />
+                    <label htmlFor='false'>Private</label>
                   </div>
-
                   <div>
-                      <button className='save' type='button' onClick={this._handleSave.bind(this)}>Save playlist</button>
+                    <button
+                      className='save'
+                      type='button'
+                      onClick={this._handleSave.bind(this)}
+                    >Save playlist</button>
                   </div>
               </div>
-         </div>
+         </div>;
   }
 }
 

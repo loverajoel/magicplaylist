@@ -11,7 +11,7 @@ class Playlist extends Component {
     super(props);
     this.state = {
       audios: []
-    }
+    };
   }
 
   _handleSave() {
@@ -20,7 +20,7 @@ class Playlist extends Component {
   }
 
   _add(elem) {
-    this.state.audios.push(elem)
+    this.state.audios.push(elem);
   }
 
   _stopAll() {
@@ -30,21 +30,43 @@ class Playlist extends Component {
   }
 
   render() {
-    var tracks = this.props.tracks.map((track, i)=>{
-        return  <Track track={track} key={'track_'+track._id} index={i} ptag={this._add.bind(this)} stopAll={this._stopAll.bind(this)}/>
+    var tracks = this.props.tracks.map((track, i) => {
+      return <Track
+                track={track}
+                key={'track_' + track._id}
+                index={i}
+                ptag={this._add.bind(this)}
+                stopAll={this._stopAll.bind(this)}
+              />;
     });
-    return  <div className='playlist'>
+    return <div className='playlist'>
               <div className='info'>
-              {!this.props.tracks.length ? <div className='track-name'>Hey! The track doesn't exist! :(</div> : null}
-                {this.props.mainTrack ? <div className='track-name'><strong>{this.props.mainTrack.name}</strong>, {this.props.mainTrack.artists.first().name}</div> :  null}
-                {this.props.tracks.length ? <div className='save-playlist' onClick={this._handleSave}>Save playlist on Spotify</div>: null}
+                { !this.props.tracks.length ?
+                  <div className='track-name'>Hey! The track doesn't exist! :(</div> : null
+                }
+                { this.props.mainTrack ?
+                  <div className='track-name'>
+                    <strong>
+                      {this.props.mainTrack.name}
+                    </strong>, {this.props.mainTrack.artists.first().name}
+                  </div> :  null
+                }
+                { this.props.tracks.length ?
+                  <div className='save-playlist' onClick={this._handleSave}>
+                    Save playlist on Spotify
+                  </div> : null
+                }
               </div>
               <ul className='trackList'>
-              <ReactCSSTransitionGroup transitionName="fadeList" transitionEnterTimeout={0} transitionLeaveTimeout={0} >
+              <ReactCSSTransitionGroup
+                transitionName='fadeList'
+                transitionEnterTimeout={0}
+                transitionLeaveTimeout={0}
+              >
                 {tracks}
               </ReactCSSTransitionGroup>
               </ul>
-            </div>
+            </div>;
   }
 }
 

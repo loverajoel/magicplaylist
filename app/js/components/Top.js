@@ -22,7 +22,7 @@ class Top extends Component {
                 <div className='search'>
                   <SearchBox value={this.props.search} country={this.props.country}/>
                   </div>
-            </div>
+            </div>;
   }
 }
 

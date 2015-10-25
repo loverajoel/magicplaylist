@@ -9,37 +9,37 @@ let CHANGE_EVENT = 'change';
 let _isOpen = false;
 
 class SearchStore extends EventEmitter {
-	constructor() {
-		super();
-		this.registerAtDispatcher();
-	}
+  constructor() {
+    super();
+    this.registerAtDispatcher();
+  }
 
-	isOpen() {
-		return _isOpen;
-	}
+  isOpen() {
+    return _isOpen;
+  }
 
-	emitChange() {
-		this.emit(CHANGE_EVENT);
-	}
+  emitChange() {
+    this.emit(CHANGE_EVENT);
+  }
 
-	addChangeListener(callback) {
-		this.on(CHANGE_EVENT, callback);
-	}
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
 
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
 
-	registerAtDispatcher() {
-		Dispatcher.register((action) => {
+  registerAtDispatcher() {
+    Dispatcher.register((action) => {
 
-			switch(action.type) {
+      switch (action.type) {
 
         case MODAL_OPEN: {
-					_isOpen = true;
-					this.emitChange();
-					break;
-				}
+          _isOpen = true;
+          this.emitChange();
+          break;
+        }
 
         case MODAL_CLOSE: {
           _isOpen = false;
@@ -47,12 +47,12 @@ class SearchStore extends EventEmitter {
           break;
         }
 
-				default: {
-					break;
-				}
-			}
-		});
-	}
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
 }
 

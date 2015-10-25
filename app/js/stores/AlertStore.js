@@ -18,7 +18,7 @@ let _status = {
   loading: false,
   fail: false,
   share: false
-}
+};
 
 class AlertStore extends EventEmitter {
   constructor() {
