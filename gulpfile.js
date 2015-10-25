@@ -20,22 +20,29 @@ var isProduction = args.production === true;
 
 var config = {
   entryFile: './app/js/app.js',
-  outputDir: './dist/',
+  outputDir: './dist/js',
   outputFile: 'build.js'
 };
 
 // clean the output directory
-gulp.task('clean', function(cb){
-    rimraf(config.outputDir, cb);
+gulp.task('clean', function(cb) {
+  rimraf(config.outputDir, cb);
 });
 
 var bundler;
 function getBundler() {
   if (!bundler) {
     if (isProduction) {
-      bundler = watchify(browserify([require.resolve("whatwg-fetch/fetch"), require.resolve("core-js/fn/symbol"),require.resolve("core-js/fn/promise"), config.entryFile], _.extend({ debug: true }, watchify.args)));
+      bundler = watchify(
+        browserify([
+          require.resolve('whatwg-fetch/fetch'),
+          require.resolve('core-js/fn/symbol'),
+          require.resolve('core-js/fn/promise'),
+          config.entryFile], _.extend({ debug: true }, watchify.args)));
     } else {
-      bundler = watchify(browserify(config.entryFile, _.extend({ debug: !isProduction }, watchify.args)));
+      bundler = watchify(
+        browserify(config.entryFile, _.extend({ debug: !isProduction }, watchify.args))
+        );
     }
   }
   return bundler;
@@ -53,21 +60,21 @@ function bundle() {
 }
 
 gulp.task('css', function() {
-    gulp.src('./app/styles/style.css')
-      .pipe(minifyCss())
-      .pipe(gulp.dest('./dist/'))
+  gulp.src('./app/styles/style.css')
+    .pipe(minifyCss())
+    .pipe(gulp.dest('./dist/style/'));
 });
 
 gulp.task('img', function() {
-    gulp.src('./app/img/*')
-      .pipe(gulp.dest('./dist/img'))
+  gulp.src('./app/img/*')
+    .pipe(gulp.dest('./dist/img'));
 });
 
 gulp.task('html', function() {
-    gulp.src('./app/index.html')
-      .pipe(gulp.dest('./dist/'))
-    gulp.src('./app/login.html')
-      .pipe(gulp.dest('./dist/'))
+  gulp.src('./app/index.html')
+    .pipe(gulp.dest('./dist/'));
+  gulp.src('./app/login.html')
+    .pipe(gulp.dest('./dist/login'));
 });
 
 gulp.task('build-persistent-deploy', ['clean', 'css', 'img', 'html'], function() {
@@ -95,12 +102,12 @@ gulp.task('watch', ['build-persistent'], function() {
   });
 
   getBundler().on('update', function() {
-    gulp.start('build-persistent')
+    gulp.start('build-persistent');
   });
 });
 
 // WEB SERVER
-gulp.task('serve', function () {
+gulp.task('serve', function() {
   browserSync({
     server: {
       baseDir: './'
