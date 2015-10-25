@@ -13,6 +13,7 @@ export default {
   PLAYLIST_FAILED: 'paylist-failded',
   PLAYLIST_TRACK_NOT_FOUND: 'paylist-track-not-found',
   PLAYLIST_SAVE_FAIL: 'paylist-save-fail',
+  PLAYLIST_LIMIT_429: 'playlist-limit',
   MODAL_OPEN: 'modal-open',
   MODAL_CLOSE: 'modal-close',
   USER_LOGED: 'user-loged',

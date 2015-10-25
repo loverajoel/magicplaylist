@@ -10,7 +10,10 @@ import {
   PLAYLIST_SAVING,
   USER_TOKEN_ERROR,
   PLAYLIST_TRACK_NOT_FOUND,
-  PLAYLIST_SAVE_FAIL
+  PLAYLIST_SAVE_FAIL,
+  PLAYLIST_LIMIT_429,
+  SEARCH_RESET,
+  PLAYLIST_FAILED
 } from '../constants/constants';
 import Spotify from '../core/Spotify';
 import {login} from './UserActions';
@@ -35,6 +38,22 @@ let PlaylistActions = {
         });
         ga('send', 'event', 'event', 'playlist-search', 'no-result');
       }
+    }, (error) => {
+      if (error.response.status === 429) {
+        Dispatcher.dispatch({
+          type: PLAYLIST_LIMIT_429,
+          tracks: []
+        });
+        ga('send', 'event', 'event', 'playlist-search', '429');
+      } else {
+        Dispatcher.dispatch({
+          type: PLAYLIST_FAILED
+        });
+        ga('send', 'event', 'event', 'playlist-search', 'error');
+      }
+      Dispatcher.dispatch({
+        type: SEARCH_RESET
+      });
     });
   },
 

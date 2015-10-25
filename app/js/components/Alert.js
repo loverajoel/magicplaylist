@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import {close} from '../actions/AlertActions';
+import {login} from '../actions/UserActions';
 
 class Alert extends Component {
 
@@ -17,6 +18,11 @@ class Alert extends Component {
   _handleDone() {
     close();
     ga('send', 'event', 'button', 'click', 'alert-close');
+  }
+
+  _handleLogin() {
+    login();
+    close();
   }
 
   _hanbleShareFB() {
@@ -41,7 +47,7 @@ class Alert extends Component {
   }
 
   render() {
-    var share = <div className='alert-share'>
+    let share = <div className='alert-share'>
                   <span className='share-title'>High five {this.props.username}!</span>
                   <span className='share-subtitle'>Your playlist is now on Spotify.</span>
                   <span className='share-cta'>
@@ -61,6 +67,14 @@ class Alert extends Component {
                   </div>
                   <div className='btn-done' onClick={this._handleDone}>Close window</div>
                 </div>;
+
+    let limit = <div className='alert-limit'>
+                  <span className='limit-title'>Ohh to many people here!</span>
+                  <span className='limit-subtitle'>Try again in a seconds or login for ensure your search.</span>
+                  <div className='btn-close' onClick={this._handleDone}>Close</div>
+                  <div className='btn-done' onClick={this._handleLogin}>Login</div>
+                </div>;
+
     return <div className='alert-shadow'>
               <div className='alert-modal'>
                 { this.props.loading ?
@@ -71,6 +85,7 @@ class Alert extends Component {
                   <img src='img/fail.svg'/></div> : null
                 }
                 { this.props.share ? share : null}
+                { this.props.limit ? limit : null}
               </div>
             </div>;
   }

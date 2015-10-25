@@ -26,7 +26,7 @@ let total = 0;
 let Spotify = {
   trackList: [],
 
-  search: (text, country, callback) => {
+  search: (text, country, callback, fail) => {
     client.token = localStorage.magic_token;
     Spotify.trackList = [];
     track.search(text, {limit: 1}).then((trackCollection) => {
@@ -55,13 +55,13 @@ let Spotify = {
               } else {
                 total -= 1;
               }
-            }).catch((error) => {});
+            }).catch(fail);
           };
-        });
+        }).catch(fail);
       } else {
         callback([]);
       }
-    });
+    }).catch(fail);;
   },
 
   login: () => {

@@ -8,7 +8,8 @@ import {
   PLAYLIST_SAVING,
   PLAYLIST_CREATED,
   PLAYLIST_FAILED,
-  USER_TOKEN_ERROR
+  USER_TOKEN_ERROR,
+  PLAYLIST_LIMIT_429
 } from '../constants/constants';
 
 let CHANGE_EVENT = 'change';
@@ -17,7 +18,8 @@ let _isOpen = false;
 let _status = {
   loading: false,
   fail: false,
-  share: false
+  share: false,
+  limit: false
 };
 
 class AlertStore extends EventEmitter {
@@ -93,6 +95,16 @@ class AlertStore extends EventEmitter {
           _status.loading = false;
           _status.share = false;
           _status.fail = true;
+          this.emitChange();
+          break;
+        }
+
+        case PLAYLIST_LIMIT_429: {
+          _isOpen = true;
+          _status.loading = false;
+          _status.share = false;
+          _status.fail = false;
+          _status.limit = true;
           this.emitChange();
           break;
         }

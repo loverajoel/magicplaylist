@@ -124,10 +124,11 @@ class App extends Component {
               >
               { this.state.alertOpen ?
                 <Alert
-                  username={this.state.user._display_name}
+                  username={this.state.user ? this.state.user._display_name : null}
                   loading={this.state.alert.loading}
                   fail={this.state.alert.fail}
                   share={this.state.alert.share}
+                  limit={this.state.alert.limit}
                   lastPlaylist={this.state.lastPlaylist}
                 /> : null
               }
