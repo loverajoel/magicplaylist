@@ -63,7 +63,7 @@ let Spotify = {
       } else {
         callback([]);
       }
-    }).catch(fail);;
+    }).catch(fail);
   },
 
   login: () => {

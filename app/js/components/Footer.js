@@ -24,8 +24,8 @@ class Footer extends Component {
                 </a> / Designed by <a
                   href='https://dribbble.com/curva'
                   target='_blank'
-                  onClick={this._handleClick.bind(this, '@aschelstraete')}>@aschelstraete</a>
-                   / <a
+                  onClick={this._handleClick.bind(this, '@aschelstraete')}>@aschelstraete
+                  </a> / <a
                   href='https://github.com/loverajoel/magicplaylist'
                   onClick={this._handleClick.bind(this, 'github')}
                   target='_blank'
