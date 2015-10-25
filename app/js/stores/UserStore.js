@@ -11,14 +11,14 @@ let _token = localStorage.getItem('magic_token') || null;
 let _country = 'US';
 
 class SearchStore extends EventEmitter {
-	constructor() {
-		super();
-		this.registerAtDispatcher();
-	}
+  constructor() {
+    super();
+    this.registerAtDispatcher();
+  }
 
-	getUser() {
-		return _user;
-	}
+  getUser() {
+    return _user;
+  }
 
   getToken() {
     return _token;
@@ -28,31 +28,31 @@ class SearchStore extends EventEmitter {
     return _country;
   }
 
-	emitChange() {
-		this.emit(CHANGE_EVENT);
-	}
+  emitChange() {
+    this.emit(CHANGE_EVENT);
+  }
 
-	addChangeListener(callback) {
-		this.on(CHANGE_EVENT, callback);
-	}
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
 
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
 
-	registerAtDispatcher() {
-		Dispatcher.register((action) => {
+  registerAtDispatcher() {
+    Dispatcher.register((action) => {
 
-			switch(action.type) {
+      switch (action.type) {
 
         case USER_LOGED: {
-					_user = action.data;
-					this.emitChange();
-					break;
-				}
+          _user = action.data;
+          this.emitChange();
+          break;
+        }
 
         case USER_TOKEN: {
-          _token = action.token;
+          _token = action.data;
           this.emitChange();
           break;
         }
@@ -69,12 +69,12 @@ class SearchStore extends EventEmitter {
           break;
         }
 
-				default: {
-					break;
-				}
-			}
-		});
-	}
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
 }
 

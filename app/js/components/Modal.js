@@ -17,10 +17,10 @@ class Modal extends Component {
     this.state = {
       playlistName: '',
       playlistPublic: true
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     ReactDOM.findDOMNode(this.refs.playlistName).focus();
   }
 
@@ -42,7 +42,7 @@ class Modal extends Component {
   }
 
   _handleSave() {
-    if (this.props.token && this.props.user) {
+    if (this.props.token && this.props.user && Number(localStorage.magic_token_expires) > Date.now()) {
       this._savePlaylist();
     } else {
       login().then(() => {
@@ -55,7 +55,7 @@ class Modal extends Component {
   _handlePublic(status) {
     this.setState({
       playlistPublic: status
-    })
+    });
   }
 
   render() {

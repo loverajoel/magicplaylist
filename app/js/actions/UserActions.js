@@ -28,21 +28,21 @@ let UserActions = {
 
   getCountry: () => {
     let checkStatus = (response) => {
-        if (response.status >= 200 && response.status < 300) {
-            return response;
-        } else {
-            var error = new Error(response.statusText);
-            error.response = response;
-            throw error;
-        }
-    }
+      if (response.status >= 200 && response.status < 300) {
+        return response;
+      } else {
+        var error = new Error(response.statusText);
+        error.response = response;
+        throw error;
+      }
+    };
 
     let parseJSON = (response) => {
-        return response.json();
-    }
+      return response.json();
+    };
 
     fetch('http://ip-api.com/json', {
-        method: 'GET'
+      method: 'GET'
     }).then(checkStatus)
     .then(parseJSON)
     .then((response) => {

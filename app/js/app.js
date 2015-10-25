@@ -36,7 +36,7 @@ let getAppState = () => {
     alert: AlertStore.status(),
     country: UserStore.getCountry(),
     lastPlaylist: PlaylistStore.getLastPlaylist()
-  }
+  };
 };
 
 class App extends Component {

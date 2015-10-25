@@ -21,41 +21,41 @@ let _status = {
 }
 
 class AlertStore extends EventEmitter {
-	constructor() {
-		super();
-		this.registerAtDispatcher();
-	}
+  constructor() {
+    super();
+    this.registerAtDispatcher();
+  }
 
-	isOpen() {
-		return _isOpen;
-	}
+  isOpen() {
+    return _isOpen;
+  }
 
   status() {
     return _status;
   }
 
-	emitChange() {
-		this.emit(CHANGE_EVENT);
-	}
+  emitChange() {
+    this.emit(CHANGE_EVENT);
+  }
 
-	addChangeListener(callback) {
-		this.on(CHANGE_EVENT, callback);
-	}
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
 
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
 
-	registerAtDispatcher() {
-		Dispatcher.register((action) => {
+  registerAtDispatcher() {
+    Dispatcher.register((action) => {
 
-			switch(action.type) {
+      switch (action.type) {
 
         case ALERT_OPEN: {
-					_isOpen = true;
-					this.emitChange();
-					break;
-				}
+          _isOpen = true;
+          this.emitChange();
+          break;
+        }
 
         case ALERT_CLOSE: {
           _isOpen = false;
@@ -66,6 +66,7 @@ class AlertStore extends EventEmitter {
         case PLAYLIST_SAVING: {
           _isOpen = true;
           _status.loading = true;
+          _status.share = false;
           this.emitChange();
           break;
         }
@@ -96,12 +97,12 @@ class AlertStore extends EventEmitter {
           break;
         }
 
-				default: {
-					break;
-				}
-			}
-		});
-	}
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
 }
 
