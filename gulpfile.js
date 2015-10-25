@@ -62,7 +62,7 @@ function bundle() {
 gulp.task('css', function() {
   gulp.src('./app/styles/style.css')
     .pipe(minifyCss())
-    .pipe(gulp.dest('./dist/style/'));
+    .pipe(gulp.dest('./dist/styles/'));
 });
 
 gulp.task('img', function() {
@@ -73,7 +73,7 @@ gulp.task('img', function() {
 gulp.task('html', function() {
   gulp.src('./app/index.html')
     .pipe(gulp.dest('./dist/'));
-  gulp.src('./app/login.html')
+  gulp.src('./app/login/index.html')
     .pipe(gulp.dest('./dist/login'));
 });
 
