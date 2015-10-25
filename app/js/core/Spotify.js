@@ -29,7 +29,7 @@ let Spotify = {
   search: (text, country, callback, fail) => {
     client.token = localStorage.magic_token;
     Spotify.trackList = [];
-    track.search(text, {limit: 1, market: US}).then((trackCollection) => {
+    track.search(text, {limit: 1, market: 'US'}).then((trackCollection) => {
       if (trackCollection.length) {
         trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
           relatedArtists = relatedArtists.slice(0, settings.artists - 1);
