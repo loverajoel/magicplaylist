@@ -27,32 +27,39 @@ let UserActions = {
   },
 
   getCountry: () => {
-    let checkStatus = (response) => {
-      if (response.status >= 200 && response.status < 300) {
-        return response;
-      } else {
-        var error = new Error(response.statusText);
-        error.response = response;
-        throw error;
-      }
-    };
-
-    let parseJSON = (response) => {
-      return response.json();
-    };
-
-    fetch('http://ip-api.com/json', {
-      method: 'GET'
-    }).then(checkStatus)
-    .then(parseJSON)
-    .then((response) => {
+    if (localStorage.magic_country) {
       Dispatcher.dispatch({
         type: USER_COUNTRY,
-        data: response.countryCode
+        data: 'AR'
       });
-    });
-  }
+    } else {
+      let checkStatus = (response) => {
+        if (response.status >= 200 && response.status < 300) {
+          return response;
+        } else {
+          var error = new Error(response.statusText);
+          error.response = response;
+          throw error;
+        }
+      };
 
+      let parseJSON = (response) => {
+        return response.json();
+      };
+
+      fetch('http://ip-api.com/json', {
+        method: 'GET'
+      }).then(checkStatus)
+      .then(parseJSON)
+      .then((response) => {
+        localStorage.magic_country = response.countryCode;
+        Dispatcher.dispatch({
+          type: USER_COUNTRY,
+          data: response.countryCode
+        });
+      });
+    }
+  }
 };
 
 export default UserActions;

@@ -8,7 +8,7 @@ let CHANGE_EVENT = 'change';
 
 let _user = JSON.parse(localStorage.getItem('magic_user')) || null;
 let _token = localStorage.getItem('magic_token') || null;
-let _country = 'US';
+let _country = localStorage.getItem('magic_country') || 'US';
 
 class SearchStore extends EventEmitter {
   constructor() {

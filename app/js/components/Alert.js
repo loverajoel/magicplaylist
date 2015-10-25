@@ -45,8 +45,10 @@ class Alert extends Component {
                   <span className='share-title'>High five {this.props.username}!</span>
                   <span className='share-subtitle'>Your playlist is now on Spotify.</span>
                   <span className='share-cta'>
-                    Go to your playlists lists or
-                    <a href={this.props.lastPlaylist} target='_blank'>play it online</a>.
+                    Go to your playlists lists or <a
+                      href={this.props.lastPlaylist}
+                      target='_blank'
+                    >play it online</a>.
                   </span>
                   <span className='share-message'>Share it with your friends</span>
                   <div className='share'>
