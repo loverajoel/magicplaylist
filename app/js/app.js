@@ -115,10 +115,7 @@ class App extends Component {
   renderAlert() {
     return <Alert
               username={this.state.user ? this.state.user._display_name : null}
-              loading={this.state.alert.loading}
-              fail={this.state.alert.fail}
-              share={this.state.alert.share}
-              limit={this.state.alert.limit}
+              status={this.state.alert}
               lastPlaylist={this.state.lastPlaylist}
             />;
   }
