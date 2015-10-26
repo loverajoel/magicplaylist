@@ -29,7 +29,7 @@
     "react": "latest",
     "react-addons-css-transition-group": "^0.14.0",
     "react-dom": "^0.14.0",
-    "spotify-sdk": "0.0.26"
+    "spotify-sdk": "0.0.27"
   },
   "scripts": {
     "dev": "gulp watch",
