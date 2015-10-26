@@ -35,30 +35,34 @@ let Spotify = {
       if (trackCollection.length) {
         trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
           relatedArtists = relatedArtists.slice(0, settings.artists - 1);
-          relatedArtists.push(trackCollection.first().artists.first());
-          for (var i = relatedArtists.length - 1; i >= 0; i--) {
-            total = relatedArtists.length - 1;
-            relatedArtists[i].topTracks({country: country}).then((tracks) => {
-              if (tracks.length) {
-                for (var e = tracks.length - 1; e >= 0; e--) {
-                  Spotify.trackList.push(tracks[e]);
-                  if (e === 0) {
-                    total -= 1;
-                    if (total === 0) {
-                      callback(
-                        magic(
-                          Spotify.trackList,
-                          trackCollection.first().popularity
-                          ), trackCollection.first()
-                        );
+          if (relatedArtists.length) {
+            relatedArtists.push(trackCollection.first().artists.first());
+            for (var i = relatedArtists.length - 1; i >= 0; i--) {
+              total = relatedArtists.length - 1;
+              relatedArtists[i].topTracks({country: country}).then((tracks) => {
+                if (tracks.length) {
+                  for (var e = tracks.length - 1; e >= 0; e--) {
+                    Spotify.trackList.push(tracks[e]);
+                    if (e === 0) {
+                      total -= 1;
+                      if (total === 0) {
+                        callback(
+                          magic(
+                            Spotify.trackList,
+                            trackCollection.first().popularity
+                            ), trackCollection.first()
+                          );
+                      }
                     }
-                  }
-                };
-              } else {
-                total -= 1;
-              }
-            }).catch(fail);
-          };
+                  };
+                } else {
+                  total -= 1;
+                }
+              }).catch(fail);
+            };
+          } else {
+            callback([]);
+          }
         }).catch(fail);
       } else {
         callback([]);
