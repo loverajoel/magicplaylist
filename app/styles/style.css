@@ -811,3 +811,27 @@ a {
   opacity: 0.01;
 }
 
+
+.react-autosuggest__suggestions {
+  width: 100%;
+  margin: 10px 0 0 0;
+  padding: 0px;
+  list-style: none;
+  position: absolute;
+}
+
+.react-autosuggest__suggestion {
+  color: #410287;
+  padding: 20px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.react-autosuggest__suggestion--focused {
+  background: #773CB5;
+  color: #fff;
+}
+
+.top .react-autosuggest__suggestion {
+  padding: 15px
+}

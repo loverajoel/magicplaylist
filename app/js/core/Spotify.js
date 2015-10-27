@@ -6,8 +6,8 @@ import {magic} from './Magic';
 let client = Client.instance;
 
 client.settings = {
-  clientId: '',
-  secretId: '',
+  clientId: '87e58d70ae454ae7b815b4c8a1556a98',
+  secretId: '52bf6c6b92a04e489e8899fc0d291d5f',
   scopes: 'playlist-modify-public user-read-private playlist-modify-private',
   redirect_uri: 'http://localhost:3000/app/login/index.html'
 };
@@ -26,44 +26,59 @@ let total = 0;
 let Spotify = {
   trackList: [],
 
-  search: (text, country, callback, fail) => {
+  autocomplete: (text, country) => {
     if (Number(localStorage.magic_token_expires) > Date.now()) {
       client.token = localStorage.magic_token;
     }
+    return track.search(text, {limit: 5, market: country});
+  },
+
+  search: (text, country, callback, fail) => {
+    if (text.id) {
+      return Spotify.getTracks(text, country, callback, fail);
+    } else {
+      if (Number(localStorage.magic_token_expires) > Date.now()) {
+        client.token = localStorage.magic_token;
+      }
+      track.search(text, {limit: 1, market: country}).then((trackCollection) => {
+        if (trackCollection.length) {
+          Spotify.getTracks(trackCollection.first(), country, callback, fail);
+        } else {
+          callback([]);
+        }
+      }).catch(fail);
+    }
+  },
+
+  getTracks: (track, country, callback, fail) => {
     Spotify.trackList = [];
-    track.search(text, {limit: 1, market: country}).then((trackCollection) => {
-      if (trackCollection.length) {
-        trackCollection.first().artists.first().relatedArtists().then((relatedArtists) => {
-          relatedArtists = relatedArtists.slice(0, settings.artists - 1);
-          if (relatedArtists.length) {
-            relatedArtists.push(trackCollection.first().artists.first());
-            for (var i = relatedArtists.length - 1; i >= 0; i--) {
-              total = relatedArtists.length - 1;
-              relatedArtists[i].topTracks({country: country}).then((tracks) => {
-                if (tracks.length) {
-                  for (var e = tracks.length - 1; e >= 0; e--) {
-                    Spotify.trackList.push(tracks[e]);
-                    if (e === 0) {
-                      total -= 1;
-                      if (total === 0) {
-                        callback(
-                          magic(
-                            Spotify.trackList,
-                            trackCollection.first().popularity
-                            ), trackCollection.first()
-                          );
-                      }
-                    }
-                  };
-                } else {
+    track.artists.first().relatedArtists().then((relatedArtists) => {
+      relatedArtists = relatedArtists.slice(0, settings.artists - 1);
+      if (relatedArtists.length) {
+        relatedArtists.push(track.artists.first());
+        for (var i = relatedArtists.length - 1; i >= 0; i--) {
+          total = relatedArtists.length - 1;
+          relatedArtists[i].topTracks({country: country}).then((tracks) => {
+            if (tracks.length) {
+              for (var e = tracks.length - 1; e >= 0; e--) {
+                Spotify.trackList.push(tracks[e]);
+                if (e === 0) {
                   total -= 1;
+                  if (total === 0) {
+                    callback(
+                      magic(
+                        Spotify.trackList,
+                        track.popularity
+                        ), track
+                      );
+                  }
                 }
-              }).catch(fail);
-            };
-          } else {
-            callback([]);
-          }
-        }).catch(fail);
+              };
+            } else {
+              total -= 1;
+            }
+          }).catch(fail);
+        };
       } else {
         callback([]);
       }

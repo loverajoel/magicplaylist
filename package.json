@@ -28,6 +28,7 @@
     "flux": "latest",
     "react": "latest",
     "react-addons-css-transition-group": "^0.14.0",
+    "react-autosuggest": "^2.1.1",
     "react-dom": "^0.14.0",
     "spotify-sdk": "0.0.27"
   },

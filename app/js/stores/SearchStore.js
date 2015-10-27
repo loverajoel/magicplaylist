@@ -36,8 +36,7 @@ class SearchStore extends EventEmitter {
       switch (type) {
 
         case SEARCH_ADD: {
-          const newSearch = text;
-          _currentSearch = newSearch;
+          _currentSearch = text.id ? `${text.name}, ${text.artists.first().name}` : text;
           this.emitChange();
           break;
         }
