@@ -2,13 +2,12 @@
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import Autosuggest from 'react-autosuggest';
 
 import {newSearch} from '../actions/SearchActions';
 import PlaylistActions from '../actions/PlaylistActions';
 
 import Spotify from '../core/Spotify';
-
-import Autosuggest from 'react-autosuggest';
 
 class SearchBox extends Component {
 
@@ -26,6 +25,7 @@ class SearchBox extends Component {
   }
 
   _handleSearch() {
+    // I know that's ugly :(
     const text = document.querySelector('#search-input').value;
     if (text.length > 3) {
       this._search(text);
@@ -44,33 +44,36 @@ class SearchBox extends Component {
   }
 
   render() {
+    let country = this.props.country;
     let time;
-    function getSuggestions(input, callback) {
+    let getSuggestions = (input, callback) => {
       if (time) {
         clearTimeout(time);
       }
       time = setTimeout(() => {
-        Spotify.autocomplete(input, 'AR').then((tracks) => {
+        Spotify.autocomplete(input, country).then((tracks) => {
+          ga('send', 'event', 'load', 'suggestion', 'show');
           callback(null, tracks);
         });
       }, 500);
-    }
+    };
 
-    function suggestionRenderer(track) {
+    let suggestionRenderer = (track) => {
       return <span>{track.name}, {track.artists.first().name}</span>;
-    }
+    };
 
-    function getSuggestionValue(track) {
+    let getSuggestionValue = (track) => {
       return `${track.name}, ${track.artists.first().name}`;
-    }
+    };
 
-    function showWhen(input) {
+    let showWhen = (input) => {
       return input.trim().length > 3;
-    }
+    };
 
-    function onSuggestionSelected(suggestion) {
+    let onSuggestionSelected = (suggestion) => {
+      ga('send', 'event', 'click', 'suggestion', 'click-suggestion');
       this._search(suggestion);
-    }
+    };
 
     const inputAttributes = {
       id: 'search-input',
