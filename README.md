@@ -4,7 +4,7 @@
 
 ![title](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/title-github.jpg)
 
-Magic Playlist is an inteligent algorythm developed under Spotify's API that enables users to create a playlist based on a song.
+Magic Playlist is an intelligent algorithm developed under Spotify's API that enables users to create a playlist based on a song.
 
 The algorithm detects the main artists and creates a playlist based on their high rated tracks. You can preview each song, remove it and add security attributions such as public or private. Give it a name, save it into your Spotify's account and enjoy!
 
@@ -57,8 +57,5 @@ Code by Lovera Joel ([@loverajoel](https://twitter.com/loverajoel))
 
 Desing by Agustín Schelstraete ([@aschelstraete](https://twitter.com/aschelstraete))
 
-#License
-
-MIT
 
 Made with :heart: from Córdoba, Argentina.
