@@ -39,6 +39,7 @@ let PlaylistActions = {
         ga('send', 'event', 'event', 'playlist-search', 'no-result');
       }
     }, (error) => {
+      ga('send', 'event', 'event', 'new-api-error', error.response.status);
       if (error.response.status === 429) {
         Dispatcher.dispatch({
           type: PLAYLIST_LIMIT_429,

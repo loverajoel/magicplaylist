@@ -30,7 +30,7 @@ let UserActions = {
     if (localStorage.magic_country) {
       Dispatcher.dispatch({
         type: USER_COUNTRY,
-        data: 'AR'
+        data: localStorage.magic_country
       });
     } else {
       let checkStatus = (response) => {
@@ -52,11 +52,25 @@ let UserActions = {
       }).then(checkStatus)
       .then(parseJSON)
       .then((response) => {
-        localStorage.magic_country = response.countryCode;
-        Dispatcher.dispatch({
-          type: USER_COUNTRY,
-          data: response.countryCode
-        });
+
+        let markets = ['AD','AR','AT','AU','BE','BG','BO','BR','CA','CH','CL','CO','CR','CY','CZ',
+        'DE','DK','DO','EC','EE','ES','FI','FR','GB','GR','GT','HK','HN','HU','IE','IS','IT','LI',
+        'LT','LU','LV','MC','MT','MX','MY','NI','NL','NO','NZ','PA','PE','PH','PL','PT','PY','RO',
+        'SE','SG','SI','SK','SV','TR','TW','US','UY'];
+
+        if (markets.indexOf(response.countryCode) > -1) {
+          localStorage.magic_country = response.countryCode;
+          Dispatcher.dispatch({
+            type: USER_COUNTRY,
+            data: response.countryCode
+          });
+        } else {
+          localStorage.magic_country = 'US';
+          Dispatcher.dispatch({
+            type: USER_COUNTRY,
+            data: 'US'
+          });
+        }
       });
     }
   }
