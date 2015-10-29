@@ -2,7 +2,7 @@
 
 > Get the playlist of your dreams based on a song
 
-![title](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/title-github.jpg)
+[![title](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/title-github.jpg)](http://magicplaylist.co/)
 
 Magic Playlist is an intelligent algorithm developed under Spotify's API that enables users to create a playlist based on a song.
 
@@ -46,9 +46,7 @@ Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 
 #Press
 
-![title](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-cnet.jpg)
-
-[CNET - Create Spotify playlists based on one song with MagicPlaylist](http://www.cnet.com/how-to/create-spotify-playlists-based-on-one-song-with-magicplaylist/)
+[![CNET - Create Spotify playlists based on one song with MagicPlaylist](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-cnet.jpg)](http://www.cnet.com/how-to/create-spotify-playlists-based-on-one-song-with-magicplaylist/)
 
 #Contributing
 
