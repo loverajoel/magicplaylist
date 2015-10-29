@@ -44,6 +44,12 @@ This entire app is based on [Spotify API](https://developer.spotify.com/web-api/
 
 Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 
+#Press
+
+![title](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-cnet.jpg)
+
+[CNET - Create Spotify playlists based on one song with MagicPlaylist](http://www.cnet.com/how-to/create-spotify-playlists-based-on-one-song-with-magicplaylist/)
+
 #Contributing
 
 
