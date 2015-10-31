@@ -71,6 +71,8 @@ let UserActions = {
             data: 'US'
           });
         }
+      }).catch((error) => {
+        ga('send', 'event', 'event', 'error-country', 'catch');
       });
     }
   }
