@@ -60,6 +60,12 @@ Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 ```
 npm install
 npm run dev
+
+```
+
+Add polyfill to build and works with all browsers
+```
+npm run dev --production
 ```
 # Authors
 
