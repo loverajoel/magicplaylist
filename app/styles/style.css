@@ -171,7 +171,8 @@ a {
   background: #4f03a5;
   position: fixed;
   top: 0px;
-  left: 0px
+  left: 0px;
+  z-index: 1
 }
 
 .top .title {
@@ -324,6 +325,20 @@ a {
   float: right;
   margin: 0 0 0 15px;
   cursor: pointer;
+}
+
+.trackList li .re-search img {
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transition: all .2s ease-in;
+}
+
+.trackList li .re-search:hover img {
+  transform: rotate(-360deg);
+  -webkit-transform: rotate(-360deg);
+  -ms-transform: rotate(-360deg);
+  transition: all .5s ease-in;
 }
 
 @media screen and (max-width: 700px) {

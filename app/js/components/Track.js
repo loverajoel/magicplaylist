@@ -24,10 +24,15 @@ class Track extends Component {
     let track = this.props.track;
     return <li>
               <div className='track-name'>{track.name}, {track.artists.first().name}</div>
-              <div className='re-search' onClick={this._handleReSearch.bind(this)}>
-                <img src='img/fail.svg'/>
+              <div
+                className='re-search tooltip center'
+                onClick={this._handleReSearch.bind(this)}
+                data-tooltip='Make a new playlist!'
+              >
+                <img src='img/reload.svg'/>
               </div>
-              <div className='remove tooltip center'
+              <div
+                className='remove tooltip center'
                 onClick={this._remove.bind(this)}
                 data-tooltip='Remove this track'
               >
