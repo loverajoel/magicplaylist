@@ -15,6 +15,7 @@ class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      inputError: false,
       playlistName: '',
       playlistPublic: true
     };
@@ -30,18 +31,28 @@ class Modal extends Component {
   }
 
   _savePlaylist() {
+    close();
+    save(
+      UserStore.getUser()._id,
+      playlistName,
+      this.state.playlistPublic, PlaylistStore.getTracks()
+    );
+  }
+
+  _validateForm() {
     const playlistName = ReactDOM.findDOMNode(this.refs.playlistName).value;
-    if (playlistName.length > 3) {
-      close();
-      save(
-        UserStore.getUser()._id,
-        playlistName,
-        this.state.playlistPublic, PlaylistStore.getTracks()
-      );
-    }
+    let isValid = playlistName.length > 3;
+    this.setState({
+      inputError: !isValid
+    });
+
+    return isValid;
   }
 
   _handleSave() {
+    if (!this._validateForm()) {
+      return;
+    }
     if (this.props.token &&
         this.props.user &&
         Number(localStorage.magic_token_expires) > Date.now())
@@ -62,6 +73,8 @@ class Modal extends Component {
   }
 
   render() {
+    let inputPlaceholder = this.state.inputError ? 'Please enter a valid name!' : 'Name';
+    let inputClass  = this.state.inputError ? 'playlist-name error' : 'playlist-name';
     return <div className='modal'>
               <div className='modal-container'>
                   <div className='close-modal'>
@@ -70,8 +83,8 @@ class Modal extends Component {
                   <div>
                     <input
                       type='text'
-                      placeholder='Name'
-                      className='playlist-name'
+                      placeholder={inputPlaceholder}
+                      className={inputClass}
                       ref='playlistName'
                     />
                   </div>
