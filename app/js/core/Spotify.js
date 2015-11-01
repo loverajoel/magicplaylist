@@ -8,7 +8,7 @@ let client = Client.instance;
 client.settings = {
   clientId: '',
   secretId: '',
-  scopes: 'playlist-modify-public user-read-private playlist-modify-private',
+  scopes: 'playlist-modify-public playlist-modify-private',
   redirect_uri: 'http://localhost:3000/app/login/index.html'
 };
 
