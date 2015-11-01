@@ -834,6 +834,7 @@ a {
   padding: 0px;
   list-style: none;
   position: absolute;
+  z-index: 2
 }
 
 .react-autosuggest__suggestion {
