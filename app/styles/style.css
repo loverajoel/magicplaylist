@@ -285,11 +285,12 @@ a {
 }
 
 .trackList li {
+  width: 100%;
+  float: left;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 20px;
   color: #fff;
   border-bottom: 1px solid #410287;
-  overflow: hidden;
   padding: 13px 10px
 }
 
@@ -851,4 +852,91 @@ a {
 
 .top .react-autosuggest__suggestion {
   padding: 15px
+}
+
+/* Tooltip */
+.tooltip.center {
+  position: relative;
+}
+
+.tooltip.center:before, .tooltip.center:after {
+  opacity: 0;
+  z-index: 98;
+  -moz-transition: opacity 300ms, visibility 0ms linear 300ms;
+  -o-transition: opacity 300ms, visibility 0ms linear 300ms;
+  -webkit-transition: opacity 300ms, visibility 0ms linear;
+  -webkit-transition-delay: 0s, 300ms;
+  transition: opacity 300ms, visibility 0ms linear 300ms;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .tooltip.center:before, .tooltip.center:after {
+    display: none;
+  }
+}
+
+.tooltip.center:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  width: 114px;
+  padding: 10px 15px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: normal;
+  white-space: normal;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #5e04c2;
+}
+
+.tooltip.center:after {
+  content: '';
+}
+
+.tooltip.center:before {
+  top: -9px;
+  bottom: auto;
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+
+.tooltip.center:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-top: 6px solid #fff;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: none;
+  top: -9px;
+  bottom: auto;
+}
+
+.tooltip.center:before, .tooltip.center:after {
+  left: 50%;
+  right: auto;
+  margin-left: -6px;
+}
+
+.tooltip.center:before {
+  margin-left: -70px;
+}
+
+.tooltip.center:hover {
+  /* putting comment here so :hover is declared first by itself to fix ie10 bug with transitions on psuedo elements- http://css-tricks.com/pseudo-element-animationstransitions-bug-fixed-in-webkit/ */
+}
+
+.tooltip.center:hover:before, .tooltip.center:hover:after {
+  opacity: 1;
+  pointer-events: all;
+  -moz-transition-delay: 0ms;
+  -o-transition-delay: 0ms;
+  -webkit-transition-delay: 0ms;
+  transition-delay: 0ms;
 }
