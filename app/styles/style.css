@@ -317,6 +317,14 @@ a {
   float: left;
 }
 
+.trackList li .re-search {
+  width: 24px;
+  height: 24px;
+  float: right;
+  margin: 0 0 0 15px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
   .info .save-playlist {
     width: 100%;

@@ -37,6 +37,7 @@ class Playlist extends Component {
                 index={i}
                 ptag={this._add.bind(this)}
                 stopAll={this._stopAll.bind(this)}
+                country={this.props.country}
               />;
     });
     return <div className='playlist'>

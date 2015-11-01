@@ -15,10 +15,18 @@ class Track extends Component {
     ga('send', 'event', 'button', 'click', 'playlist-remove-track');
   }
 
+  _handleReSearch() {
+    PlaylistActions.search(this.props.track, this.props.country);
+    ga('send', 'event', 'event', 'new-re-search', this.props.track.name);
+  }
+
   render() {
     let track = this.props.track;
     return <li>
               <div className='track-name'>{track.name}, {track.artists.first().name}</div>
+              <div className='re-search' onClick={this._handleReSearch.bind(this)}>
+                <img src='img/fail.svg'/>
+              </div>
               <div className='remove' onClick={this._remove.bind(this)}>
                 <img src='img/remove.svg'/>
               </div>

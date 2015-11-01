@@ -105,7 +105,11 @@ class App extends Component {
   }
 
   renderPlaylist() {
-    return <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/>;
+    return <Playlist
+      mainTrack={this.state.mainTrack}
+      tracks={this.state.tracks}
+      country={this.state.country}
+      />;
   }
 
   renderModal() {
