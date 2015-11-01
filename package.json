@@ -1,7 +1,7 @@
 {
-  "name": "Spotify",
+  "name": "MagicPlaylist",
   "version": "0.0.1",
-  "description": "spotitfy",
+  "description": "Get the playlist of your dreams based on a song",
   "devDependencies": {
     "babel-jest": "5.3.0",
     "babelify": "6.4.0",
@@ -30,7 +30,7 @@
     "react-addons-css-transition-group": "0.14.0",
     "react-autosuggest": "^2.1.1",
     "react-dom": "0.14.0",
-    "spotify-sdk": "0.0.27"
+    "spotify-sdk": "0.0.28"
   },
   "scripts": {
     "dev": "gulp watch",
