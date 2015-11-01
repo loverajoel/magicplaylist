@@ -372,6 +372,22 @@ a {
   border-bottom: 2px solid #ccc;
 }
 
+.modal-container .playlist-name.error::-webkit-input-placeholder {
+  color: red;
+}
+
+.modal-container .playlist-name.error:-moz-placeholder { /* Firefox 18- */
+  color: red;
+}
+
+.modal-container .playlist-name.error::-moz-placeholder {  /* Firefox 19+ */
+  color: red;
+}
+
+.modal-container .playlist-name.error:-ms-input-placeholder {
+  color: red;
+}
+
 .modal-container .save {
   width: 184px;
   height: 54px;
