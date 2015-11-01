@@ -362,6 +362,10 @@ a {
   .trackList li .play {
     margin: 10px 0 0 15px;
   }
+
+  .trackList li .re-search {
+    display: none;
+  }
 }
 
 /* Modal */
@@ -374,6 +378,7 @@ a {
   background: #fff;
   position: fixed;
   overflow: scroll;
+  z-index: 2
 }
 
 .modal .modal-container {
@@ -549,7 +554,8 @@ a {
   position: fixed;
   z-index: 9000;
   top: 0px;
-  background: rgba(65, 2, 135, 0.65)
+  background: rgba(65, 2, 135, 0.65);
+  z-index: 2
 }
 
 .alert-modal {
@@ -566,6 +572,7 @@ a {
   border-radius: 5px;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif;
+  z-index: 3
 }
 
 .alert-loading {

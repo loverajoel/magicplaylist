@@ -14,6 +14,7 @@ Go to [MagicPlaylist /](http://magicplaylist.co/)
 - Create an Awesome playlist based on a song
 - Play audio preview (30 seconds)
 - Edit playlist
+- Make new playlist based in a track of the list
 - Save playlist in Spotify
 - Share playlist
 
