@@ -870,9 +870,9 @@ a {
   pointer-events: none;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 700px) {
   .tooltip.center:before, .tooltip.center:after {
-    display: none;
+    display: none !important;
   }
 }
 
