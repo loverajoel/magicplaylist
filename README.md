@@ -47,6 +47,8 @@ Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 
 #Press
 
+[![MagicPlaylist](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-spotify.jpg)](https://developer.spotify.com/showcase/item/magic-playlist/)
+
 [![MagicPlaylist Creates Spotify Playlists Based on a Single Song](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-lifehack.jpg)](http://lifehacker.com/magicplaylist-creates-spotify-playlists-based-on-a-sing-1739415795)
 
 [![CNET - Create Spotify playlists based on one song with MagicPlaylist](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-cnet.jpg)](http://www.cnet.com/how-to/create-spotify-playlists-based-on-one-song-with-magicplaylist/)
