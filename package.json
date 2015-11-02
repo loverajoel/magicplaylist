@@ -5,24 +5,11 @@
   "devDependencies": {
     "babel-jest": "5.3.0",
     "babelify": "6.4.0",
-    "browser-sync": "2.9.11",
-    "browserify": "11.2.0",
     "gulp": "3.9.0",
-    "gulp-if": "2.0.0",
-    "gulp-jshint": "1.11.2",
     "gulp-minify-css": "^1.2.1",
-    "gulp-rename": "1.2.2",
-    "gulp-streamify": "1.0.2",
-    "gulp-uglify": "1.4.2",
     "jest-cli": "0.6.1",
-    "jshint-stylish": "2.0.1",
-    "lodash": "3.10.1",
-    "rimraf": "latest",
-    "vinyl-source-stream": "1.1.0",
-    "watchify": "3.5.0",
     "yargs": "3.29.0",
-    "core-js": "^1.2.0",
-    "whatwg-fetch": "^0.9.0"
+    "gulp-bundlerify": "1.0.2"
   },
   "dependencies": {
     "flux": "2.1.1",
@@ -33,9 +20,11 @@
     "spotify-sdk": "0.0.28"
   },
   "scripts": {
-    "dev": "gulp watch",
+    "start": "npm run dev",
+    "dev": "gulp serve",
     "build": "gulp build",
-    "deploy": "NODE_ENV=production gulp deploy --production",
+    "deploy": "NODE_ENV=production gulp build --production",
+    "lint": "gulp lint",
     "test": "jest"
   },
   "author": "loverajoel",
