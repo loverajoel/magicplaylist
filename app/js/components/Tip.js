@@ -4,8 +4,7 @@ import React, {Component} from 'react';
 
 let Tip = () => {
   return <div className='tip'>
-            <span>Tip: Type a song + artist for better results.</span>
-            <span>(ex: Billie Jean, Michael Jackson)</span>
+            <p>Tip: Type a song + artist for better results.<br/>(ex: Billie Jean, Michael Jackson)</p>
           </div>;
 };
 

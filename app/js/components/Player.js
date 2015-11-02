@@ -73,13 +73,13 @@ class Track extends Component {
   render() {
     return <div>
               { !this.state.isPlaying && !this.state.isLoading ?
-                <img src='img/volume.svg' onClick={this._play.bind(this)}/> : null
+                <a className='play' onClick={this._play.bind(this)}> </a>: null
               }
               { this.state.isPlaying && !this.state.isLoading ?
-                <img src='img/pause.svg' onClick={this._stop.bind(this)}/> : null
+                <a  className='pause' onClick={this._stop.bind(this)}> </a>: null
               }
               { this.state.isLoading ?
-                <img src='img/tail-spin.svg' className='player-loading'/> : null
+                <span className='player-loading'> </span>: null
               }
               <audio ref='audio' src={this.props.source}/>
             </div>;

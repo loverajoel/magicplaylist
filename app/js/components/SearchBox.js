@@ -88,7 +88,6 @@ class SearchBox extends Component {
             <div className='search-group'>
               <span className='input-group-btn'>
                 <div className='btn-search' onClick={this._handleSearch.bind(this)}>
-                  <img src='img/search.svg'/>
                 </div>
               </span>
               <Autosuggest
