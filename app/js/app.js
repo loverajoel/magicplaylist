@@ -78,7 +78,7 @@ class App extends Component {
               { this.state.loading ? <Loading/> : null }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName='fade'>
-              { this.state.modalOpen ? this.renderModal() : null }
+              { this.state.modalOpen ? this.renderModal() : <span/> }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName='fade' >
               { this.state.alertOpen ? this.renderAlert() : null }
