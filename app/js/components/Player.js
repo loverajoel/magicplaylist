@@ -81,7 +81,7 @@ class Track extends Component {
               { this.state.isLoading ?
                 <img src='img/tail-spin.svg' className='player-loading'/> : null
               }
-              <audio ref='audio' src={this.props.source}/>
+              <audio ref='audio' src={this.props.source} preload='none'/>
             </div>;
   }
 }
