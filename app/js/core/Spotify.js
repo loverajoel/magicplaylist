@@ -27,19 +27,12 @@ let Spotify = {
   trackList: [],
 
   autocomplete: (text, country) => {
-    if (Number(localStorage.magic_token_expires) > Date.now()) {
-      client.token = localStorage.magic_token;
-    }
     return track.search(text, {limit: 5, market: country});
   },
-
   search: (text, country, callback, fail) => {
     if (text.id) {
       return Spotify.getTracks(text, country, callback, fail);
     } else {
-      if (Number(localStorage.magic_token_expires) > Date.now()) {
-        client.token = localStorage.magic_token;
-      }
       track.search(text, {limit: 1, market: country}).then((trackCollection) => {
         if (trackCollection.length) {
           Spotify.getTracks(trackCollection.first(), country, callback, fail);
