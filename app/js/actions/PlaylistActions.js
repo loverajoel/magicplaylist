@@ -31,7 +31,6 @@ let PlaylistActions = {
           tracks: tracks,
           mainTrack: mainTrack
         });
-        ga('send', 'event', 'event', 'new-playlist', 'new');
       } else {
         Dispatcher.dispatch({
           type: PLAYLIST_TRACK_NOT_FOUND,

@@ -37,28 +37,26 @@ class Playlist extends Component {
                 index={i}
                 ptag={this._add.bind(this)}
                 stopAll={this._stopAll.bind(this)}
-                country={this.props.country}
               />;
     });
     return <div className='playlist'>
               <div className='info'>
                 { !this.props.tracks.length ?
-                  <div className='track-name'>Hey! The track doesn't exist! :(</div> : null
+                  <h2 className='track-name'>Hey! The track doesn't exist! :(</h2> : null
                 }
                 { this.props.mainTrack ?
-                  <div className='track-name'>
-                    <strong>
+                  <h2 className='track-name'>
                       {this.props.mainTrack.name}
-                    </strong>, {this.props.mainTrack.artists.first().name}
-                  </div> :  null
+                    , {this.props.mainTrack.artists.first().name}
+                  </h2> :  null
                 }
                 { this.props.tracks.length ?
-                  <div className='save-playlist' onClick={this._handleSave}>
+                  <a href='#' className='save-playlist' onClick={this._handleSave}>
                     Save playlist on Spotify
-                  </div> : null
+                  </a> : null
                 }
               </div>
-              <ul className='trackList'>
+              <ul className='tracklist'>
               <ReactCSSTransitionGroup
                 transitionName='fadeList'
                 transitionEnterTimeout={0}

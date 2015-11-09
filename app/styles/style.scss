@@ -1,0 +1,1158 @@
+@font-face {
+  font-family: 'icons';
+  src: url('fonts/fontawesome-webfont.eot?v=4.4.0');
+  src: url('fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'),
+  url('fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'),
+  url('fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'),
+  url('fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'),
+  url('fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400+700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
+@import 'fontawesome-icons-vars';
+
+
+$title-font: 'Montserrat', sans-serif;
+$main-font: 'Source Sans Pro', sans-serif;
+$icon-font: 'icons';
+
+%icon-font {
+  font-family: 'icons';
+  -webkit-font-smoothing: antialiased;
+}
+
+$color-white: #fff;
+$color-black: #000;
+$color-border: #666;
+$color-background: #ECEFF1;
+/*
+
+$color-primary-100: #B3E5FC;
+$color-primary-500: #03A9F4;
+$color-primary-900: #01579B;
+*/
+
+$color-primary-100: #D1C4E9;
+$color-primary-500: #673AB7;
+$color-primary-900: #311B92;
+
+$color-secondary-100: #FFE0B2;
+$color-secondary-500: #FF9800;
+$color-secondary-900: #E65100;
+
+$primary-color-dark:   #512DA8;
+$primary-color:        #673AB7;
+$primary-color-light:  #D1C4E9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #CDDC39;
+$primary-text-color:   #212121;
+$secondary-text-color: #727272;
+$divider-color:        #B6B6B6;
+
+%display-flex {
+  display: -webkit-flex;
+  display: flex;
+  display: -ms-flexbox;
+}
+
+%input-field {
+  font-size: 17px;
+  width: 100%;
+  background: $primary-color-dark;
+  font-family: $main-font;
+  border-radius: 50px;
+  padding: 20px;
+  color: $color-white;
+  box-shadow: 0 0 0 transparent;
+  transition: all .2s ease;
+  position: relative;
+  top: 0;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid transparentize($color-white, 1);
+  /*background: {
+    image: url('../img/search.svg');
+    size: 20px;
+    position: 95% 50%;
+    repeat: no-repeat;
+  }*/
+  //transform: scale(1);
+  z-index: 2;
+
+  &::-webkit-input-placeholder {
+    color: transparentize($color-white, .2);
+  }
+
+  &:focus {
+    box-shadow: 0 0 20px transparentize($color-black, 0);
+    background-color: lighten($primary-color-dark, 10%);
+    border: 1px solid transparentize($color-white, .8);
+    //transform: scale(1.06);
+    outline: 0;
+    &::-webkit-input-placeholder {
+      color: transparentize($color-white, .8);
+    }
+  }
+}
+
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  flex-direction: $direction;
+  -ms-flex-direction: $direction;
+}
+
+@mixin flex-justify($justify) {
+  justify-content: $justify;
+}
+
+@mixin flex-align-items($alignment) {
+  -webkit-align-items: $alignment;
+  align-items: $alignment;
+  -ms-flex-align: $alignment;
+}
+
+@mixin flex($n) {
+  -webkit-flex: $n;
+  flex: $n;
+  -ms-flex: $n;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $main-font;
+  font-size: 16px;
+  background: darken($primary-color-dark, 28%);
+  color: $color-white;
+  box-shadow: 0 0 20vw rgba(0,0,0,.5) inset;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+}
+
+#container {
+  height: 100%;
+  @extend %display-flex;
+  @include flex-direction(column);
+  @include flex-justify(center);
+  @include flex-align-items(center);
+
+  .container {
+    width: 100%;
+    height: 100%;
+    @extend %display-flex;
+    @include flex-direction(column);
+    @include flex-justify(center);
+    @include flex-align-items(center);
+
+    > span {
+      width: 100%;
+      @extend %display-flex;
+      @include flex-direction(column);
+      @include flex-align-items(center);
+      transition: all 1s ease;
+
+      &:nth-child(1) {
+        @include flex(1);
+        @include flex-justify(center);
+      }
+    }
+  }
+}
+
+
+
+/***************
+Search Container
+***************/
+
+.search-container {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  color: transparentize($color-white, .3);
+  transition: all 1s ease;
+
+  border-bottom: 1px solid transparent;
+
+  h1 {
+    font-family: $title-font;
+    font-size: 30px;
+    color: transparentize($color-white, 0);
+    transition: all 1s ease;
+    text-align: center;
+    padding-left: 0;
+    min-width: 300px;
+  }
+
+  .tip {
+    color: transparentize($color-white, .5);
+    font-size: 13px;
+    padding: 20px 0 0;
+    opacity: 1;
+
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 22px;
+    }
+  }
+}
+
+
+/*********
+Search Box
+*********/
+
+.search-box {
+
+  padding: 15px 0;
+
+  .search-group {
+    position: relative;
+
+    &:focus {
+      position: relative;
+      top: 10px;
+    }
+
+    .input-search {
+      @extend %input-field;
+    }
+
+    .input-group-btn {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: 75px;
+      z-index: 5;
+
+      .btn-search {
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        display: block;
+        line-height: 62px;
+        font-size: 25px;
+
+        &::before {
+          content: $fa-var-search;
+          @extend %icon-font;
+          display: block;
+          color: transparentize($color-white, .5);
+          transition: all .25s ease;
+        }
+
+        &:hover::before {
+          color: transparentize($color-white, .2);
+        }
+      }
+    }
+  }
+}
+
+
+
+/*******
+Playlist
+*******/
+
+.playlist {
+  overflow: hidden;
+  transition: opacity 2s ease;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  @extend %display-flex;
+  @include flex-direction(column);
+
+  .tracklist {
+    overflow: auto;
+    height: 100%;
+
+    margin: 0;
+    padding: 0 30px;
+    list-style: none;
+
+    li {
+      padding: 10px 20px;
+      background: transparentize($color-white, 1);
+      transition: all .25s ease;
+      position: relative;
+      @extend %display-flex;
+      @include flex-align-items(center);
+      border-radius: 10px;
+      list-style: none;
+
+      &:hover {
+        background: transparentize($color-white, .95);
+      }
+
+      &::before {
+        content: '';
+        height: 1px;
+        width: 100%;
+        background: linear-gradient(to right, transparentize($color-white, 1) 0%, transparentize($color-white, .80) 5%, transparentize($color-white, .80) 95%, transparentize($color-white, 1) 100%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      .remove,
+      .play {
+        padding: 0;
+        cursor: pointer;
+        display: inline-block;
+        transition: all .25s ease;
+        text-align: center;
+      }
+
+      .remove,
+      .play > div a,
+      .play > div .player-loading {
+        &::before {
+          content: '';
+          height: 30px;
+          width: 30px;
+          display: inline-block;
+          @extend %icon-font;
+          line-height: 30px;
+          transform: scale(1);
+          transition: all .25s ease;
+        }
+      }
+
+      .remove {
+        opacity: .5;
+        order: 1;
+        margin-right: -5px;
+
+        &:hover {
+          opacity: .8;
+        }
+        &::before {
+          content: $fa-var-times;
+        }
+      }
+
+      .play .play {
+
+        transform: scale(0, 0);
+        opacity: 0;
+
+        -webkit-animation-name: animate-in;
+        -webkit-animation-delay: .2s;
+        -webkit-animation-duration: .2s;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-name: animate-in;
+        -moz-animation-delay: .2s;
+        -moz-animation-duration: .2s;
+        -moz-animation-fill-mode: forwards;
+        -ms-animation-name: animate-in;
+        -ms-animation-delay: .2s;
+        -ms-animation-duration: .2s;
+        -ms-animation-fill-mode: forwards;
+        animation-name: animate-in;
+        animation-delay: .2s;
+        animation-duration: .2s;
+        animation-fill-mode: forwards;
+
+        &::before {
+          content: $fa-var-play;
+        }
+
+        &:hover::before {
+          transform: scale(1.2);
+        }
+      }
+
+      .play > div .player-loading {
+        &::before {
+          content: $fa-var-spinner;
+          opacity: .5;
+          cursor: default;
+        }
+
+        &:hover::before {
+          transform: scale(1);
+        }
+      }
+
+      .play .pause {
+        &::before {
+          content: $fa-var-pause;
+        }
+
+        &:hover::before {
+          transform: scale(1.5);
+        }
+      }
+
+      .play > div .player-loading::before {
+        -webkit-animation-name: spinning;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+
+        -ms-animation-name: spinning;
+        -ms-animation-duration: 1s;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-timing-function: linear;
+
+        -moz-animation-name: spinning;
+        -moz-animation-duration: 1s;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: linear;
+
+        animation-name: spinning;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+    }
+
+    .track-name {
+      display: inline-block;
+      @include flex(1);
+    }
+  }
+
+  .info {
+    text-align: center;
+    @extend %display-flex;
+    @include flex-direction(row);
+    padding: 50px 0;
+    height: 60px;
+
+    .track-name {
+      font-size: 30px;
+      @include flex(1);
+      text-align: left;
+      margin: 0;
+      padding: 0 20px 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 60px;
+
+      &::before {
+        content: $fa-var-music;
+        @extend %icon-font;
+        display: inline-block;
+        margin-right: 20px;
+        color: $accent-color;
+      }
+    }
+  }
+
+  .save-playlist {
+    padding: 20px 30px;
+    border-radius: 40px;
+    background: $accent-color;
+    color: $primary-text-color;
+    display: inline-block;
+    transform: scale(1);
+    transition: all .2s ease;
+    //box-shadow: 0 0 0 transparentize($color-black, 1);
+
+    &:hover {
+      transform: scale(1.06);
+      //box-shadow: 0 0 20px transparentize($color-black, 0);
+    }
+  }
+
+  &.fade-enter {
+    opacity: 0;
+    padding: 0;
+
+    &.fade-enter-active {
+      opacity: 1;
+      padding: 0 20px;
+    }
+  }
+}
+
+
+@-webkit-keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/***********
+Auto Suggest
+***********/
+
+.react-autosuggest__suggestions {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  width: 92%;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  background: lighten($primary-color-light, 15%);
+  z-index: 1;
+  //box-shadow: 0 0 35px transparentize($color-black, .7);
+  opacity: 1;
+  transform: scale(1, 0);
+  transform-origin: 0% 0%;
+  -webkit-animation-name: animate-in;
+  -webkit-animation-delay: .2s;
+  -webkit-animation-duration: .2s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: animate-in;
+  -moz-animation-delay: .2s;
+  -moz-animation-duration: .2s;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-name: animate-in;
+  -ms-animation-delay: .2s;
+  -ms-animation-duration: .2s;
+  -ms-animation-fill-mode: forwards;
+  animation-name: animate-in;
+  animation-delay: .2s;
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+
+  li {
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+    cursor: pointer;
+    color: $primary-text-color;
+    transition: all .25s ease;
+    background: transparent;
+
+    &:hover {
+      background: $accent-color;
+    }
+  }
+}
+
+@keyframes animate-in {
+  0% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@-moz-keyframes animate-in {
+  0% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@-ms-keyframes animate-in {
+  0% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@-webkit-keyframes animate-in {
+  0% {
+    opacity: 0;
+    transform: scale(1, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+
+
+/*****
+Footer
+*****/
+
+.footer {
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  font-size: 12px;
+  @extend %display-flex;
+  @include flex-direction(row);
+  z-index: 0;
+
+  p {
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    line-height: 40px;
+
+
+  }
+
+  .spotify-api {
+    text-align: right;
+    a {
+      background: {
+        image: url('../img/spotify-logo.png');
+        size: contain;
+        repeat: no-repeat;
+      }
+      display: inline-block;
+      height: 20px;
+      width: 70px;
+      position: relative;
+      top: 5px;
+      margin-left: 5px;
+    }
+  }
+
+  > div {
+    @include flex(1);
+    padding: 5px 15px;
+  }
+}
+
+
+
+/******
+Loading
+******/
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0;
+  transition: all 2s ease;
+  display: none;
+
+  &.fade-enter {
+    opacity: 1;
+  }
+
+  &.fade-leave {
+    opacity: 0;
+  }
+}
+
+
+/******************
+Save Playlist Modal
+******************/
+
+.modal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background: transparentize(darken($primary-color-dark, 28%), .05);
+
+  @extend %display-flex;
+  @include flex-justify(center);
+  @include flex-align-items(center);
+  top: 0;
+  left: 0;
+  transition: all 5s ease;
+  opacity: 0;
+
+  -webkit-animation-name: animate-in-fade;
+  -webkit-animation-delay: .2s;
+  -webkit-animation-duration: .25s;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: animate-in-fade;
+  -moz-animation-delay: .2s;
+  -moz-animation-duration: .25s;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-name: animate-in-fade;
+  -ms-animation-delay: .2s;
+  -ms-animation-duration: .25s;
+  -ms-animation-fill-mode: forwards;
+  animation-name: animate-in-fade;
+  animation-delay: .2s;
+  animation-duration: .25s;
+  animation-fill-mode: forwards;
+
+
+  .modal-container {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .playlist-name {
+    @extend %input-field;
+    background-image: none;
+  }
+
+  h1 {
+    text-align: center;
+    border-bottom: 1px solid $primary-color-light;
+    padding: 0 0 20px 0;
+    margin: 0 0 40px 0;
+  }
+
+  h3 {
+    text-align: left;
+    margin: 0 20px 0 0;
+    padding: 0;
+    color: transparentize($color-white, .3);
+  }
+
+  .playlist-name-input {
+    position: relative;
+
+    &::before {
+      content: $fa-var-pencil;
+      @extend %icon-font;
+      position: absolute;
+      right: 15px;
+      z-index: 3;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 25px;
+      color: transparentize($color-white, .5);
+    }
+  }
+
+  input[type='radio'] {
+    display: none;
+
+    + label {
+      padding: 10px;
+      border-radius: 20px;
+      transition: all .25s ease;
+      cursor: pointer;
+      color: transparentize($color-white, .3);
+
+      &:hover {
+        color: transparentize($color-white, .1);
+      }
+
+      &::before {
+        content: $fa-var-check;
+        @extend %icon-font;
+        color: transparent;
+        display: inline-block;
+        transition: all .25s ease;
+        margin-right: 5px;
+      }
+    }
+
+    &:checked {
+      + label {
+        background: transparent;
+        color: $accent-color;
+
+        &::before {
+          content: $fa-var-check;
+          @extend %icon-font;
+          color: $accent-color;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .playlist-status {
+    padding: 40px 50px;
+    @extend %display-flex;
+    @include flex-justify(center);
+    @include flex-align-items(center);
+    @include flex-direction(row);
+  }
+
+  .buttons {
+    @extend %display-flex;
+    @include flex-justify(flex-end);
+    @include flex-align-items(center);
+    @include flex-direction(row);
+    margin-top: 30px;
+  }
+
+  .save,
+  .close {
+    padding: 20px 30px;
+    border-radius: 40px;
+    background: $accent-color;
+    color: $primary-text-color;
+    display: inline-block;
+    transform: scale(1);
+    transition: all .2s ease;
+    //box-shadow: 0 0 0 transparentize($color-black, 1);
+    float: right;
+
+    &:hover {
+      transform: scale(1.06);
+      //box-shadow: 0 0 20px transparentize($color-black, 0);
+    }
+  }
+
+  .close {
+    background: transparent;
+    color: transparentize($color-white, .3);
+
+    &:hover {
+      transform: scale(1);
+      box-shadow: none;
+      color: transparentize($color-white, .1);
+    }
+  }
+
+  &.fade-enter,
+  &.fade-appear {
+    opacity: 0;
+
+    &.fade-enter-active,
+    &.fade-appear-active {
+      opacity: 1;
+    }
+  }
+}
+
+
+@keyframes animate-in-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes animate-in-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes animate-in-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes animate-in-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/*************
+Congrats Alert
+*************/
+
+.alert-shadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background: transparentize(darken($primary-color-dark, 28%), .05);
+
+  @extend %display-flex;
+  @include flex-justify(center);
+  @include flex-align-items(center);
+  top: 0;
+  left: 0;
+  transition: all 5s ease;
+
+  .alert-modal {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+/******************************************
+Transformations when a search is being made
+******************************************/
+
+#container .container.search-state-true {
+
+   > span {
+    &:nth-child(1) {
+      @include flex(inherit);
+    }
+    &:nth-child(2) {
+      @include flex(1);
+      overflow: hidden;
+    }
+  }
+
+  .search-container {
+    max-width: 100%;
+    @extend %display-flex;
+    border-bottom: 1px solid $primary-color-light;
+    @include flex-align-items(center);
+
+    h3 {
+      display: none;
+    }
+
+    h1 {
+      text-align: left;
+      padding-left: 30px;
+    }
+
+    .tip * {
+      opacity: 0;
+    }
+
+    > div {
+      @include flex(1);
+    }
+
+    .search-box {
+      @include flex(1.5);
+    }
+  }
+}
+
+
+
+/***********
+Mobile Stuff
+***********/
+
+@media screen and (max-width: 940px) {
+
+  #container {
+    .container {
+      &.search-state-true {
+        .search-container {
+
+          @include flex-direction(column);
+          padding: 15px 0 0;
+
+          .tip {
+            display: none;
+          }
+
+          h1 {
+            font-size: 20px;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            min-width: 100%;
+          }
+
+          > div,
+          .search-box {
+            flex: inherit;
+            width: 95%;
+          }
+        }
+      }
+
+      > span:nth-child(1) {
+        @include flex-justify(flex-start);
+      }
+    }
+  }
+
+  .search-box {
+    padding: 15px;
+
+    .search-group {
+      .input-group-btn {
+        width: 50px;
+
+        .btn-search {
+          line-height: 50px;
+          font-size: 20px;
+        }
+      }
+
+      .input-search {
+        padding: 15px 50px 15px 15px;
+        font-size: 16px;
+        text-align: left;
+
+        &:focus {
+          box-shadow: 0 0 20px transparentize($color-black, 0);
+          background-color: lighten($primary-color-dark, 10%);
+          transform: scale(1);
+          outline: 0;
+          &::-webkit-input-placeholder {
+            color: transparentize($color-white, .8);
+          }
+        }
+      }
+    }
+  }
+
+  .react-autosuggest__suggestions {
+    top: 45px;
+  }
+
+  .modal {
+    h1 {
+      font-size: 25px;
+    }
+
+    h2 {
+      @include flex(inherit);
+      padding-bottom: 20px;
+    }
+
+    h3 {
+      margin: 0 0 20px 0;
+    }
+
+    .modal-container {
+      width: 95%;
+    }
+
+    .buttons {
+      @include flex-justify(center);
+    }
+
+    .save,
+    .close {
+      @include flex(1);
+      text-align: center;
+    }
+
+    .playlist-status {
+      @include flex-direction(column);
+    }
+
+    .playlist-name {
+      padding: 15px 50px 15px 15px;
+      font-size: 16px;
+      text-align: left;
+
+      &:focus {
+        box-shadow: 0 0 20px transparentize($color-black, 0);
+        background-color: lighten($primary-color-dark, 10%);
+        transform: scale(1);
+        outline: 0;
+        &::-webkit-input-placeholder {
+          color: transparentize($color-white, .8);
+        }
+      }
+    }
+
+    .playlist-name-input::before {
+      font-size: 20px;
+    }
+  }
+
+  .playlist {
+    .info {
+      @include flex-direction(column);
+      height: inherit;
+      padding: 0 10px 10px;
+
+      .track-name {
+        flex: inherit;
+        text-align: center;
+        padding: 0;
+        font-size: 16px;
+
+        &::before {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .save-playlist {
+      padding: 15px;
+    }
+
+    .tracklist {
+      padding: 0;
+
+      li {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .footer {
+    @include flex-direction(column);
+    padding: 10px 0 0;
+    margin: 10px 0 0;
+    border-top: 1px solid $primary-color-light;
+
+    > div {
+      @include flex(inherit);
+      padding: 0 5px;
+      text-align: center;
+    }
+
+    p {
+      height: inherit;
+      line-height: inherit;
+    }
+
+    .spotify-api {
+      padding: 5px 0;
+      text-align: center;
+    }
+  }
+}

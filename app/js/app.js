@@ -69,13 +69,8 @@ class App extends Component {
   }
 
   render() {
-    return <div className='container'>
-              <ReactCSSTransitionGroup transitionName='fade'>
-              { this.state.searching ? this.renderTop() : null }
-              </ReactCSSTransitionGroup>
-              <ReactCSSTransitionGroup transitionName='fadeOut'>
-              { !this.state.searching ? this.renderSearch() : null }
-              </ReactCSSTransitionGroup>
+    return <div className={'container search-state-' + this.state.searching}>
+              { this.renderSearch() }
               <ReactCSSTransitionGroup transitionName='fade'>
               { this.state.searching && !this.state.loading ? this.renderPlaylist() : null }
               </ReactCSSTransitionGroup>
@@ -83,7 +78,7 @@ class App extends Component {
               { this.state.loading ? <Loading/> : null }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName='fade'>
-              { this.state.modalOpen ? this.renderModal() : null }
+              { this.state.modalOpen ? this.renderModal() : <span/> }
               </ReactCSSTransitionGroup>
               <ReactCSSTransitionGroup transitionName='fade' >
               { this.state.alertOpen ? this.renderAlert() : null }
@@ -92,24 +87,16 @@ class App extends Component {
             </div>;
   }
 
-  renderTop() {
-    return <Top search={this.state.text} country={this.state.country}/>;
-  }
-
   renderSearch() {
-    return <div className='search-container'>
+    return <span><div className='search-container'>
             <Title/>
             <SearchBox country={this.state.country}/>
             <Tip/>
-          </div>;
+            </div></span>;
   }
 
   renderPlaylist() {
-    return <Playlist
-      mainTrack={this.state.mainTrack}
-      tracks={this.state.tracks}
-      country={this.state.country}
-      />;
+    return <Playlist mainTrack={this.state.mainTrack} tracks={this.state.tracks}/>;
   }
 
   renderModal() {

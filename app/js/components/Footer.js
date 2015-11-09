@@ -15,7 +15,7 @@ class Footer extends Component {
   render() {
     let style = !this.props.tracks ? 'footer fixed' : 'footer';
     return <div className={style}>
-              <div className='copy'>
+              <div className='copy'><p>
                 Developed by <a
                   href='https://github.com/loverajoel'
                   target='_blank'
@@ -34,11 +34,10 @@ class Footer extends Component {
                   href='https://twitter.com/magicplaylistco'
                   onClick={this._handleClick.bind(this, 'twitter')}
                   target='_blank'>@magicplaylistco</a>
-              </div>
-              <div className='spotify-api'>Created using the API of <a
+              </p></div>
+              <div className='spotify-api'><p>Created using the API of <a
                 href='https://developer.spotify.com/web-api/'
-                target='_blank'><img src='img/spotify-logo.png'
-              /></a>
+                target='_blank'></a></p>
               </div>
             </div>;
   }

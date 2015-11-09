@@ -15,7 +15,6 @@ class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputError: false,
       playlistName: '',
       playlistPublic: true
     };
@@ -32,28 +31,17 @@ class Modal extends Component {
 
   _savePlaylist() {
     const playlistName = ReactDOM.findDOMNode(this.refs.playlistName).value;
-    close();
-    save(
-      UserStore.getUser()._id,
-      playlistName,
-      this.state.playlistPublic, PlaylistStore.getTracks()
-    );
-  }
-
-  _validateForm() {
-    const playlistName = ReactDOM.findDOMNode(this.refs.playlistName).value;
-    let isValid = playlistName.length > 3;
-    this.setState({
-      inputError: !isValid
-    });
-
-    return isValid;
+    if (playlistName.length > 3) {
+      close();
+      save(
+        UserStore.getUser()._id,
+        playlistName,
+        this.state.playlistPublic, PlaylistStore.getTracks()
+      );
+    }
   }
 
   _handleSave() {
-    if (!this._validateForm()) {
-      return;
-    }
     if (this.props.token &&
         this.props.user &&
         Number(localStorage.magic_token_expires) > Date.now())
@@ -74,22 +62,19 @@ class Modal extends Component {
   }
 
   render() {
-    let inputPlaceholder = this.state.inputError ? 'Please enter a valid name!' : 'Name';
-    let inputClass  = this.state.inputError ? 'playlist-name error' : 'playlist-name';
     return <div className='modal'>
               <div className='modal-container'>
-                  <div className='close-modal'>
-                    <img src='img/close.svg' onClick={this._handleClose}/>
-                  </div>
-                  <div>
+                  <h1>Save playlist on Spotify</h1>
+                  <div className='playlist-name-input'>
                     <input
                       type='text'
-                      placeholder={inputPlaceholder}
-                      className={inputClass}
+                      placeholder='Playlist Name'
+                      className='playlist-name'
                       ref='playlistName'
                     />
                   </div>
-                  <span className='status'>Playlist Status</span>
+                  <div className='playlist-status'>
+                  <h3 className='status'>Playlist Status</h3>
                   <div className='radio-container'>
                     <input id='true'
                       type='radio'
@@ -108,12 +93,15 @@ class Modal extends Component {
                     />
                     <label htmlFor='false'>Private</label>
                   </div>
-                  <div>
-                    <button
+                  </div>
+                  <div className='buttons'>
+                    <a className='close' href='#' onClick={this._handleClose}>Cancel</a>
+
+                    <a
+                      href='#'
                       className='save'
-                      type='button'
                       onClick={this._handleSave.bind(this)}
-                    >Save playlist</button>
+                    >Save playlist</a>
                   </div>
               </div>
          </div>;
