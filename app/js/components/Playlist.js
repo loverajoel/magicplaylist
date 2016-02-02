@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import Track from './track';
+import Track from './Track';
 import {open} from '../actions/ModalActions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
