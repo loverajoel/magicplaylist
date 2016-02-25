@@ -80,8 +80,8 @@ let orderByPopularity = (list) => {
   }).reverse();
 };
 
-let magic = (list, points) => {
-  return alternate(orderByPopularity(closest(alternate(orderByPopularity(list)), points, 30)));
+let magic = (list, points, playlistLength) => {
+  return alternate(orderByPopularity(closest(alternate(orderByPopularity(list)), points, playlistLength)));
 };
 
 export default {

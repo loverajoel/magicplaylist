@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import Track from './track';
 import {open} from '../actions/ModalActions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import PlaylistStore from '../stores/PlaylistStore';
+import PlaylistActions from '../actions/PlaylistActions';
 
 class Playlist extends Component {
 
@@ -17,6 +19,14 @@ class Playlist extends Component {
   _handleSave() {
     open();
     ga('send', 'event', 'button', 'click', 'open-modal-save-playlist');
+  }
+
+  _handle10More() {
+      const trackName = this.props.mainTrack.name;
+      const country = this.props.country;
+      const playlistLength = PlaylistStore.getTracks().length + 10;
+
+      PlaylistActions.search(trackName, country, playlistLength);
   }
 
   _add(elem) {
@@ -65,8 +75,14 @@ class Playlist extends Component {
                 transitionLeaveTimeout={0}
               >
                 {tracks}
+                { this.props.tracks.length ?
+                  <li className='add-more-songs' onClick={this._handle10More.bind(this)}>
+                    <span className='add-more-songs-text'>+10 please!</span>
+                  </li> : null
+                }
               </ReactCSSTransitionGroup>
               </ul>
+
             </div>;
   }
 }

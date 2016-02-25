@@ -20,11 +20,11 @@ import {login} from './UserActions';
 
 let PlaylistActions = {
 
-  search: (text, country) => {
+  search: (text, country, playlistLength) => {
     Dispatcher.dispatch({
       type: PLAYLIST_LOADING
     });
-    Spotify.search(text, country, (tracks, mainTrack) => {
+    Spotify.search(text, country, playlistLength, (tracks, mainTrack) => {
       if (tracks.length) {
         Dispatcher.dispatch({
           type: PLAYLIST_ADD_TRACKS,

@@ -20,7 +20,7 @@ class SearchBox extends Component {
 
   _search(text) {
     newSearch(text);
-    PlaylistActions.search(text, this.props.country);
+    PlaylistActions.search(text, this.props.country, 30);
     ga('send', 'event', 'event', 'new-search', text);
   }
 

@@ -29,13 +29,13 @@ let Spotify = {
   autocomplete: (text, country) => {
     return track.search(text, {limit: 5, market: country});
   },
-  search: (text, country, callback, fail) => {
+  search: (text, country, playlistLength, callback, fail) => {
     if (text.id) {
-      return Spotify.getTracks(text, country, callback, fail);
+      return Spotify.getTracks(text, country, playlistLength, callback, fail);
     } else {
       track.search(text, {limit: 1, market: country}).then((trackCollection) => {
         if (trackCollection.length) {
-          Spotify.getTracks(trackCollection.first(), country, callback, fail);
+          Spotify.getTracks(trackCollection.first(), country, playlistLength, callback, fail);
         } else {
           callback([]);
         }
@@ -43,7 +43,7 @@ let Spotify = {
     }
   },
 
-  getTracks: (track, country, callback, fail) => {
+  getTracks: (track, country, playlistLength, callback, fail) => {
     Spotify.trackList = [];
     track.artists.first().relatedArtists().then((relatedArtists) => {
       relatedArtists = relatedArtists.slice(0, settings.artists - 1);
@@ -61,7 +61,8 @@ let Spotify = {
                     callback(
                       magic(
                         Spotify.trackList,
-                        track.popularity
+                        track.popularity,
+                        playlistLength
                         ), track
                       );
                   }

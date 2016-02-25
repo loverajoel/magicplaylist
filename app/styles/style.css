@@ -295,6 +295,12 @@ a {
   padding: 13px 10px
 }
 
+.tracklist li.add-more-songs {
+  border-bottom: none;
+  text-align: center;
+  padding-top: 25px;
+}
+
 .trackList li .remove {
   width: 24px;
   height: 24px;
@@ -969,4 +975,12 @@ a {
   -o-transition-delay: 0ms;
   -webkit-transition-delay: 0ms;
   transition-delay: 0ms;
+}
+
+.add-more-songs-text {
+  color: gold;
+  cursor: pointer;
+  border: 1px solid gold;
+  border-radius: 50px;
+  padding: 5px 15px;
 }
