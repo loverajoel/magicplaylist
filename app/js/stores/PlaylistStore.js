@@ -9,6 +9,7 @@ import {
   PLAYLIST_REMOVE_TRACKS,
   PLAYLIST_CREATED,
   PLAYLIST_SAVING,
+  PLAYLIST_DEFAULT_SIZE,
   PLAYLIST_TRACK_NOT_FOUND,
   SEARCH_RESET
 } from '../constants/constants';
@@ -16,6 +17,7 @@ import {
 let CHANGE_EVENT = 'change';
 
 let _tracks = [];
+let _playlistLength = PLAYLIST_DEFAULT_SIZE;
 let _mainTrack;
 let _loading = false;
 let _lastPlaylist;
@@ -28,6 +30,10 @@ class PlaylistStore extends EventEmitter {
 
   getTracks() {
     return _tracks;
+  }
+
+  getPlaylistLength() {
+    return _playlistLength;
   }
 
   getMainTrack() {
@@ -63,6 +69,7 @@ class PlaylistStore extends EventEmitter {
         case PLAYLIST_ADD_TRACKS: {
           _tracks = tracks;
           _mainTrack = action.mainTrack;
+          _playlistLength = action.playlistLength;
           _loading = false;
           this.emitChange();
           break;

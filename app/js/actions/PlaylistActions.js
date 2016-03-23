@@ -29,7 +29,8 @@ let PlaylistActions = {
         Dispatcher.dispatch({
           type: PLAYLIST_ADD_TRACKS,
           tracks: tracks,
-          mainTrack: mainTrack
+          mainTrack: mainTrack,
+          playlistLength: playlistLength
         });
         ga('send', 'event', 'event', 'new-playlist', 'new');
       } else {

@@ -32,11 +32,13 @@ class Modal extends Component {
 
   _savePlaylist() {
     const playlistName = ReactDOM.findDOMNode(this.refs.playlistName).value;
+    const playlistTracks = PlaylistStore.getTracks().slice(0, PlaylistStore.getPlaylistLength());
     close();
     save(
       UserStore.getUser()._id,
       playlistName,
-      this.state.playlistPublic, PlaylistStore.getTracks()
+      this.state.playlistPublic,
+      playlistTracks
     );
   }
 
