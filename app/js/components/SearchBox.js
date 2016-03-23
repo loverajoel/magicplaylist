@@ -6,6 +6,7 @@ import Autosuggest from 'react-autosuggest';
 
 import {newSearch} from '../actions/SearchActions';
 import PlaylistActions from '../actions/PlaylistActions';
+import { PLAYLIST_DEFAULT_SIZE } from '../constants/constants';
 
 import Spotify from '../core/Spotify';
 
@@ -20,7 +21,7 @@ class SearchBox extends Component {
 
   _search(text) {
     newSearch(text);
-    PlaylistActions.search(text, this.props.country);
+    PlaylistActions.search(text, this.props.country, PLAYLIST_DEFAULT_SIZE);
     ga('send', 'event', 'event', 'new-search', text);
   }
 

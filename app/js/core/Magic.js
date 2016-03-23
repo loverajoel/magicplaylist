@@ -1,6 +1,8 @@
 'use strict';
 // Magic algorithm
 
+import { PLAYLIST_DEFAULT_SIZE } from '../constants/constants';
+
 let closest = function(list, x, cant) {
   let final_list = [];
   let final_cant = list.length > cant ? cant : list.length;
@@ -80,8 +82,9 @@ let orderByPopularity = (list) => {
   }).reverse();
 };
 
-let magic = (list, points) => {
-  return alternate(orderByPopularity(closest(alternate(orderByPopularity(list)), points, 30)));
+let magic = (list, points, playlistLength) => {
+  const trackSize = playlistLength + PLAYLIST_DEFAULT_SIZE;
+  return alternate(orderByPopularity(closest(alternate(orderByPopularity(list)), points, trackSize)));
 };
 
 export default {
