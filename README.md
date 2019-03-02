@@ -1,4 +1,4 @@
-#Magic Playlist /
+# Magic Playlist
 
 > Get the playlist of your dreams based on a song
 
@@ -10,7 +10,7 @@ The algorithm detects the main artists and creates a playlist based on their hig
 
 Go to [MagicPlaylist /](http://magicplaylist.co/)
 
-#Features
+# Features
 - Create an Awesome playlist based on a song
 - Play audio preview (30 seconds)
 - Edit playlist
@@ -18,7 +18,7 @@ Go to [MagicPlaylist /](http://magicplaylist.co/)
 - Save playlist in Spotify
 - Share playlist
 
-#Algorithm Overview
+# Algorithm Overview
 1. Given a Track extract his popularity
 2. Get related Artists form that Track
 3. Get top tracks from each related Artist
@@ -31,21 +31,21 @@ Go to [MagicPlaylist /](http://magicplaylist.co/)
 
 [The Algorithm](https://github.com/loverajoel/magicplaylist/blob/master/app/js/core/Magic.js) :star2: 
 
-#Stack
+# Stack
 - ES6
 - Flux
 - React
 - [Spotify-SDK](https://github.com/loverajoel/spotify-sdk)
 
-#Spotify API
+# Spotify API
 
 This entire app is based on [Spotify API](https://developer.spotify.com/web-api/):heart:
 
-#Stay In Touch
+# Stay In Touch
 
 Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 
-#Press
+# Press
 
 [![MagicPlaylist](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-spotify.jpg)](https://developer.spotify.com/showcase/item/magic-playlist/)
 
@@ -57,7 +57,7 @@ Follow us for news [@magicplaylistco](https://twitter.com/magicplaylistco)
 
 [![MagicPlaylist trenger bare én sang](https://raw.githubusercontent.com/loverajoel/magicplaylist/master/app/img/press-dnet.jpg)](http://www.dinside.no/935094/magicplaylist-trenger-bare-n-sang)
 
-#Contributing
+# Contributing
 
 
 ```
